@@ -34,12 +34,6 @@ public class HomePage extends UiUtility {
   @FindBy(xpath = "//input[contains(@placeholder,'Enter city/ Hotel/ Area/ Building')]")
   WebElementFacade textBoxCity;
 
-  @FindBy(xpath = "//div[@class = 'DayPicker-Month'][2]//div[@class = 'DayPicker-Week'][1]//div[@class = 'DayPicker-Day'][3]")
-  WebElementFacade dateCheckin;
-
-  @FindBy(xpath = "//div[@class = 'DayPicker-Month'][2]//div[@class = 'DayPicker-Week'][2]//div[@class = 'DayPicker-Day'][1]")
-  WebElementFacade dateCheckout;
-
   @FindBy(xpath = "//label[@for='guest']")
   WebElementFacade sectionRoom;
 
@@ -61,8 +55,12 @@ public class HomePage extends UiUtility {
   @FindBy(xpath = "//button[@id='hsw_search_button']")
   WebElementFacade buttonSearch ;
 
+  @FindBy(xpath = "//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")
+  WebElementFacade buttonNextDate ;
+
   String listCity = "//ul[contains(@class,'react-autosuggest__suggestions-list')]//p[contains(text(),'%s')]";
 
+  String dateCheck = "//div[contains(text(),'%s')]/ancestor::div[@class='DayPicker-Month']//div[@aria-disabled='false' and .='%s']";
 
   public void openPage() {
     openUrl("https://www.makemytrip.com/");
@@ -101,15 +99,11 @@ public class HomePage extends UiUtility {
   }
 
   public void clickListCity(String value){
-    fromXpathtoWebElement(listCity, value);
+    fromXpathtoWebElement(String.format(listCity, value)).click();
   }
 
-  public void clickDateCheckIn(){
-    JSExecutorUtility.clickByWebElement(dateCheckin, getDriver());
-  }
-
-  public void clickDateCheckOut(){
-    JSExecutorUtility.clickByWebElement(dateCheckout, getDriver());
+  public void clickDate(String month, String date){
+    JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(dateCheck, month, date)), getDriver());
   }
 
   public void clickSectionRoom(){
@@ -138,6 +132,14 @@ public class HomePage extends UiUtility {
 
   public void clickButtonSearch(){
     JSExecutorUtility.clickByWebElement(buttonSearch, getDriver());
+  }
+
+  public void clickButtonNextDate(){
+    JSExecutorUtility.clickByWebElement(buttonNextDate, getDriver());
+  }
+
+  public boolean isDateIsMatch(String month, String date){
+    return fromXpathtoWebElement(String.format(dateCheck, month, date)).isCurrentlyVisible();
   }
 
 }

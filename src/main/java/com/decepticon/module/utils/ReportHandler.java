@@ -164,9 +164,8 @@ public class ReportHandler {
         String keyName = "";
         String firstKey = "";
         String secondKey = "";
-        String test = "";
 
-        keyName = "dark magician";
+        keyName = Handler.getKeyName().get(0);
         firstKey = keyName + ".";
         secondKey = keyName + "." + parallelKey + ".";
 
@@ -181,8 +180,7 @@ public class ReportHandler {
         Handler.putCoreHashMap(secondKey + "img", "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg");
         Handler.putCoreHashMap(secondKey + "ss", "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg");
 
-        keyName = Handler.getKeyName().get(0);
-        parallelKey = "fandom"; // fandom, api, db
+        keyName = Handler.getKeyName().get(1);
         firstKey = keyName + ".";
         secondKey = keyName + "." + parallelKey + ".";
 

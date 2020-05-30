@@ -36,14 +36,8 @@ public class HomePage extends PageObject {
   @FindBy(xpath = "//ul[contains(@class,'react-autosuggest__suggestions-list')]//p[contains(text(),'Bali')]")
   WebElementFacade clickLocation;
 
-  @FindBy(xpath = "//label[@for='checkin']")
-  WebElementFacade clickcheckIn;
-
   @FindBy(xpath = "//div[@class = 'DayPicker-Month'][2]//div[@class = 'DayPicker-Week'][1]//div[@class = 'DayPicker-Day'][3]")
   WebElementFacade dateCheckin;
-
-  @FindBy(xpath = "//label[@for='checkout']")
-  WebElementFacade clickCheckout;
 
   @FindBy(xpath = "//div[@class = 'DayPicker-Month'][2]//div[@class = 'DayPicker-Week'][2]//div[@class = 'DayPicker-Day'][1]")
   WebElementFacade dateCheckout;

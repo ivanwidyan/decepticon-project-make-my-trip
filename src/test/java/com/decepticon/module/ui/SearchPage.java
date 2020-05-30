@@ -50,6 +50,7 @@ public class SearchPage extends PageObject {
     WebElementFacade listingContainer;
     @FindBy(id="back_to_top_button")
     WebElementFacade backToTopButton;
+    private String hotelList="//p[@id=\"hlistpg_hotel_name\"]";
 
 
     public void openPage() {
@@ -123,13 +124,12 @@ public class SearchPage extends PageObject {
 //            }
 //            count--;
 //        }
-        List<WebElement> listOfHotels=getDriver().findElements(By.xpath("//p[@id=\"hlistpg_hotel_name\"]"));
+        List<WebElement> listOfHotels=getDriver().findElements(By.xpath(hotelList));
         for (int j=0;j<listOfHotels.size();j++)
         {
 
             if(j==numberOfHotel-1)
             {
-//                actions.moveToElement(listOfHotels.get(j));
                 hotelName=listOfHotels.get(j).getText();
                 listOfHotels.get(j).click();
             }

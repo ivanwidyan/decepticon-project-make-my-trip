@@ -4,18 +4,12 @@ import com.decepticon.module.constant.Consts;
 import com.decepticon.module.constant.ValueConsts;
 import com.decepticon.module.utils.UiUtility;
 import com.decepticon.module.utils.Utility;
-import cucumber.api.java.sl.In;
-import lombok.experimental.var;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -50,14 +44,16 @@ public class SearchPage extends PageObject {
     @FindBy(xpath = "//p[@class='appendBottom15']")
     WebElementFacade moveToBottomOfThePage;
     String loadingRequest="//p[@class='appendBottom15']";
-    @FindBy(className = "appendTop20 appendBottom20 font22 latoBlack blackText textCenter")
+    @FindBy(xpath = "//div[@id=\"hotelListingContainer\"]/p")
     WebElementFacade endPageMessage;
-    @FindBy(xpath = "//div[@class='listingRowOuter']/a")
-    List<WebElementFacade> listOfHotels;
+    @FindBy(id="hotelListingContainer")
+    WebElementFacade listingContainer;
+    @FindBy(id="back_to_top_button")
+    WebElementFacade backToTopButton;
 
 
     public void openPage() {
-        openUrl("https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=05312020&checkout=06012020&city=RGPUDD&country=IN&locusId=RGPUDD&locusType=region&roomStayQualifier=2e0e3e0e&searchText=Puducherry%2C%20India&visitorId=86609899-567a-479b-8c6e-5238de82f0c3");
+        openUrl("https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=05312020&checkout=06012020&city=RGCJB&country=IN&locusId=RGCJB&locusType=region&reference=hotel&roomStayQualifier=2e0e2e0e&searchText=Coimbatore%20District%2C%20Tamil%20Nadu%2C%20India&type=region");
     }
 
     public void filterByUserRating(String userRating) {
@@ -77,21 +73,10 @@ public class SearchPage extends PageObject {
         WebElement element = getDriver().findElement(By.xpath(priceSliderPath));
         utility.scrollToElement(getDriver(), priceFilter);
         if (Integer.valueOf(price) > 0) {
-            Integer currentDivision = Integer.valueOf(price) / 500;
-//            for (int i = 0; i < currentDivision; i++) {
-//                try {
-//                    Thread.sleep(5000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//                actions.clickAndHold(element).moveByOffset(3, 0).release().perform();
-//            }
-
             Integer min = 0;
             while (min < Integer.valueOf(price) || min > 30000) {
                 minPrice.waitUntilVisible();
                 actions.clickAndHold(element).moveByOffset(3, 0).release().perform();
-//                System.out.println(minPrice.getText());
                 String minPriceNumber = minPrice.getText().split(Consts.SPACE)[1];
                 min = Integer.valueOf(minPriceNumber);
                 System.out.println(price + " != " + min + " is " + (min < Integer.valueOf(price)));
@@ -122,24 +107,35 @@ public class SearchPage extends PageObject {
             appliedFilter="";
         }
     }
-    public void selectHotel()
+    public void selectHotel(Integer numberOfHotel)
     {
-//        utility.scrollToElement(getDriver(),moveToBottomOfThePage);
-//        if(getDriver().findElements(By.className("appendTop20 appendBottom20 font22 latoBlack blackText textCenter")).size()!=0)
-//        {
-//            utility.scrollToElement(getDriver(),moveToBottomOfThePage);
-//        }
-        int i=0;
-        while (i==0)
+        Actions actions = new Actions(getDriver());
+        String hotelName="";
+        Integer hotelNumber;
+        int count=numberOfHotel;
+        while (count>0)
         {
-            if(endPageMessage.isVisible())
-            {
-                i=1;
+            utility.scrollToTheEndOfThePage(getDriver());
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            else {
-                utility.scrollToElement(getDriver(), moveToBottomOfThePage);
-            }
+            count--;
         }
+        List<WebElement> listOfHotels=getDriver().findElements(By.xpath("//p[@id=\"hlistpg_hotel_name\"]"));
+        for (int j=0;j<listOfHotels.size();j++)
+        {
+
+            if(j==numberOfHotel-1)
+            {
+//                actions.moveToElement(listOfHotels.get(j));
+                hotelName=listOfHotels.get(j).getText();
+                listOfHotels.get(j).click();
+            }
+            System.out.println("Hotel Name"+j+listOfHotels.get(j).getText());
+        }
+        System.out.println(hotelName);
     }
 
 }

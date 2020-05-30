@@ -22,16 +22,15 @@ public class HotelDetailRunner {
     @Test
     public void openpage() {
         hotelDetailPage.openPage();
-        hotelDetailPage.all();
+        hotelDetailPage.getRoomName(1);
+        hotelDetailPage.getRoomDetail(1);
+        hotelDetailPage.getPrice(1, 1);
+        hotelDetailPage.getOption(1, 1);
+        hotelDetailPage.getIncludeList(1, 1);
+        hotelDetailPage.selectRoom(1, 1);
+
     }
 
-//    @Test
-//    public void getroomname() {
-//
-//
-//
-//
-//    }
 
 
 }

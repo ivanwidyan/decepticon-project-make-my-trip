@@ -47,6 +47,11 @@ public class Utility {
         driverWait(driver).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
+    public void scrollToTheEndOfThePage(WebDriver driver)
+    {
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
 
     public static String getProperty(String key) {
         return variables.getProperty(key);

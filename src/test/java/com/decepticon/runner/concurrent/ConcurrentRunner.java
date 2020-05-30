@@ -1,7 +1,7 @@
-package com.autobot.runner.concurrent;
+package com.decepticon.runner.concurrent;
 
-import com.autobot.module.ui.HomePage;
-import com.autobot.module.utils.ReportHandler;
+import com.decepticon.module.ui.HomePage;
+import com.decepticon.module.utils.ReportHandler;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.junit.annotations.Concurrent;

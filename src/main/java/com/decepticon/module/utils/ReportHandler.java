@@ -1,8 +1,8 @@
-package com.autobot.module.utils;
+package com.decepticon.module.utils;
 
-import com.autobot.module.json.Data;
-import com.autobot.module.json.MasterData;
-import com.autobot.module.json.MasterJson;
+import com.decepticon.module.json.Data;
+import com.decepticon.module.json.MasterData;
+import com.decepticon.module.json.MasterJson;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -14,19 +14,21 @@ public class ReportHandler {
     public static HashMap<String, String> masterHashMap = new HashMap<>();
 
     public static void main(String[] args) {
-        Handler.getKeyName().add("dark magician");
-        Handler.getKeyName().add("fire hole");
+        generateDummyReport();
 
-        prepareReport();
-
-        generateSampleData("fandom");
-        generateTempData("fandom");
-
-        generateSampleData("api");
-        generateTempData("api");
-
-        readFromTempData();
-        generateMasterJson();
+//        Handler.getKeyName().add("dark magician");
+//        Handler.getKeyName().add("fire hole");
+//
+//        prepareReport();
+//
+//        generateSampleData("fandom");
+//        generateTempData("fandom");
+//
+//        generateSampleData("api");
+//        generateTempData("api");
+//
+//        readFromTempData();
+//        generateMasterJson();
 
 //        generateSampleData("api");
 //        generateTempData("api");
@@ -56,9 +58,6 @@ public class ReportHandler {
     }
 
     public static void generateMasterJson() {
-        System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "");
-        System.out.println("set hudson.model.DirectoryBrowserSupport.CSP to blank");
-
         List<MasterJson> listMasterJson = new ArrayList<>();
 
         for (int i = 0; i < Handler.getKeyName().size(); i++) {

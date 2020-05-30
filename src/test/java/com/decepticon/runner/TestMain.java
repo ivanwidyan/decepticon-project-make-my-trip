@@ -1,7 +1,8 @@
-package com.autobot.runner;
+package com.decepticon.runner;
 
-import com.autobot.module.ui.HomePage;
-import com.autobot.module.utils.ReportHandler;
+import com.decepticon.module.api.ApiController;
+import com.decepticon.module.ui.HomePage;
+import com.decepticon.module.utils.ReportHandler;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
@@ -20,6 +21,12 @@ public class TestMain {
     @Test
     public void report() {
         ReportHandler.generateDummyReport();
+    }
+
+    @Test
+    public void testApi() {
+        System.out.println(ApiController.createUser());
+        System.out.println(ApiController.getUser());
     }
 
     /*@Test

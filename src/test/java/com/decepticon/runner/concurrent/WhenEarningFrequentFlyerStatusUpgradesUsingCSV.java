@@ -1,4 +1,4 @@
-package com.autobot.runner.concurrent;
+package com.decepticon.runner.concurrent;
 
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.junit.annotations.Qualifier;

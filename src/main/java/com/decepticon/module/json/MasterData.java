@@ -1,4 +1,4 @@
-package com.autobot.module.json;
+package com.decepticon.module.json;
 
 public class MasterData {
     public Data fandom;

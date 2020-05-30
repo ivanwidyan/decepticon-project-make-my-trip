@@ -1,4 +1,4 @@
-package com.autobot.hooks;
+package com.decepticon.hooks;
 
 import org.junit.After;
 import org.junit.AfterClass;

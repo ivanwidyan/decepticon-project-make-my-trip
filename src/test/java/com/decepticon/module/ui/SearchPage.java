@@ -116,7 +116,8 @@ public class SearchPage extends PageObject {
         if(numberOfHotel>0) {
             String hotelName = "";
             utility.scrollToTheEndOfThePage(getDriver());
-            while (!endPageMessage.isVisible()) {
+            while (!endPageMessage.isVisible() && numberOfHotel>3)//3 is the hardcoded value can be made to the default values based on number of data loaded
+            {
                 utility.scrollToTheEndOfThePage(getDriver());
             }
             List<WebElement> listOfHotels = getDriver().findElements(By.xpath(hotelList));

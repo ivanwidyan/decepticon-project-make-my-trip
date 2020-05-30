@@ -13,10 +13,16 @@ import org.openqa.selenium.WebDriver;
 public class TestMain {
 
     // chrome, firefox, appium, remote
-    @Managed(driver = "chrome")
+    @Managed(driver = "remote")
     WebDriver driver;
 
-    HomePage googlePage;
+    HomePage homePage;
+
+    @Test
+    public void testRemote() {
+        homePage.openPage();
+        homePage.doSearch();
+    }
 
     @Test
     public void report() {

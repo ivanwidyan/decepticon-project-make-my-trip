@@ -1,8 +1,10 @@
 package com.decepticon.steps;
 
 import com.decepticon.module.constant.Consts;
+import com.decepticon.module.data.HomeData;
 import com.decepticon.module.ui.HomePage;
 import com.decepticon.module.utils.CommonAction;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -12,6 +14,8 @@ public class HomePageSteps extends ScenarioSteps {
     private CommonAction commonAction;
 
     private HomePage homePage;
+
+    private HomeData homeData;
 
     @Given("open home page")
     public void openHomePage() {
@@ -32,11 +36,13 @@ public class HomePageSteps extends ScenarioSteps {
     public void atHomePageCitySectionFillTextBoxCityWithIndonesia(String value) {
         System.out.println(value);
         homePage.typeTextBoxCity(value);
+        homeData.setCountry(value);
     }
 
     @When("at home page city section click list button City equals to {string}")
     public void atHomePageCitySectionClickListButtonCityEqualsToBali(String value) {
         homePage.clickListCity(value);
+        homeData.setCity(value);
     }
 
     @When("at home page click button Check In equals to {string}")
@@ -48,6 +54,7 @@ public class HomePageSteps extends ScenarioSteps {
             homePage.clickButtonNextDate();
         }
         homePage.clickDate(month, date);
+        homeData.setDateCheckIn(homePage.getTextDate(month, date));
     }
 
     @When("at home page click button Check Out equals to {string}")
@@ -59,6 +66,7 @@ public class HomePageSteps extends ScenarioSteps {
             homePage.clickButtonNextDate();
         }
         homePage.clickDate(month, date);
+        homeData.setDateCheckIn(homePage.getTextDate(month, date));
     }
 
     @When("at home page click button Room & Guest")
@@ -94,10 +102,36 @@ public class HomePageSteps extends ScenarioSteps {
     @When("at home page travel section click list button Travelling For equals to {string}")
     public void atHomePageTravelSectionClickListButtonTravellingForEqualsToWork(String value) {
         homePage.clickSelectTravelFor(value);
+        homeData.setTravellingFor(value);
     }
 
     @When("at home page click button Search")
     public void atHomePageClickButtonSearch() {
         homePage.clickButtonSearch();
+    }
+
+    @When("at home page click button login")
+    public void atHomePageClickButtonLogin() {
+        homePage.clickButtonLogin();
+    }
+
+    @When("at home page login popup fill text box username with {string}")
+    public void atHomePageLoginPopupFillTextBoxUsernameWithSatutestingGmailCom(String value) {
+        homePage.typeTextBoxEmail(value);
+    }
+
+    @When("at home page login popup click button continue")
+    public void atHomePageLoginPopupClickButtonContinue() {
+        homePage.clickButtonSubmit();
+    }
+
+    @When("at home page login popup click button close")
+    public void atHomePageLoginPopupClickButtonClose() {
+        homePage.clickButtonClose();
+    }
+
+    @When("at home page login popup fill text box password with {string}")
+    public void atHomePageLoginPopupFillTextBoxPasswordWithMytripbolot(String value) {
+        homePage.typeTextBoxPassword(value);
     }
 }

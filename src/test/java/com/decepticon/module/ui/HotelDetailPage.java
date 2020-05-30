@@ -18,23 +18,23 @@ public class HotelDetailPage extends UiUtility {
     @FindBy(xpath = "//span[contains(@class,'close')]")
     WebElementFacade buttonCloseModal;
 
-    public String listPeopleCount = "//ul[1]//li[@class='ddListItem'][%s]";
-    public String listmultioptions = "//div[@class='roomLeftContRow'][%s]//div[@class='multiRoomRow   '][%s]//div[@class='makeFlex  appendBottom15']";
-    public String listOptions = "//div[@class='roomWrap'][%s]//div[%s]//div[@class='makeFlex  appendBottom15']";
-    public String listIncluded = "//div[@class='roomWrap'][%s]//div[%s]//ul[@class='includeList']//li";
-    public String listIncludedMultiOption = "//div[@class='roomLeftContRow'][%s]//div[@class='multiRoomRow   '][%s]//ul[@class='includeList']//li";
+    private String listPeopleCount = "//ul[1]//li[@class='ddListItem'][%s]";
+    private String listmultioptions = "//div[@class='roomLeftContRow'][%s]//div[@class='multiRoomRow   '][%s]//div[@class='makeFlex  appendBottom15']";
+    private String listOptions = "//div[@class='roomWrap'][%s]//div[%s]//div[@class='makeFlex  appendBottom15']";
+    private String listIncluded = "//div[@class='roomWrap'][%s]//div[%s]//ul[@class='includeList']//li";
+    private String listIncludedMultiOption = "//div[@class='roomLeftContRow'][%s]//div[@class='multiRoomRow   '][%s]//ul[@class='includeList']//li";
 
-    public String buttonSelectRoom = "//div[@class='roomWrap'][%s]//div[%s]//a[@class='primaryBtn appendBottom15 ']";
-    public String buttonSelectPeopleCount = "//div[@class='roomLeftContRow'][%s]//div[@class='multiRoomRow   '][%s]//div[@class='ddHeader']";
-    public String butonMoreAbout = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//a";
-    public String butonAddRoom = "//div[@class='roomLeftContRow'][%s]//div//div[%s]//div//a[@class='primaryBtn btnAddRoom']";
-    public String butonReviewDetail = "//a[@id='detpg_confirm_booking_btn']";
+    private String buttonSelectRoom = "//div[@class='roomWrap'][%s]//div[%s]//a[@class='primaryBtn appendBottom15 ']";
+    private String buttonSelectPeopleCount = "//div[@class='roomLeftContRow'][%s]//div[@class='multiRoomRow   '][%s]//div[@class='ddHeader']";
+    private String butonMoreAbout = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//a";
+    private String butonAddRoom = "//div[@class='roomLeftContRow'][%s]//div//div[%s]//div//a[@class='primaryBtn btnAddRoom']";
+    private String butonReviewDetail = "//a[@id='detpg_confirm_booking_btn']";
 
 
-    public String textPrice = "//div[@class='roomWrap'][%s]//div[@class='roomRight']/div[%s]//span[@class='bxNegotiate appendBottom5']";
-    public String textMultiPrice = "//div[@class='roomLeftContRow'][%s]//div//div[%s]//div//div[contains(text(),'INR')]";
-    public String textTotalPrice = "//span[@id='detpg_cart_total_price_per_night']";
-    public String textRoomName = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//h2";
+    private String textPrice = "//div[@class='roomWrap'][%s]//div[@class='roomRight']/div[%s]//span[@class='bxNegotiate appendBottom5']";
+    private String textMultiPrice = "//div[@class='roomLeftContRow'][%s]//div//div[%s]//div//div[contains(text(),'INR')]";
+    private String textTotalPrice = "//span[@id='detpg_cart_total_price_per_night']";
+    private String textRoomName = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//h2";
 
 
     public void openPage() {

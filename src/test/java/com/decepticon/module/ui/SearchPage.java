@@ -87,8 +87,13 @@ public class SearchPage extends PageObject {
     public void filterByPrice(String price)
     {
         utility.scrollToElement(getDriver(),priceFilter);
-        Actions actions = new Actions(getDriver());
+        String [] min=minPrice.getText().split("INR",1);
+        if(Integer.valueOf(price)<Integer.valueOf(min[1]))
+        {
 
+        }
+        Actions actions = new Actions(getDriver());
+//        actions.dragAndDropBy()
     }
 }
 

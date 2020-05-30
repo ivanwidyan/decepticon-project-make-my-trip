@@ -36,4 +36,9 @@ public class JSExecutorUtility {
         js.executeScript(String.format("document.getElementById('%s').checked=%s;", id, checked));
     }
 
+    public static void jumpIntoElement(WebElement element, WebDriver webDriver){
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
 }

@@ -37,14 +37,11 @@ public class HomePage extends UiUtility {
   @FindBy(xpath = "//label[@for='guest']")
   WebElementFacade sectionRoom;
 
-  @FindBy(xpath = "//div[contains(@class,'hsw_inner')]//ul[1]//li[2]")
-  WebElementFacade numberOfAdults;
-
-  @FindBy(xpath = "//div[contains(@class,'minContainer')]//ul[2]//li[1]")
-  WebElementFacade numberOfChildren;
-
   @FindBy(xpath = "//div[@class='roomsGuestsBottom']/button[2]")
   WebElementFacade buttonApplyRoom;
+
+  @FindBy(xpath = "//div[@class='roomsGuestsBottom']/button[1]")
+  WebElementFacade buttonAddRooms;
 
   @FindBy(xpath = "//label[@for='travelFor']")
   WebElementFacade sectionTravelFor;
@@ -61,6 +58,10 @@ public class HomePage extends UiUtility {
   String listCity = "//ul[contains(@class,'react-autosuggest__suggestions-list')]//p[contains(text(),'%s')]";
 
   String dateCheck = "//div[contains(text(),'%s')]/ancestor::div[@class='DayPicker-Month']//div[@aria-disabled='false' and .='%s']";
+
+  String numberOfAdults = "//div[contains(@class,'hsw_inner')]//ul[1]//li[%s]";
+
+  String numberOfChildren = "//div[contains(@class,'minContainer')]//ul[2]//*[.='%s']";
 
   public void openPage() {
     openUrl("https://www.makemytrip.com/");
@@ -110,12 +111,14 @@ public class HomePage extends UiUtility {
     JSExecutorUtility.clickByWebElement(sectionRoom, getDriver());
   }
 
-  public void clickNumberOfAdults(){
-    JSExecutorUtility.clickByWebElement(numberOfAdults, getDriver());
+  public void clickNumberOfAdults(String value){
+    JSExecutorUtility.clickByWebElement(
+            fromXpathtoWebElement(String.format(numberOfAdults, value)), getDriver());
   }
 
-  public void clickNumberOfChildren(){
-    JSExecutorUtility.clickByWebElement(numberOfChildren, getDriver());
+  public void clickNumberOfChildren(String value){
+    JSExecutorUtility.clickByWebElement(
+            fromXpathtoWebElement(String.format(numberOfChildren, value)), getDriver());
   }
 
   public void clickButtonApplyRoom(){
@@ -136,6 +139,10 @@ public class HomePage extends UiUtility {
 
   public void clickButtonNextDate(){
     JSExecutorUtility.clickByWebElement(buttonNextDate, getDriver());
+  }
+
+  public void clickButtonAddRooms(){
+    JSExecutorUtility.clickByWebElement(buttonAddRooms, getDriver());
   }
 
   public boolean isDateIsMatch(String month, String date){

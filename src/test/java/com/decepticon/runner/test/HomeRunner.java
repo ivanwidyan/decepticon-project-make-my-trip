@@ -33,14 +33,21 @@ public class HomeRunner {
         homePage.typeTextBoxCity("Indonesia");
         homePage.clickListCity("Bali");
         checkTheDate();
-
-
+        homePage.clickDate("August", "17");
+        homePage.clickSectionRoom();
+        int t = 0;
+        while(t < 1 ){
+            homePage.clickNumberOfAdults("2");
+            homePage.clickNumberOfChildren("2");
+            homePage.clickButtonAddRooms();
+            t++;
+        }
+        homePage.clickButtonApplyRoom();
     }
 
     public void checkTheDate(){
         while (!homePage.isDateIsMatch("August", "17")) {
             homePage.clickButtonNextDate();
         }
-        homePage.clickDate("August", "17");
     }
 }

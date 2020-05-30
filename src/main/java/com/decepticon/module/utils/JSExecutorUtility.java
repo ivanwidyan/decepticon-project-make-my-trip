@@ -30,4 +30,8 @@ public class JSExecutorUtility {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript(String.format("document.getElementById('%s').checked=%s;", id, checked));
     }
+    public static void getTextByElement(String element, WebDriver webDriver){
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("arguments[0].getText();", element);
+    }
 }

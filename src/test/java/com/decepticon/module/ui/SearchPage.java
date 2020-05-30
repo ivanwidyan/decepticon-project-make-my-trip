@@ -2,18 +2,12 @@ package com.decepticon.module.ui;
 
 import com.decepticon.module.constant.ValueConsts;
 import com.decepticon.module.utils.Utility;
-import cucumber.api.java.sl.In;
-import lombok.experimental.var;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 

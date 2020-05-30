@@ -21,9 +21,8 @@ public class HotelDetailRunner {
 
     @Test
     public void openpage() {
-      hotelDetailPage.openPage();
-        hotelDetailPage.getRoomName(2);
-
+        hotelDetailPage.openPage();
+        hotelDetailPage.all();
     }
 
 //    @Test

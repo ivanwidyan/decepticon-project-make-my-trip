@@ -23,7 +23,7 @@ public class CustomRemoteDriver implements DriverSource {
 //        driver = createDriver("firefox", null);
 
         // Chrome 76.0.3809.100
-        driver = createDriver("chrome", "76.0.3809.100");
+//        driver = createDriver("chrome", "76.0.3809.100");
 
         // Chrome 78.0.3904.108
 //        driver = createDriver("chrome", "78.0.3904.108");

@@ -1,6 +1,7 @@
 package com.decepticon.driver;
 
 import com.decepticon.module.constant.CapabilitiesConsts;
+import com.decepticon.module.constant.Consts;
 import com.decepticon.module.constant.ParamConsts;
 import com.decepticon.module.constant.PropertiesConsts;
 import com.decepticon.module.utils.Utility;
@@ -43,7 +44,7 @@ public class CustomRemoteDriver implements DriverSource {
         screenSize.put(ParamConsts.HEIGHT, height);
         capabilities.setCapability(CapabilitiesConsts.HEADSPIN_INITIAL_SCREEN_SIZE, screenSize);
         capabilities.setCapability(CapabilitiesConsts.BROWSER_NAME, browserName);
-        if (browserVersion != null)
+        if (!browserVersion.isEmpty())
             capabilities.setCapability(CapabilitiesConsts.BROWSER_VERSION, browserVersion);
         System.out.println(capabilities);
 

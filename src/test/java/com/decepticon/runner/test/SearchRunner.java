@@ -22,5 +22,7 @@ public class SearchRunner {
         searchPage.openPage();
         searchPage.filterByUserRating("4 & above (Very Good)");
         searchPage.filterByPrice("1000");
+        searchPage.assertion("1000","4 & above (Very Good)");
+        searchPage.selectHotel();
     }
 }

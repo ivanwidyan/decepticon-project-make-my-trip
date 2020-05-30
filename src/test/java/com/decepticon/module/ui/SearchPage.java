@@ -68,7 +68,7 @@ public class SearchPage extends PageObject {
         }
         utility.scrollToElement(getDriver(), userRatingFilter);
         utility.waitTillPageLoads(getDriver());
-        uiUtility.fromXpathtoWebElement(filterByUserRating,userRating).click();
+        uiUtility.fromXpathtoWebElement(String.format(filterByUserRating, userRating)).click();
         waitForAngularRequestsToFinish();
     }
 
@@ -78,13 +78,23 @@ public class SearchPage extends PageObject {
         utility.scrollToElement(getDriver(), priceFilter);
         if (Integer.valueOf(price) > 0) {
             Integer currentDivision = Integer.valueOf(price) / 500;
-            for (int i = 0; i < currentDivision; i++) {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//            for (int i = 0; i < currentDivision; i++) {
+//                try {
+//                    Thread.sleep(5000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                actions.clickAndHold(element).moveByOffset(3, 0).release().perform();
+//            }
+
+            Integer min = 0;
+            while (min < Integer.valueOf(price) || min > 30000) {
+                minPrice.waitUntilVisible();
                 actions.clickAndHold(element).moveByOffset(3, 0).release().perform();
+//                System.out.println(minPrice.getText());
+                String minPriceNumber = minPrice.getText().split(Consts.SPACE)[1];
+                min = Integer.valueOf(minPriceNumber);
+                System.out.println(price + " != " + min + " is " + (min < Integer.valueOf(price)));
             }
         }
     }

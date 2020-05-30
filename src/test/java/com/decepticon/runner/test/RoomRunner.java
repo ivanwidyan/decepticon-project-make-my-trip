@@ -1,6 +1,6 @@
 package com.decepticon.runner.test;
 
-import com.decepticon.module.ui.HomePage;
+import com.decepticon.module.ui.RoomPage;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
@@ -14,10 +14,11 @@ public class RoomRunner {
     @Managed
     WebDriver driver;
 
-    HomePage googlePage;
+    RoomPage roomPage;
 
     @Test
     public void testUI() {
-        googlePage.openPage();
+
+        roomPage.openPage();
     }
 }

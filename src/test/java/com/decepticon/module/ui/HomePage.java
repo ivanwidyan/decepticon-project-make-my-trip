@@ -46,9 +46,6 @@ public class HomePage extends UiUtility {
   @FindBy(xpath = "//label[@for='travelFor']")
   WebElementFacade sectionTravelFor;
 
-  @FindBy(xpath = "//ul[contains(@class,'travelForPopup')]//li[1]")
-  WebElementFacade selectTravelFor ;
-
   @FindBy(xpath = "//button[@id='hsw_search_button']")
   WebElementFacade buttonSearch ;
 
@@ -62,6 +59,8 @@ public class HomePage extends UiUtility {
   String numberOfAdults = "//div[contains(@class,'hsw_inner')]//ul[1]//li[%s]";
 
   String numberOfChildren = "//div[contains(@class,'minContainer')]//ul[2]//*[.='%s']";
+
+  String selectTravelFor = "//ul[contains(@class,'travelForPopup')]//*[.='%s']";
 
   public void openPage() {
     openUrl("https://www.makemytrip.com/");
@@ -129,8 +128,8 @@ public class HomePage extends UiUtility {
     JSExecutorUtility.clickByWebElement(sectionTravelFor, getDriver());
   }
 
-  public void clickSelectTravelFor(){
-    JSExecutorUtility.clickByWebElement(selectTravelFor, getDriver());
+  public void clickSelectTravelFor(String value){
+    JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(selectTravelFor, value)), getDriver());
   }
 
   public void clickButtonSearch(){

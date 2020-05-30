@@ -43,6 +43,9 @@ public class HomeRunner {
             t++;
         }
         homePage.clickButtonApplyRoom();
+        homePage.clickSectionTravelFor();
+        homePage.clickSelectTravelFor("Work");
+        homePage.clickButtonSearch();
     }
 
     public void checkTheDate(){

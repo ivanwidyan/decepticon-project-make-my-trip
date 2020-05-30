@@ -68,13 +68,13 @@ public class HotelDetailPage extends UiUtility {
     }
 
 
-    public void getTextPrice(int room, int option) {
+    public void getTextPrice(String room, String option) {
         String result = fromXpathtoWebElementString(String.format(textPrice, room, option)).getText();
         System.out.println(" textPrice : " + result);
 
     }
 
-    public void getTextPriceForMultiple(int room, int option) {
+    public void getTextPriceForMultiple(String room, String option) {
         String result = fromXpathtoWebElementString(String.format(textMultiPrice, room, option)).getText();
         System.out.println(" textPrice : " + result);
 
@@ -87,30 +87,30 @@ public class HotelDetailPage extends UiUtility {
 
     }
 
-    public void getTextRoomName(Integer roomnumber) {
+    public void getTextRoomName(String roomnumber) {
         String webElementFacade = find(By.xpath(String.format(textRoomName, roomnumber))).getText();
         System.out.println("Room name : " + webElementFacade);
     }
 
-    public void getListOption(int room, int option) {
+    public void getListOption(String room, String option) {
         System.out.println("list option : ");
         ListWebElement(xpathToWebElement(String.format(listOptions, room, option)));
     }
 
 
-    public void getListMultiOption(int room, int option) {
+    public void getListMultiOption(String room, String option) {
         System.out.println("list option : ");
         ListWebElement(xpathToWebElement(String.format(listmultioptions, room, option)));
     }
-    public void getListIncludedMultiOption(int room, int option) {
+    public void getListIncludedMultiOption(String room, String option) {
         System.out.println(" include list :");
         ListWebElement(xpathToWebElement(String.format(listIncludedMultiOption, room, option)));
     }
-    public void getListIncluded(int room, int option) {
+    public void getListIncluded(String room, String option) {
         System.out.println(" include list :");
         ListWebElement(xpathToWebElement(String.format(listIncluded, room, option)));
     }
-    public void getListRoomDetail(Integer roomnumber) {
+    public void getListRoomDetail(String roomnumber) {
         if (find(By.xpath(String.format(butonMoreAbout, roomnumber))).isPresent()) {
             find(By.xpath(String.format(butonMoreAbout, roomnumber))).click();
             System.out.println(" list room detail :");
@@ -124,22 +124,22 @@ public class HotelDetailPage extends UiUtility {
 
     }
 
-    public void clickButtonSelectRoom(int room, int option) {
+    public void clickButtonSelectRoom(String room, String option) {
         JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(buttonSelectRoom, room, option))), getDriver());
     }
 
-    public void clickButtonSelectPeopleCountList(int option) {
+    public void clickButtonSelectPeopleCountList(String option) {
         JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(listPeopleCount, option))), getDriver());
     }
 
     public void clickButtonReviewDetail() {
         JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(butonReviewDetail))), getDriver());
     }
-    public void clickButtonAddRoom(int room,int option) {
+    public void clickButtonAddRoom(String room,String option) {
         JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(butonAddRoom,room, option))), getDriver());
     }
 
-    public void clickButtonPeopleCount(int room,int option) {
+    public void clickButtonPeopleCount(String room,String option) {
         System.out.println(String.format(buttonSelectPeopleCount,room, option));
         JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(buttonSelectPeopleCount,room, option))), getDriver());
     }

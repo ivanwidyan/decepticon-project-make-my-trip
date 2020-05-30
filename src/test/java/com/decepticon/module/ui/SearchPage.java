@@ -68,7 +68,7 @@ public class SearchPage extends PageObject {
         }
         utility.scrollToElement(getDriver(), userRatingFilter);
         utility.waitTillPageLoads(getDriver());
-        uiUtility.fromXpathtoWebElement(filterByUserRating,userRating).click();
+//        uiUtility.fromXpathtoWebElement(filterByUserRating,userRating).click();
         waitForAngularRequestsToFinish();
     }
 

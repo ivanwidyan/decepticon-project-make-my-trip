@@ -13,14 +13,13 @@ public class HotelDetailRunner {
 
     // chrome, firefox, appium, remote
     @Managed
-    WebDriver driver;
-
-    HomePage googlePage;
+    WebDriver webDriver;
 
     HotelDetailPage hotelDetailPage;
 
     @Test
     public void openpage() {
+//        hotelDetailPage.openPage();
         hotelDetailPage.openPage();
         hotelDetailPage.getRoomName(1);
         hotelDetailPage.getRoomDetail(1);
@@ -30,7 +29,6 @@ public class HotelDetailRunner {
         hotelDetailPage.selectRoom(1, 1);
 
     }
-
 
 
 }

@@ -109,20 +109,20 @@ public class SearchPage extends PageObject {
     }
     public void selectHotel(Integer numberOfHotel)
     {
-        Actions actions = new Actions(getDriver());
+//        Actions actions = new Actions(getDriver());
         String hotelName="";
-        Integer hotelNumber;
-        int count=numberOfHotel;
-        while (count>0)
-        {
-            utility.scrollToTheEndOfThePage(getDriver());
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            count--;
-        }
+//        Integer hotelNumber;
+//        int count=numberOfHotel;
+//        while (count>0)
+//        {
+//            utility.scrollToTheEndOfThePage(getDriver());
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            count--;
+//        }
         List<WebElement> listOfHotels=getDriver().findElements(By.xpath("//p[@id=\"hlistpg_hotel_name\"]"));
         for (int j=0;j<listOfHotels.size();j++)
         {

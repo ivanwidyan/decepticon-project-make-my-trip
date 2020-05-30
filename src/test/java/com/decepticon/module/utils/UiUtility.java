@@ -8,8 +8,8 @@ import java.util.List;
 
 public class UiUtility extends PageObject {
 
-    public WebElementFacade fromXpathtoWebElement(String xpath, String value){
-        return find(By.xpath(String.format(xpath, value)));
+    public WebElementFacade fromXpathtoWebElement(String xpath){
+        return find(By.xpath(xpath));
     }
     public WebElementFacade fromXpathtoWebElementString(String xpath){
         return find(By.xpath(String.format(xpath)));

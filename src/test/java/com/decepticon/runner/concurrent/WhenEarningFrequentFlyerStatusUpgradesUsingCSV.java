@@ -27,7 +27,8 @@ public class WhenEarningFrequentFlyerStatusUpgradesUsingCSV {
     }
 
     @Test
-    public void reallyhouldEarnNextStatusWithEnoughPoints() {
+    public void reallyhouldEarnNextStatusWithEnoughPoints() throws Exception {
         System.out.println(kilometersTravelled + "=>" + expectedStatus);
+        Thread.sleep(2000);
     }
 }

@@ -1,6 +1,7 @@
 package com.decepticon.runner.test;
 
 import com.decepticon.module.ui.HomePage;
+import com.decepticon.module.ui.SearchPage;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
@@ -14,10 +15,12 @@ public class SearchRunner {
     @Managed
     WebDriver driver;
 
-    HomePage googlePage;
+    SearchPage searchPage;
 
     @Test
     public void testUI() {
-        googlePage.openPage();
+        searchPage.openPage();
+        searchPage.filterByUserRating("4 & above (Very Good)");
+        searchPage.filterByPrice("1000");
     }
 }

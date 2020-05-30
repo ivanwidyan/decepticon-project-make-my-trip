@@ -17,6 +17,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -168,5 +169,11 @@ public class Utility {
         for (String key : hashMap.keySet()) {
             System.out.println(key + "=" + hashMap.get(key));
         }
+    }
+
+    public static List<String> stringToList (String input) {
+        String[] array = input.split(";");
+        List<String> list = Arrays.asList(array);
+        return list;
     }
 }

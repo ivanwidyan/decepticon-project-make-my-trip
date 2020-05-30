@@ -1,19 +1,13 @@
 package com.decepticon.module.ui;
 
-import com.decepticon.module.constant.Constants;
+import com.decepticon.module.constant.ValueConsts;
 import com.decepticon.module.utils.Utility;
-import cucumber.api.java.sl.In;
-import lombok.experimental.var;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -100,7 +94,7 @@ public class SearchPage extends PageObject {
         utility.waitTillPageLoads(getDriver());
         String appliedFilter = "";
         for (WebElementFacade element1 : appliedFilters) {
-            if (element1.getText().startsWith(Constants.INR)) {
+            if (element1.getText().startsWith(ValueConsts.INR)) {
                 String currentValue = element1.getText().split(" ")[1];
                 String minSelected = currentValue.split("-")[0];
                 String maxSelected = currentValue.split("-")[1];

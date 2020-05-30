@@ -6,7 +6,6 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HotelDetailPage extends UiUtility {
@@ -45,20 +44,6 @@ public class HotelDetailPage extends UiUtility {
 
     public void openPageMultiple() {
         openUrl("https://www.makemytrip.com/hotels/hotel-details/?hotelId=20080802125928557&mtkeys=defaultMtkey&_uCurrency=INR&checkin=05312020&checkout=06012020&city=CTGOI&country=IN&lat=15.494905&lng=73.834175&locusId=CTGOI&locusType=city&rank=2&reference=hotel&roomStayQualifier=2e2e2e2e2e2e3e4e&searchText=Goa&type=city");
-    }
-
-    public List<String> ListWebElement(List<WebElementFacade> webElementFacade) {
-        int a = 0;
-
-        List<String> List = new ArrayList<>();
-        for (WebElementFacade wf : webElementFacade) {
-
-            List.add(wf.getText());
-            System.out.println(a + 1 + ". " + List.get(a));
-            a++;
-        }
-        return List;
-
     }
 
 

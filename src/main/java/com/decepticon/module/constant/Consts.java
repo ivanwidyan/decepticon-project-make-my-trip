@@ -6,6 +6,8 @@ public class Consts {
     public static final boolean SUCCESS = true;
     public static final boolean FAILURE = false;
     public static final int NOT_FOUND = -1;
+    public static final int FIRST_INDEX = 0;
+    public static final int SECOND_INDEX = 1;
 
     public static final String NEW_LINE = System.getProperty("line.separator");
     public static final String FILE_SEPARATOR = System.getProperty("file.separator");

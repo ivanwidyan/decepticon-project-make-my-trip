@@ -33,7 +33,7 @@ public class HotelDetailPage extends PageObject {
     @FindBy(xpath = "//div[@class='roomWrap'][1]//div[@class='roomRight']//div[@class='makeFlex bdrBottom   ']")
     WebElementFacade totalOptions;
 
-    @FindBy(xpath = "//div[@class='roomWrap'][1]//div[@class='roomRight']//div[@class='makeFlex bdrBottom   '][3]//div[@class='makeFlex column titleWidth']//div[@class='makeFlex  appendBottom15']")
+    @FindBy(xpath = "//div[@class='roomWrap'][1]//div[@class='roomRight']//div[@class='makeFlex bdrBottom   '][1]//div[@class='makeFlex column titleWidth']//div[@class='makeFlex  appendBottom15']")
     List<WebElementFacade> listoptions;
 
     public String moreAboutButton = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//a";

@@ -3,36 +3,37 @@ package com.decepticon.module.ui;
 import com.decepticon.module.utils.JSExecutorUtility;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.By;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class HomePage extends UiUtility {
 
+  // Button Elements
   @FindBy(xpath = "//div[@class='chHeaderContainer']//nav//li[2]")
-  WebElementFacade menuHotel;
+  WebElementFacade buttonHotel;
 
   @FindBy(xpath = "//li[@class='makeFlex hrtlCenter font10 makeRelative lhUser']")
   WebElementFacade buttonLogin;
 
-  @FindBy(xpath = "//input[@id='username']")
-  WebElementFacade textBoxEmail;
-
   @FindBy(xpath = "//button[@class='capText font16']")
   WebElementFacade buttonSubmit;
+
+  // Text Box Elements
+  @FindBy(xpath = "//input[@id='username']")
+  WebElementFacade textBoxEmail;
 
   @FindBy(xpath = "//input[@id='password']")
   WebElementFacade textBoxPassword;
 
-  @FindBy(xpath = "//span[@class='crossIcon popupSprite popupCrossIcon']")
-  WebElementFacade iconClose;
-
-  @FindBy(xpath = "//label[@for='city']")
-  WebElementFacade sectionCity;
-
   @FindBy(xpath = "//input[contains(@placeholder,'Enter city/ Hotel/ Area/ Building')]")
   WebElementFacade textBoxCity;
+
+  @FindBy(xpath = "//span[@class='crossIcon popupSprite popupCrossIcon']")
+  WebElementFacade buttonClose;
+
+  @FindBy(xpath = "//label[@for='city']")
+  WebElementFacade buttonCity;
+
+
 
   @FindBy(xpath = "//label[@for='guest']")
   WebElementFacade sectionRoom;
@@ -66,32 +67,34 @@ public class HomePage extends UiUtility {
     openUrl("https://www.makemytrip.com/");
   }
 
+  // Click Action
   public void clickButtonLogin(){
     JSExecutorUtility.clickByWebElement(buttonLogin, getDriver());
-  }
-
-  public void typeTextBoxEmail(String value){
-    textBoxEmail.type(value);
   }
 
   public void clickButtonSubmit(){
     JSExecutorUtility.clickByWebElement(buttonSubmit, getDriver());
   }
 
+  public void clickIconClose(){
+    JSExecutorUtility.clickByWebElement(buttonClose, getDriver());
+  }
+
+  // Type Action
+  public void typeTextBoxEmail(String value){
+    textBoxEmail.type(value);
+  }
+
   public void typeTextBoxPassword(String value){
     textBoxPassword.type(value);
   }
 
-  public void clickIconClose(){
-    JSExecutorUtility.clickByWebElement(iconClose, getDriver());
-  }
-
   public void clickMenuHotel(){
-    JSExecutorUtility.clickByWebElement(menuHotel, getDriver());
+    JSExecutorUtility.clickByWebElement(buttonHotel, getDriver());
   }
 
   public void clickSectionCity(){
-    JSExecutorUtility.clickByWebElement(sectionCity, getDriver());
+    JSExecutorUtility.clickByWebElement(buttonCity, getDriver());
   }
 
   public void typeTextBoxCity(String value){

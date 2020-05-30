@@ -17,6 +17,30 @@ public class HomePage extends UiUtility {
   @FindBy(xpath = "//button[@class='capText font16']")
   WebElementFacade buttonSubmit;
 
+  @FindBy(xpath = "//span[@class='crossIcon popupSprite popupCrossIcon']")
+  WebElementFacade buttonClose;
+
+  @FindBy(xpath = "//label[@for='city']")
+  WebElementFacade buttonCity;
+
+  @FindBy(xpath = "//label[@for='guest']")
+  WebElementFacade buttonRoom;
+
+  @FindBy(xpath = "//div[@class='roomsGuestsBottom']/button[2]")
+  WebElementFacade buttonApplyRoom;
+
+  @FindBy(xpath = "//div[@class='roomsGuestsBottom']/button[1]")
+  WebElementFacade buttonAddRooms;
+
+  @FindBy(xpath = "//label[@for='travelFor']")
+  WebElementFacade buttonTravelFor;
+
+  @FindBy(xpath = "//button[@id='hsw_search_button']")
+  WebElementFacade buttonSearch ;
+
+  @FindBy(xpath = "//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")
+  WebElementFacade buttonNextDate ;
+
   // Text Box Elements
   @FindBy(xpath = "//input[@id='username']")
   WebElementFacade textBoxEmail;
@@ -27,41 +51,19 @@ public class HomePage extends UiUtility {
   @FindBy(xpath = "//input[contains(@placeholder,'Enter city/ Hotel/ Area/ Building')]")
   WebElementFacade textBoxCity;
 
-  @FindBy(xpath = "//span[@class='crossIcon popupSprite popupCrossIcon']")
-  WebElementFacade buttonClose;
+  String listButtonCity = "//ul[contains(@class,'react-autosuggest__suggestions-list')]//p[contains(text(),'%s')]";
 
-  @FindBy(xpath = "//label[@for='city']")
-  WebElementFacade buttonCity;
+  String buttonDate = "//div[contains(text(),'%s')]/ancestor::div[@class='DayPicker-Month']//div[@aria-disabled='false' and .='%s']";
 
+  String buttonNumberOfAdults = "//div[contains(@class,'hsw_inner')]//ul[1]//li[%s]";
 
+  String buttonNumberOfChildren = "//div[contains(@class,'minContainer')]//ul[2]//*[.='%s']";
 
-  @FindBy(xpath = "//label[@for='guest']")
-  WebElementFacade sectionRoom;
+  String listButtonTravelFor = "//ul[contains(@class,'travelForPopup')]//*[.='%s']";
 
-  @FindBy(xpath = "//div[@class='roomsGuestsBottom']/button[2]")
-  WebElementFacade buttonApplyRoom;
+  String buttonAgeChildren = "//select[@id='%s']";
 
-  @FindBy(xpath = "//div[@class='roomsGuestsBottom']/button[1]")
-  WebElementFacade buttonAddRooms;
-
-  @FindBy(xpath = "//label[@for='travelFor']")
-  WebElementFacade sectionTravelFor;
-
-  @FindBy(xpath = "//button[@id='hsw_search_button']")
-  WebElementFacade buttonSearch ;
-
-  @FindBy(xpath = "//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")
-  WebElementFacade buttonNextDate ;
-
-  String listCity = "//ul[contains(@class,'react-autosuggest__suggestions-list')]//p[contains(text(),'%s')]";
-
-  String dateCheck = "//div[contains(text(),'%s')]/ancestor::div[@class='DayPicker-Month']//div[@aria-disabled='false' and .='%s']";
-
-  String numberOfAdults = "//div[contains(@class,'hsw_inner')]//ul[1]//li[%s]";
-
-  String numberOfChildren = "//div[contains(@class,'minContainer')]//ul[2]//*[.='%s']";
-
-  String selectTravelFor = "//ul[contains(@class,'travelForPopup')]//*[.='%s']";
+  String listButtonAgeChildren = "//select[@id='%s']/option[%s]";
 
   public void openPage() {
     openUrl("https://www.makemytrip.com/");
@@ -80,15 +82,6 @@ public class HomePage extends UiUtility {
     JSExecutorUtility.clickByWebElement(buttonClose, getDriver());
   }
 
-  // Type Action
-  public void typeTextBoxEmail(String value){
-    textBoxEmail.type(value);
-  }
-
-  public void typeTextBoxPassword(String value){
-    textBoxPassword.type(value);
-  }
-
   public void clickMenuHotel(){
     JSExecutorUtility.clickByWebElement(buttonHotel, getDriver());
   }
@@ -97,30 +90,26 @@ public class HomePage extends UiUtility {
     JSExecutorUtility.clickByWebElement(buttonCity, getDriver());
   }
 
-  public void typeTextBoxCity(String value){
-    textBoxCity.type(value);
-  }
-
   public void clickListCity(String value){
-    fromXpathtoWebElement(String.format(listCity, value)).click();
+    fromXpathtoWebElement(String.format(listButtonCity, value)).click();
   }
 
   public void clickDate(String month, String date){
-    JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(dateCheck, month, date)), getDriver());
+    JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(buttonDate, month, date)), getDriver());
   }
 
   public void clickSectionRoom(){
-    JSExecutorUtility.clickByWebElement(sectionRoom, getDriver());
+    JSExecutorUtility.clickByWebElement(buttonRoom, getDriver());
   }
 
   public void clickNumberOfAdults(String value){
     JSExecutorUtility.clickByWebElement(
-            fromXpathtoWebElement(String.format(numberOfAdults, value)), getDriver());
+            fromXpathtoWebElement(String.format(buttonNumberOfAdults, value)), getDriver());
   }
 
   public void clickNumberOfChildren(String value){
     JSExecutorUtility.clickByWebElement(
-            fromXpathtoWebElement(String.format(numberOfChildren, value)), getDriver());
+            fromXpathtoWebElement(String.format(buttonNumberOfChildren, value)), getDriver());
   }
 
   public void clickButtonApplyRoom(){
@@ -128,11 +117,11 @@ public class HomePage extends UiUtility {
   }
 
   public void clickSectionTravelFor(){
-    JSExecutorUtility.clickByWebElement(sectionTravelFor, getDriver());
+    JSExecutorUtility.clickByWebElement(buttonTravelFor, getDriver());
   }
 
   public void clickSelectTravelFor(String value){
-    JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(selectTravelFor, value)), getDriver());
+    JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(listButtonTravelFor, value)), getDriver());
   }
 
   public void clickButtonSearch(){
@@ -147,8 +136,32 @@ public class HomePage extends UiUtility {
     JSExecutorUtility.clickByWebElement(buttonAddRooms, getDriver());
   }
 
-  public boolean isDateIsMatch(String month, String date){
-    return fromXpathtoWebElement(String.format(dateCheck, month, date)).isCurrentlyVisible();
+  public void clickbuttonAgeChildren(String value){
+    System.out.println(String.format(buttonAgeChildren, value));
+    JSExecutorUtility.clickByWebElement(
+            fromXpathtoWebElement(String.format(buttonAgeChildren, value)),getDriver());
   }
 
+  public void clickListButtonAgeChildren(String children, String age){
+    JSExecutorUtility.clickByWebElement(
+            fromXpathtoWebElement(String.format(listButtonAgeChildren, children, age)),getDriver());
+  }
+
+  // Type Action
+  public void typeTextBoxEmail(String value){
+    textBoxEmail.type(value);
+  }
+
+  public void typeTextBoxPassword(String value){
+    textBoxPassword.type(value);
+  }
+
+  public void typeTextBoxCity(String value){
+    textBoxCity.type(value);
+  }
+
+  // Is match
+  public boolean isDateIsMatch(String month, String date){
+    return fromXpathtoWebElement(String.format(buttonDate, month, date)).isCurrentlyVisible();
+  }
 }

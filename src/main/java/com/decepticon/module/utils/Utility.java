@@ -49,8 +49,8 @@ public class Utility {
     }
     public void scrollToTheEndOfThePage(WebDriver driver)
     {
-        JavascriptExecutor js = ((JavascriptExecutor) driver);
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 
     public static String getProperty(String key) {

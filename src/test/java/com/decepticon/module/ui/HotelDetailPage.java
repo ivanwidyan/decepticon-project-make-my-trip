@@ -19,6 +19,8 @@ public class HotelDetailPage extends UiUtility {
     @FindBy(xpath = "//span[contains(@class,'close')]")
     WebElementFacade closeModalButton;
 
+    public String ListPeople ="//ul[1]//li[@class='ddListItem'][2]";
+
     public String selectRoomButton = "//div[@class='roomWrap'][%s]//div[%s]//a[@class='primaryBtn appendBottom15 ']";
     public String price = "//div[@class='roomWrap'][%s]//div[@class='roomRight']/div[%s]//span[@class='bxNegotiate appendBottom5']";
     public String listOptions = "//div[@class='roomWrap'][%s]//div[%s]//div[@class='makeFlex  appendBottom15']";

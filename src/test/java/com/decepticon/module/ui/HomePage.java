@@ -68,6 +68,8 @@ public class HomePage extends PageObject {
     openUrl("https://www.makemytrip.com/");
   }
 
+
+
   public void doLogin(){
     clickLogin.click();;
     typeEmail.type("Satutesting2@gmail.com");

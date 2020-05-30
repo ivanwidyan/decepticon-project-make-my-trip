@@ -42,8 +42,7 @@ public class Utility {
         driverWait.until(ExpectedConditions
                 .visibilityOf(element));
     }
-    public void waitTillPageLoads(WebDriver driver)
-    {
+    public void waitTillPageLoads(WebDriver driver) {
         driverWait(driver).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }

@@ -91,4 +91,9 @@ public class HotelDetailSteps {
     public void atHotelDetailPageClickButtonPeopleCountSelectorForRoomNumberEqualsToAndOptionNumberEqualsTo(String room, String option) {
         hotelDetailPage.clickButtonPeopleCount(room, option);
     }
+
+    @When("at hotel detail page get text Hotel name")
+    public void atHotelDetailPageGetTextHotelName() {
+    hotelDetailPage.getTexthotelName();
+    }
 }

@@ -35,6 +35,7 @@ public class HotelDetailPage extends UiUtility {
     private String textMultiPrice = "//div[@class='roomLeftContRow'][%s]//div//div[%s]//div//div[contains(text(),'INR')]";
     private String textTotalPrice = "//span[@id='detpg_cart_total_price_per_night']";
     private String textRoomName = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//h2";
+    private String textHotelName = "//h1[@id='detpg_hotel_name']";
 
 
     public void openPage() {
@@ -46,6 +47,7 @@ public class HotelDetailPage extends UiUtility {
 //        openUrl("https://www.makemytrip.com/hotels/hotel-details/?hotelId=20080802125928557&mtkeys=defaultMtkey&_uCurrency=INR&checkin=05302020&checkout=05312020&city=CTGOI&country=IN&lat=15.494905&lng=73.834175&locusId=CTGOI&locusType=city&rank=2&reference=hotel&roomStayQualifier=2e2e3e2e2e2e3e4e&searchText=Goa&type=city");
 //        waitABit(7000);
     }
+
     public void openPageMultiple() {
 //        openUrl("https://www.makemytrip.com/hotels/hotel-details/?hotelId=20080802125928557&mtkeys=defaultMtkey&_uCurrency=INR&checkin=05312020&checkout=06012020&city=CTGOI&country=IN&lat=15.494905&lng=73.834175&locusId=CTGOI&locusType=city&rank=2&reference=hotel&roomStayQualifier=2e2e2e2e2e2e3e4e&searchText=Goa&type=city");
 //        openUrl("https://www.makemytrip.com/hotels/hotel-details/?hotelId=4190725563795306&mtkeys=defaultMtkey&_uCurrency=INR&checkin=05312020&checkout=06012020&city=CTJAKA&country=IDN&lat=-6.16824&lng=106.787&locusId=CTJAKA&locusType=city&rank=2&reference=hotel&roomStayQualifier=3e2e2e2e3e2e3e4e&searchText=Jakarta%2C%20Indonesia&type=city");
@@ -92,6 +94,11 @@ public class HotelDetailPage extends UiUtility {
         System.out.println("Room name : " + webElementFacade);
     }
 
+    public void getTexthotelName() {
+        String webElementFacade = find(By.xpath(String.format(textHotelName))).getText();
+        System.out.println("Room name : " + webElementFacade);
+    }
+
     public void getListOption(String room, String option) {
         System.out.println("list option : ");
         ListWebElement(xpathToWebElement(String.format(listOptions, room, option)));
@@ -102,14 +109,17 @@ public class HotelDetailPage extends UiUtility {
         System.out.println("list option : ");
         ListWebElement(xpathToWebElement(String.format(listmultioptions, room, option)));
     }
+
     public void getListIncludedMultiOption(String room, String option) {
         System.out.println(" include list :");
         ListWebElement(xpathToWebElement(String.format(listIncludedMultiOption, room, option)));
     }
+
     public void getListIncluded(String room, String option) {
         System.out.println(" include list :");
         ListWebElement(xpathToWebElement(String.format(listIncluded, room, option)));
     }
+
     public void getListRoomDetail(String roomnumber) {
         if (find(By.xpath(String.format(butonMoreAbout, roomnumber))).isPresent()) {
             find(By.xpath(String.format(butonMoreAbout, roomnumber))).click();
@@ -135,13 +145,14 @@ public class HotelDetailPage extends UiUtility {
     public void clickButtonReviewDetail() {
         JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(butonReviewDetail))), getDriver());
     }
-    public void clickButtonAddRoom(String room,String option) {
-        JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(butonAddRoom,room, option))), getDriver());
+
+    public void clickButtonAddRoom(String room, String option) {
+        JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(butonAddRoom, room, option))), getDriver());
     }
 
-    public void clickButtonPeopleCount(String room,String option) {
-        System.out.println(String.format(buttonSelectPeopleCount,room, option));
-        JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(buttonSelectPeopleCount,room, option))), getDriver());
+    public void clickButtonPeopleCount(String room, String option) {
+        System.out.println(String.format(buttonSelectPeopleCount, room, option));
+        JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(buttonSelectPeopleCount, room, option))), getDriver());
     }
 
 }

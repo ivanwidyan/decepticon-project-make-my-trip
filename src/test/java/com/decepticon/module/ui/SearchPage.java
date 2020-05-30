@@ -124,16 +124,14 @@ public class SearchPage extends PageObject {
 //            }
 //            count--;
 //        }
-        List<WebElement> listOfHotels=getDriver().findElements(By.xpath(hotelList));
-        for (int j=0;j<listOfHotels.size();j++)
-        {
 
-            if(j==numberOfHotel-1)
-            {
-                hotelName=listOfHotels.get(j).getText();
+        List<WebElement> listOfHotels = getDriver().findElements(By.xpath(hotelList));
+        for (int j = 0; j < listOfHotels.size(); j++) {
+            if (j == numberOfHotel - 1) {
+                hotelName = listOfHotels.get(j).getText();
                 listOfHotels.get(j).click();
             }
-            System.out.println("Hotel Name"+j+listOfHotels.get(j).getText());
+            System.out.println("Hotel Name" + j + listOfHotels.get(j).getText());
         }
         System.out.println(hotelName);
     }

@@ -82,7 +82,7 @@ public class Utility {
         try {
             BufferedImage saveImage = ImageIO.read(imageURL);
             ImageIO.write(saveImage, "png", new File(
-                    "target/autobot/report/data/img/" + path +
+                    "target/decepticon/report/data/img/" + path +
                     fileName + ".png"));
         } catch (Exception e) {
             System.out.println(e);

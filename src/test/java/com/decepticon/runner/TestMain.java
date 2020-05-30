@@ -1,6 +1,7 @@
 package com.decepticon.runner;
 
 import com.decepticon.module.ui.HomePage;
+import com.decepticon.module.ui.HotelDetailPage;
 import com.decepticon.module.ui.SearchPage;
 import com.decepticon.module.utils.Utility;
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -19,6 +20,8 @@ public class TestMain {
     HomePage homePage;
 
     SearchPage searchPage;
+
+    HotelDetailPage hotelDetailPage;
 
     @Test
     public void testCustomDriver() throws Exception {
@@ -50,13 +53,20 @@ public class TestMain {
         homePage.clickSelectTravelFor("Work");
         homePage.clickButtonSearch();
 
-        searchPage.openPage();
+//        searchPage.openPage();
         searchPage.filterByUserRating("4 & above (Very Good)");
         searchPage.filterByPrice("1000");
         searchPage.assertion("1000","4 & above (Very Good)");
-        searchPage.selectHotel(5);
+//        searchPage.selectHotel(5);
 
-        System.out.println(driver.getCurrentUrl());
+        hotelDetailPage.openPage();
+        hotelDetailPage.getTextRoomName("1");
+        hotelDetailPage.getListRoomDetail("1");
+        hotelDetailPage.getTextPrice("1", "1");
+        hotelDetailPage.getListOption("1", "1");
+        hotelDetailPage.getListIncluded("1", "1");
+        hotelDetailPage.clickButtonSelectRoom("1", "1");
+
         Utility.delayInSeconds(10);
     }
 

@@ -113,20 +113,41 @@ public class SearchPage extends PageObject {
     }
     public void selectHotel(Integer numberOfHotel)
     {
-        String hotelName="";
-        List<WebElement> listOfHotels=getDriver().findElements(By.xpath(hotelList));
-        for (int j=0;j<listOfHotels.size();j++)
-        {
-
-            if(j==numberOfHotel-1)
+        if(numberOfHotel>0) {
+            String hotelName = "";
+            utility.scrollToTheEndOfThePage(getDriver());
+            while (!endPageMessage.isVisible() && numberOfHotel>3)//3 is the hardcoded value can be made to the default values based on number of data loaded
             {
-                hotelName=listOfHotels.get(j).getText();
-                listOfHotels.get(j).click();
+                utility.scrollToTheEndOfThePage(getDriver());
             }
+            List<WebElement> listOfHotels = getDriver().findElements(By.xpath(hotelList));
+            if (listOfHotels.size() < numberOfHotel) {
+                System.out.println("Requested hotel number is not found under this filter");
+            }
+            for (int j = 0; j < listOfHotels.size(); j++)
+            {
+                if(j==0)
+                {
+                    backToTopButton.click();
+                    hotelName = listOfHotels.get(j).getText();
+                    utility.takeScreenshot(getDriver());
+                    listOfHotels.get(j).click();
+                }
+                if (j == numberOfHotel - 1 && j !=0) {
+                    utility.scrollToElement(getDriver(), listOfHotels.get(j - 1));
+                    hotelName = listOfHotels.get(j).getText();
+                    utility.takeScreenshot(getDriver());
+                    listOfHotels.get(j).click();
+                }
+            }
+            System.out.println(hotelName);
+            commonAction.switchToOpenedTab(getDriver());
+            utility.waitTillPageLoads(getDriver());
         }
-        System.out.println(hotelName);
-        commonAction.switchToOpenedTab(getDriver());
-        utility.waitTillPageLoads(getDriver());
+        else
+        {
+            System.out.println("Requested hotel number is not found under this filter");
+        }
     }
 
 }

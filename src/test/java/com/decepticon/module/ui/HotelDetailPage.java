@@ -4,10 +4,8 @@ import com.decepticon.module.utils.JSExecutorUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.serenitybdd.screenplay.actions.ScrollTo;
-import net.serenitybdd.screenplay.actions.ScrollToWebElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,20 +13,9 @@ import java.util.List;
 public class HotelDetailPage extends PageObject {
 
 
-
-    @FindBy(xpath = "//input[@id='search']")
-    WebElementFacade searchBox;
-
-
     //masih static
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/section[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/a[1]")
+    @FindBy(xpath = "//div[@class='roomWrap'][1]//div[@class='roomRight']//div[@class='makeFlex bdrBottom   '][2]//div[@class='makeFlex column titleLastWidth']//a[@class='primaryBtn appendBottom15 ']")
     WebElementFacade selecRoomButton;
-
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/section[1]/div[1]/div[2]/div[2]/div[1]/div[1]/ul[1]/li[1]")
-    WebElementFacade roomDetails;
-
-    @FindBy(xpath = "//div[@class='roomLeft']//h2")
-    List<WebElementFacade> listcobacoba;
 
     @FindBy(xpath = "//div[@class='popWrapper']//div[@class='popRight']//ul//li")
     List<WebElementFacade> listRoomDetails;
@@ -36,9 +23,20 @@ public class HotelDetailPage extends PageObject {
     @FindBy(xpath = "//span[contains(@class,'close')]")
     WebElementFacade closeModalButton;
 
-    public String moreAboutButton = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//a";
+    //masih static
+    @FindBy(xpath = "//div[@class='roomWrap'][1]//div[@class='roomRight']//div[@class='makeFlex bdrBottom   '][2]//div[@class='makeFlex column titleLastWidth']//div[@class='makeFlex appendTop40 roomTypePrice']")
+    WebElementFacade price;
 
-//    public String boxBankTopupVA = "//li[@id='bli-pay-%s-arrow']//div[@class='accordion-parent']";
+    @FindBy(xpath = "//div[@class='roomWrap'][1]//div[@class='roomRight']//div[@class='makeFlex bdrBottom  recRoom ']")
+    WebElementFacade recomendedOption;
+
+    @FindBy(xpath = "//div[@class='roomWrap'][1]//div[@class='roomRight']//div[@class='makeFlex bdrBottom   ']")
+    WebElementFacade totalOptions;
+
+    @FindBy(xpath = "//div[@class='roomWrap'][1]//div[@class='roomRight']//div[@class='makeFlex bdrBottom   '][3]//div[@class='makeFlex column titleWidth']//div[@class='makeFlex  appendBottom15']")
+    List<WebElementFacade> listoptions;
+
+    public String moreAboutButton = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//a";
 
 
     public String roomSelectionOption = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//h2";
@@ -56,9 +54,22 @@ public class HotelDetailPage extends PageObject {
         String webElementFacade = find(By.xpath(String.format(roomSelectionOption, roomnumber))).getText();
         System.out.println("Room name : " + webElementFacade);
 
+        //get price
+        price.getText();
+        System.out.println(" price : " + price.getText());
+
+        //get options
+        List<String> listoption = new ArrayList<>();
+        for (WebElementFacade wf : listoptions) {
+
+            listoption.add(wf.getText());
+            System.out.println(a + 1 + ". " + listoption.get(a));
+            a++;
+        }
 
         //click more about button and get the room details
         if (find(By.xpath(String.format(moreAboutButton, roomnumber))).isPresent()) {
+           a=0;
             find(By.xpath(String.format(moreAboutButton, roomnumber))).click();
 
             List<String> detailRoom = new ArrayList<>();
@@ -69,18 +80,11 @@ public class HotelDetailPage extends PageObject {
                 a++;
             }
             System.out.println("jumlah " + detailRoom.size());
-        closeModalButton.click();
+            JSExecutorUtility.clickByWebElement(closeModalButton,getDriver());
+//            closeModalButton.click();
         }
 
     }
 
 
-    public void doSearch() {
-
-        searchBox.waitUntilVisible();
-        searchBox.type("step-inforum");
-        searchBox.sendKeys(Keys.ENTER);
-
-
-    }
 }

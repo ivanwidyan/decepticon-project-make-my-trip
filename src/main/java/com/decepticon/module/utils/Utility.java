@@ -5,9 +5,9 @@ import net.serenitybdd.core.environment.EnvironmentSpecificConfiguration;
 import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.core.util.SystemEnvironmentVariables;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -23,10 +23,29 @@ import java.util.List;
 
 public class Utility {
 
+    public  WebDriverWait driverWait(WebDriver driver) {
+
+        return new WebDriverWait(driver, 20);
+    }
     private static EnvironmentVariables variables = SystemEnvironmentVariables.createEnvironmentVariables();
 
     public static String getConfig(String key) {
         return EnvironmentSpecificConfiguration.from(variables).getProperty(key);
+    }
+    public void scrollToElement(WebDriver driver, WebElement element)
+    {
+        JavascriptExecutor je = (JavascriptExecutor) driver;
+        je.executeScript("arguments[0].scrollIntoView(true);",element);
+    }
+    public void waitForElementVisiblity(WebDriver driver, WebElement element){
+        WebDriverWait driverWait = new WebDriverWait(driver, 20);
+        driverWait.until(ExpectedConditions
+                .visibilityOf(element));
+    }
+    public void waitTillPageLoads(WebDriver driver)
+    {
+        driverWait(driver).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
     public static String getProperty(String key) {

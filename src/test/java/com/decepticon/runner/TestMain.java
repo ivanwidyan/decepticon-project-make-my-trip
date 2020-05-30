@@ -3,6 +3,7 @@ package com.decepticon.runner;
 import com.decepticon.module.api.ApiController;
 import com.decepticon.module.ui.HomePage;
 import com.decepticon.module.utils.ReportHandler;
+import cucumber.api.java.an.E;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
@@ -13,14 +14,15 @@ import org.openqa.selenium.WebDriver;
 public class TestMain {
 
     // chrome, firefox, appium, remote
-    @Managed(driver = "provided")
+    @Managed
     WebDriver driver;
 
     HomePage homePage;
 
     @Test
-    public void testCustomDriver() {
+    public void testCustomDriver() throws Exception {
         homePage.openPage();
+        Thread.sleep(10000);
 //        homePage.doSearch();
     }
 

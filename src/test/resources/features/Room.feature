@@ -3,9 +3,14 @@
 
     Scenario: Room Test
       Given open room page
+      Given at room page store the check in date to the data
+      And   at room page store the check out date to the data
+      And   at room page store the hotel name date to the data
+      And   at room page store the total amount date to the data
+      And   at room page store the total guests date to the data
       When  at room page fill text box first name with 'We are'
       When  at room page fill text box last name with 'Deception'
-      When  at room page fill text box email with 'Email'
+      When  at room page fill text box email with 'deception@mailinator.com'
       When  at room page click button code phone number
       When  at room page click list button code phone number with '+62'
       When  at room page fill text box phone number with '81234567890'

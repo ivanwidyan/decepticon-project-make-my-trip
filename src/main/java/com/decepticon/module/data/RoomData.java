@@ -4,7 +4,9 @@ import lombok.Data;
 
 @Data
 public class RoomData {
-    private String firstName;
-    private String lastName;
-    private String email;
+    private String hotelName;
+    private String totalAmount;
+    private String guest;
+    private String checkinDate;
+    private String checkoutDate;
 }

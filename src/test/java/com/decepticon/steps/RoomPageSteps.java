@@ -1,7 +1,9 @@
 package com.decepticon.steps;
 
+import com.decepticon.module.constant.Consts;
 import com.decepticon.module.data.RoomData;
 import com.decepticon.module.ui.RoomPage;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -14,6 +16,32 @@ public class RoomPageSteps extends ScenarioSteps {
     @Given("open room page")
     public void openRoomPage() {
         roomPage.openPage();
+    }
+
+    @Given("at room page store the check in date to the data")
+    public void atRoomPageStoreTheCheckInDateToTheData() {
+        roomData.setCheckinDate(roomPage.getTextDate(String.valueOf(Consts.FIRST_INDEX)));
+    }
+
+    @And("at room page store the check out date to the data")
+    public void atRoomPageStoreTheCheckOutDateToTheData() {
+        roomData.setCheckoutDate(roomPage.getTextDate(String.valueOf(Consts.SECOND_INDEX)));
+    }
+
+    @And("at room page store the hotel name date to the data")
+    public void atRoomPageStoreTheHotelNameDateToTheData() {
+        roomData.setHotelName(roomPage.getTextHotelName());
+    }
+
+    @And("at room page store the total amount date to the data")
+    public void atRoomPageStoreTheTotalAmountDateToTheData() {
+        String[] arrTotalAmount = roomPage.getTextTotalAmount().split(Consts.SPACE);
+        roomData.setTotalAmount(arrTotalAmount[Consts.SECOND_INDEX]);
+    }
+
+    @And("at room page store the total guests date to the data")
+    public void atRoomPageStoreTheTotalGuestsDateToTheData() {
+        roomData.setGuest(roomPage.getTextGuest());
     }
 
     @When("at room page fill text box first name with {string}")

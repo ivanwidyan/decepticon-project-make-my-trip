@@ -14,10 +14,13 @@ public class HomeDetailRunner {
     @Managed(driver = "chrome")
     WebDriver driver;
 
-    HomePage googlePage;
+    HomePage homePage;
 
     @Test
     public void testUI() {
-        googlePage.openPage();
+
+        homePage.openPage();
+        homePage.doLogin();
+        homePage.doSearch();
     }
 }

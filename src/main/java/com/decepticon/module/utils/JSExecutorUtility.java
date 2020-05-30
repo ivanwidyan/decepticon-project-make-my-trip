@@ -26,8 +26,14 @@ public class JSExecutorUtility {
         js.executeScript("arguments[0].click();", element);
     }
 
+    public static void getTextByElement(WebElement element, WebDriver webDriver){
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("arguments[0].getText();", element);
+    }
+
     public static void clickByWebElement(String id, Boolean checked, WebDriver webDriver){
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript(String.format("document.getElementById('%s').checked=%s;", id, checked));
     }
+
 }

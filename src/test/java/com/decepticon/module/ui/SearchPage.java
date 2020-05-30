@@ -38,7 +38,7 @@ public class SearchPage extends PageObject {
     @FindBy(xpath = "//span[@class=\"maxValue\"]")
     WebElementFacade maxPrice;
 
-    //filter by price
+    //filter by textPrice
     @FindBy(xpath = "//div[@id=\"hlistpg_fr_price_per_night\"]/div")
     WebElementFacade priceFilter;
     private String priceSliderPath = "//div[@id=\"hlistpg_fr_price_per_night\"]/div/div/div/span";

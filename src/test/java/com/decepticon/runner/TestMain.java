@@ -1,6 +1,7 @@
 package com.decepticon.runner;
 
 import com.decepticon.module.ui.HomePage;
+import com.decepticon.module.ui.SearchPage;
 import com.decepticon.module.utils.Utility;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -17,6 +18,8 @@ public class TestMain {
 
     HomePage homePage;
 
+    SearchPage searchPage;
+
     @Test
     public void testCustomDriver() throws Exception {
         // Home page
@@ -29,11 +32,8 @@ public class TestMain {
         homePage.typeTextBoxCity("Indonesia");
         homePage.clickListCity("Bali");
 
-//        Utility.delayInSeconds(3);
         checkTheDate("June", "17");
-//        Utility.delayInSeconds(3);
         homePage.clickDate("June", "17");
-//        Utility.delayInSeconds(3);
 
         checkTheDate("June", "20");
         homePage.clickDate("June", "20");
@@ -49,6 +49,15 @@ public class TestMain {
         homePage.clickSectionTravelFor();
         homePage.clickSelectTravelFor("Work");
         homePage.clickButtonSearch();
+
+        searchPage.openPage();
+        searchPage.filterByUserRating("4 & above (Very Good)");
+        searchPage.filterByPrice("1000");
+        searchPage.assertion("1000","4 & above (Very Good)");
+        searchPage.selectHotel(5);
+
+        System.out.println(driver.getCurrentUrl());
+        Utility.delayInSeconds(10);
     }
 
     public void checkTheDate(String month, String date){

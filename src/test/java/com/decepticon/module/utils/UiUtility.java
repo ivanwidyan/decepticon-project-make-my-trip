@@ -4,9 +4,24 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UiUtility extends PageObject {
+
+    public static List<String> ListWebElement(List<WebElementFacade> webElementFacade) {
+        int a = 0;
+
+        List<String> List = new ArrayList<>();
+        for (WebElementFacade wf : webElementFacade) {
+
+            List.add(wf.getText());
+            System.out.println(a + 1 + ". " + List.get(a));
+            a++;
+        }
+        return List;
+
+    }
 
     public WebElementFacade fromXpathtoWebElement(String xpath){
         return find(By.xpath(xpath));

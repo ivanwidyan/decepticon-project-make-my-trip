@@ -165,4 +165,9 @@ public class HomePage extends UiUtility {
     public boolean isDateIsMatch(String month, String date) {
         return fromXpathtoWebElement(String.format(buttonDate, month, date)).isCurrentlyVisible();
     }
+
+    // Get Attribute
+    public String getTextDate(String month, String date){
+        return fromXpathtoWebElement(String.format(buttonDate, month, date)).getAttribute("aria-label");
+    }
 }

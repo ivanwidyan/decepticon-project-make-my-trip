@@ -9,67 +9,67 @@ public class HomePage extends UiUtility {
 
     // Button Elements
     @FindBy(xpath = "//div[@class='chHeaderContainer']//nav//li[2]")
-    WebElementFacade buttonHotel;
+    private WebElementFacade buttonHotel;
 
     @FindBy(xpath = "//li[@class='makeFlex hrtlCenter font10 makeRelative lhUser']")
-    WebElementFacade buttonLogin;
+    private WebElementFacade buttonLogin;
 
     @FindBy(xpath = "//button[@class='capText font16']")
-    WebElementFacade buttonSubmit;
+    private WebElementFacade buttonSubmit;
 
     @FindBy(xpath = "//span[@class='crossIcon popupSprite popupCrossIcon']")
-    WebElementFacade buttonClose;
+    private WebElementFacade buttonClose;
 
     @FindBy(xpath = "//label[@for='city']")
-    WebElementFacade buttonCity;
+    private WebElementFacade buttonCity;
 
     @FindBy(xpath = "//label[@for='guest']")
-    WebElementFacade buttonRoom;
+    private WebElementFacade buttonRoom;
 
     @FindBy(xpath = "//div[@class='roomsGuestsBottom']/button[2]")
-    WebElementFacade buttonApplyRoom;
+    private WebElementFacade buttonApplyRoom;
 
     @FindBy(xpath = "//div[@class='roomsGuestsBottom']/button[1]")
-    WebElementFacade buttonAddRooms;
+    private WebElementFacade buttonAddRooms;
 
     @FindBy(xpath = "//label[@for='travelFor']")
-    WebElementFacade buttonTravelFor;
+    private WebElementFacade buttonTravelFor;
 
     @FindBy(xpath = "//button[@id='hsw_search_button']")
-    WebElementFacade buttonSearch;
+    private WebElementFacade buttonSearch;
 
     @FindBy(xpath = "//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")
-    WebElementFacade buttonNextDate;
+    private WebElementFacade buttonNextDate;
 
     // Text Box Elements
     @FindBy(xpath = "//input[@id='username']")
-    WebElementFacade textBoxEmail;
+    private WebElementFacade textBoxEmail;
 
     @FindBy(xpath = "//input[@id='password']")
-    WebElementFacade textBoxPassword;
+    private WebElementFacade textBoxPassword;
 
     @FindBy(xpath = "//input[contains(@placeholder,'Enter city/ Hotel/ Area/ Building')]")
-    WebElementFacade textBoxCity;
+    private WebElementFacade textBoxCity;
 
-    String listButtonCity = "//ul[contains(@class,'react-autosuggest__suggestions-list')]//p[contains(text(),'%s')]";
+    private String buttonDate = "//div[contains(text(),'%s')]/ancestor::div[@class='DayPicker-Month']//div[@aria-disabled='false' and .='%s']";
 
-    String buttonDate = "//div[contains(text(),'%s')]/ancestor::div[@class='DayPicker-Month']//div[@aria-disabled='false' and .='%s']";
+    private String buttonNumberOfAdults = "//div[contains(@class,'hsw_inner')]//ul[1]//li[%s]";
 
-    String buttonNumberOfAdults = "//div[contains(@class,'hsw_inner')]//ul[1]//li[%s]";
+    private String buttonNumberOfChildren = "//div[contains(@class,'minContainer')]//ul[2]//*[.='%s']";
 
-    String buttonNumberOfChildren = "//div[contains(@class,'minContainer')]//ul[2]//*[.='%s']";
+    private String buttonAgeChildren = "//select[@id='%s']";
 
-    String listButtonTravelFor = "//ul[contains(@class,'travelForPopup')]//*[.='%s']";
+    private String listButtonTravelFor = "//ul[contains(@class,'travelForPopup')]//*[.='%s']";
 
-    String buttonAgeChildren = "//select[@id='%s']";
+    private String listButtonCity = "//ul[contains(@class,'react-autosuggest__suggestions-list')]//p[contains(text(),'%s')]";
 
-    String listButtonAgeChildren = "//select[@id='%s']/option[%s]";
+    private String listButtonAgeChildren = "//select[@id='%s']/option[%s]";
 
     public void openPage() {
         openUrl("https://www.makemytrip.com/");
     }
 
-    // Click Action
+    // Click Actions
     public void clickButtonLogin() {
         JSExecutorUtility.clickByWebElement(buttonLogin, getDriver());
     }

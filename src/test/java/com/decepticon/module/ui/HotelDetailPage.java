@@ -4,7 +4,6 @@ import com.decepticon.module.utils.JSExecutorUtility;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.serenitybdd.screenplay.actions.ScrollToWebElement;
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;
@@ -12,20 +11,23 @@ import java.util.List;
 
 public class HotelDetailPage extends UiUtility {
 
-
     @FindBy(xpath = "//div[@class='popWrapper']//div[@class='popRight']//ul//li")
-    List<WebElementFacade> listRoomDetails;
+    private List<WebElementFacade> listRoomDetails;
 
     @FindBy(xpath = "//span[contains(@class,'close')]")
-    WebElementFacade closeModalButton;
+    private WebElementFacade closeModalButton;
 
-    public String selectRoomButton = "//div[@class='roomWrap'][%s]//div[%s]//a[@class='primaryBtn appendBottom15 ']";
-    public String price = "//div[@class='roomWrap'][%s]//div[@class='roomRight']/div[%s]//span[@class='bxNegotiate appendBottom5']";
-    public String listOptions = "//div[@class='roomWrap'][%s]//div[%s]//div[@class='makeFlex  appendBottom15']";
-    public String includeList = "//div[@class='roomWrap'][%s]//div[%s]//ul[@class='includeList']//li";
-    public String moreAboutButton = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//a";
+    private String selectRoomButton = "//div[@class='roomWrap'][%s]//div[%s]//a[@class='primaryBtn appendBottom15 ']";
 
-    public String roomSelectionOption = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//h2";
+    private String price = "//div[@class='roomWrap'][%s]//div[@class='roomRight']/div[%s]//span[@class='bxNegotiate appendBottom5']";
+
+    private String listOptions = "//div[@class='roomWrap'][%s]//div[%s]//div[@class='makeFlex  appendBottom15']";
+
+    private String includeList = "//div[@class='roomWrap'][%s]//div[%s]//ul[@class='includeList']//li";
+
+    private String moreAboutButton = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//a";
+
+    private String roomSelectionOption = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//h2";
 
 
     public void openPage() {
@@ -82,7 +84,6 @@ public class HotelDetailPage extends UiUtility {
                 JSExecutorUtility.clickByWebElement(closeModalButton, getDriver());
             }
         }
-
     }
 
     public void selectRoom(int room, int option) {

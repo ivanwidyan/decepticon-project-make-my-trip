@@ -1,6 +1,5 @@
 package com.decepticon.steps;
 
-import com.decepticon.module.ui.GooglePage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

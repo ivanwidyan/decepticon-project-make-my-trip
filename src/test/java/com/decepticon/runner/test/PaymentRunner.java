@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 public class PaymentRunner {
 
     // chrome, firefox, appium, remote
-    @Managed(driver = "chrome")
+    @Managed
     WebDriver driver;
 
     HomePage googlePage;

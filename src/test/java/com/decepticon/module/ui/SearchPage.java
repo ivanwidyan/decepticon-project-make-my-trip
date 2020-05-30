@@ -1,5 +1,6 @@
 package com.decepticon.module.ui;
 
+import com.decepticon.module.constant.Constants;
 import com.decepticon.module.utils.Utility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -87,7 +88,7 @@ public class SearchPage extends PageObject {
     public void filterByPrice(String price)
     {
         utility.scrollToElement(getDriver(),priceFilter);
-        String [] min=minPrice.getText().split("INR",1);
+        String [] min=minPrice.getText().split(Constants.INR,1);
         if(Integer.valueOf(price)<Integer.valueOf(min[1]))
         {
 

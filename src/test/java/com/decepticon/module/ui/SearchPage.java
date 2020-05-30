@@ -1,17 +1,14 @@
 package com.decepticon.module.ui;
 
-import com.decepticon.module.constant.Constants;
+import com.decepticon.module.constant.ParamConsts;
+import com.decepticon.module.constant.ValueConsts;
 import com.decepticon.module.utils.Utility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -88,7 +85,7 @@ public class SearchPage extends PageObject {
     public void filterByPrice(String price)
     {
         utility.scrollToElement(getDriver(),priceFilter);
-        String [] min=minPrice.getText().split(Constants.INR,1);
+        String [] min=minPrice.getText().split(ValueConsts.INR,1);
         if(Integer.valueOf(price)<Integer.valueOf(min[1]))
         {
 

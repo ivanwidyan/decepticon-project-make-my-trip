@@ -1,10 +1,8 @@
 package com.decepticon.runner;
 
-import com.decepticon.module.api.ApiController;
 import com.decepticon.module.ui.HomePage;
 import com.decepticon.module.utils.ReportHandler;
 import com.decepticon.module.utils.Utility;
-import cucumber.api.java.an.E;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
@@ -24,7 +22,6 @@ public class TestMain {
     public void testCustomDriver() throws Exception {
         homePage.openPage();
         Thread.sleep(10000);
-//        homePage.doSearch();
     }
 
     @Test

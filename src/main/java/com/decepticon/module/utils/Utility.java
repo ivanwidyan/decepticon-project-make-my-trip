@@ -60,7 +60,7 @@ public class Utility {
             try {
                 File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
                 FileUtils.copyFile(file, new File(
-                        "target/autobot/report/data/ss/" + path +
+                        "target/decepticon/report/data/ss/" + path +
                                 fileName + ".png"));
             } catch (IOException e) {
                 System.out.println(e);

@@ -1,14 +1,14 @@
 package com.decepticon.driver;
 
+import com.decepticon.module.constant.CapabilitiesConsts;
+import com.decepticon.module.constant.ParamConsts;
+import com.decepticon.module.constant.PropertiesConsts;
 import com.decepticon.module.utils.Utility;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import net.thucydides.core.webdriver.DriverSource;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.util.HashMap;
 
@@ -16,39 +16,41 @@ public class CustomRemoteDriver implements DriverSource {
 
     @Override
     public WebDriver newDriver() {
-        RemoteWebDriver driver = null;
+        RemoteWebDriver driver;
 
-//        driver = createDriver("MicrosoftEdge", null);
+        // firefox, MicrosoftEdge
+        // chrome: 76.0.3809.100, 78.0.3904.108, 79.0.3945.88
 
-//        driver = createDriver("firefox", null);
+        System.out.println(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_BROWSER_NAME));
+        System.out.println(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_BROWSER_VERSION));
+        System.out.println(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_WIDTH));
+        System.out.println(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_HEIGHT));
+        System.out.println(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_REMOTEURL));
 
-        // Chrome 76.0.3809.100
-//        driver = createDriver("chrome", "76.0.3809.100");
-
-        // Chrome 78.0.3904.108
-//        driver = createDriver("chrome", "78.0.3904.108");
-
-        // Chrome 79.0.3945.88
-//        driver = createDriver("chrome", "79.0.3945.88");
+        driver = createDriver(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_BROWSER_NAME),
+                Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_BROWSER_VERSION));
         return driver;
     }
 
     private RemoteWebDriver createDriver(String browserName, String browserVersion) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        Integer width = Integer.valueOf(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_WIDTH));
+        Integer height = Integer.valueOf(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_HEIGHT));
+
         HashMap<String, Integer> screenSize = new HashMap<>();
-        screenSize.put("width", 1920);
-        screenSize.put("height", 1080);
-        capabilities.setCapability("headspin:initialScreenSize", screenSize);
-//        capabilities.setCapability("headspin:capture", true);
-        capabilities.setCapability("browserName", browserName);
+        screenSize.put(ParamConsts.WIDTH, width);
+        screenSize.put(ParamConsts.HEIGHT, height);
+        capabilities.setCapability(CapabilitiesConsts.HEADSPIN_INITIAL_SCREEN_SIZE, screenSize);
+        capabilities.setCapability(CapabilitiesConsts.BROWSER_NAME, browserName);
         if (browserVersion != null)
-            capabilities.setCapability("browserVersion", browserVersion);
+            capabilities.setCapability(CapabilitiesConsts.BROWSER_VERSION, browserVersion);
         System.out.println(capabilities);
 
         RemoteWebDriver driver = null;
         try {
             driver = new RemoteWebDriver(
-                    URI.create("https://dev-us-pao-0.headspin.io:9093/v0/bd1c05833b664a01b1a7abe02a2edf55/wd/hub").toURL(),
+                    URI.create(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_REMOTEURL)).toURL(),
                     capabilities);
             System.out.println("driver is created");
         } catch (Exception e) {

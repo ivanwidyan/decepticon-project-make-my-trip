@@ -2,6 +2,7 @@ package com.decepticon.module.ui;
 
 import com.decepticon.module.constant.Consts;
 import com.decepticon.module.constant.ValueConsts;
+import com.decepticon.module.utils.CommonAction;
 import com.decepticon.module.utils.UiUtility;
 import com.decepticon.module.utils.Utility;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -14,10 +15,12 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SearchPage extends PageObject {
     Utility utility = new Utility();
     UiUtility uiUtility = new UiUtility();
+    CommonAction commonAction = new CommonAction();
     //filter by user rating
     @FindBy(xpath = "//input[@id='search']")
     WebElementFacade searchBox;
@@ -80,7 +83,7 @@ public class SearchPage extends PageObject {
                 actions.clickAndHold(element).moveByOffset(3, 0).release().perform();
                 String minPriceNumber = minPrice.getText().split(Consts.SPACE)[1];
                 min = Integer.valueOf(minPriceNumber);
-                System.out.println(price + " != " + min + " is " + (min < Integer.valueOf(price)));
+//                System.out.println(price + " != " + min + " is " + (min < Integer.valueOf(price)));
             }
         }
     }
@@ -110,30 +113,20 @@ public class SearchPage extends PageObject {
     }
     public void selectHotel(Integer numberOfHotel)
     {
-//        Actions actions = new Actions(getDriver());
         String hotelName="";
-//        Integer hotelNumber;
-//        int count=numberOfHotel;
-//        while (count>0)
-//        {
-//            utility.scrollToTheEndOfThePage(getDriver());
-//            try {
-//                Thread.sleep(2000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            count--;
-//        }
+        List<WebElement> listOfHotels=getDriver().findElements(By.xpath(hotelList));
+        for (int j=0;j<listOfHotels.size();j++)
+        {
 
-        List<WebElement> listOfHotels = getDriver().findElements(By.xpath(hotelList));
-        for (int j = 0; j < listOfHotels.size(); j++) {
-            if (j == numberOfHotel - 1) {
-                hotelName = listOfHotels.get(j).getText();
+            if(j==numberOfHotel-1)
+            {
+                hotelName=listOfHotels.get(j).getText();
                 listOfHotels.get(j).click();
             }
-            System.out.println("Hotel Name" + j + listOfHotels.get(j).getText());
         }
         System.out.println(hotelName);
+        commonAction.switchToOpenedTab(getDriver());
+        utility.waitTillPageLoads(getDriver());
     }
 
 }

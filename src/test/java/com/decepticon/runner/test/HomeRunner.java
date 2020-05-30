@@ -32,8 +32,10 @@ public class HomeRunner {
         homePage.clickSectionCity();
         homePage.typeTextBoxCity("Indonesia");
         homePage.clickListCity("Bali");
-        checkTheDate();
-        homePage.clickDate("August", "17");
+        checkTheDate("June", "17");
+        homePage.clickDate("June", "17");
+        checkTheDate("June", "20");
+        homePage.clickDate("June", "20");
         homePage.clickSectionRoom();
         int t = 0;
         while(t < 1 ){
@@ -48,8 +50,8 @@ public class HomeRunner {
         homePage.clickButtonSearch();
     }
 
-    public void checkTheDate(){
-        while (!homePage.isDateIsMatch("August", "17")) {
+    public void checkTheDate(String month, String date){
+        while (!homePage.isDateIsMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
     }

@@ -10,8 +10,14 @@ import org.junit.runner.RunWith;
 @UseTestDataFrom(value="src/test/resources/makemytrip.csv")
 public class MakeMyTripTest {
 
-    private int email;
+    private String email;
     private String password;
+    private String checkIn;
+    private String checkOut;
+    private String guests;
+    private String adults;
+    private String children;
+    private String specialRequest;
 
 //    public void setEmail(int email) {
 //        this.email = email;
@@ -28,7 +34,14 @@ public class MakeMyTripTest {
 
     @Test
     public void makeMyTripTest() throws Exception {
-        System.out.println(email + "=>" + password);
+        System.out.println(email + "=>" + password
+                + "=>" + checkIn
+                + "=>" + checkOut
+                + "=>" + children
+                + "=>" + adults
+                + "=>" + specialRequest
+                + "=>" + guests
+        );
         Thread.sleep(1000);
     }
 }

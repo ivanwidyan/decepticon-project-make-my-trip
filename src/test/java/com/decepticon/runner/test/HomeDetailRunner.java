@@ -21,5 +21,6 @@ public class HomeDetailRunner {
 
         homePage.openPage();
         homePage.doLogin();
+        homePage.doSearch();
     }
 }

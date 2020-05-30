@@ -176,4 +176,13 @@ public class Utility {
         List<String> list = Arrays.asList(array);
         return list;
     }
+
+    public static void delayInSeconds(Integer seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (Exception e) {
+
+        }
+
+    }
 }

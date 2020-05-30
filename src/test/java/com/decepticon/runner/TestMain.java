@@ -1,6 +1,7 @@
 package com.decepticon.runner;
 
 import com.decepticon.module.ui.HomePage;
+import com.decepticon.module.utils.Utility;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
@@ -27,8 +28,13 @@ public class TestMain {
         homePage.clickSectionCity();
         homePage.typeTextBoxCity("Indonesia");
         homePage.clickListCity("Bali");
+
+//        Utility.delayInSeconds(3);
         checkTheDate("June", "17");
+//        Utility.delayInSeconds(3);
         homePage.clickDate("June", "17");
+//        Utility.delayInSeconds(3);
+
         checkTheDate("June", "20");
         homePage.clickDate("June", "20");
         homePage.clickSectionRoom();

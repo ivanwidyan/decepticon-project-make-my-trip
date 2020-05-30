@@ -47,6 +47,11 @@ public class Utility {
         driverWait(driver).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
+    public void scrollToTheEndOfThePage(WebDriver driver)
+    {
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
 
     public static String getProperty(String key) {
         return variables.getProperty(key);
@@ -77,7 +82,7 @@ public class Utility {
         try {
             BufferedImage saveImage = ImageIO.read(imageURL);
             ImageIO.write(saveImage, "png", new File(
-                    "target/autobot/report/data/img/" + path +
+                    "target/decepticon/report/data/img/" + path +
                     fileName + ".png"));
         } catch (Exception e) {
             System.out.println(e);
@@ -175,5 +180,14 @@ public class Utility {
         String[] array = input.split(";");
         List<String> list = Arrays.asList(array);
         return list;
+    }
+
+    public static void delayInSeconds(Integer seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (Exception e) {
+
+        }
+
     }
 }

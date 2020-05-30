@@ -21,8 +21,8 @@ public class SearchRunner {
     public void testUI() {
         searchPage.openPage();
         searchPage.filterByUserRating("4 & above (Very Good)");
-        searchPage.filterByPrice("4000");
-        searchPage.assertion("4000","4 & above (Very Good)");
-        searchPage.selectHotel();
+        searchPage.filterByPrice("1000");
+        searchPage.assertion("1000","4 & above (Very Good)");
+        searchPage.selectHotel(6);
     }
 }

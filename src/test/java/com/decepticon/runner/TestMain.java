@@ -1,7 +1,7 @@
 package com.decepticon.runner;
 
 import com.decepticon.module.ui.HomePage;
-import com.decepticon.module.utils.ReportHandler;
+import com.decepticon.module.ui.SearchPage;
 import com.decepticon.module.utils.Utility;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -18,24 +18,51 @@ public class TestMain {
 
     HomePage homePage;
 
+    SearchPage searchPage;
+
     @Test
     public void testCustomDriver() throws Exception {
+        // Home page
         homePage.openPage();
-        Thread.sleep(10000);
+        homePage.clickMenuHotel();
+//        homePage.clickButtonLogin();
+//        homePage.typeTextBoxEmail("test");
+//        homePage.clickButtonSubmit();
+        homePage.clickSectionCity();
+        homePage.typeTextBoxCity("Indonesia");
+        homePage.clickListCity("Bali");
+
+        checkTheDate("June", "17");
+        homePage.clickDate("June", "17");
+
+        checkTheDate("June", "20");
+        homePage.clickDate("June", "20");
+        homePage.clickSectionRoom();
+        int t = 0;
+        while(t < 1) {
+            homePage.clickNumberOfAdults("2");
+            homePage.clickNumberOfChildren("2");
+            homePage.clickButtonAddRooms();
+            t++;
+        }
+        homePage.clickButtonApplyRoom();
+        homePage.clickSectionTravelFor();
+        homePage.clickSelectTravelFor("Work");
+        homePage.clickButtonSearch();
+
+        searchPage.openPage();
+        searchPage.filterByUserRating("4 & above (Very Good)");
+        searchPage.filterByPrice("1000");
+        searchPage.assertion("1000","4 & above (Very Good)");
+        searchPage.selectHotel(5);
+
+        System.out.println(driver.getCurrentUrl());
+        Utility.delayInSeconds(10);
     }
 
-    @Test
-    public void check() {
-        homePage.openPage();
-    }
-
-    @Test
-    public void report() {
-        ReportHandler.generateDummyReport();
-    }
-
-    @Test
-    public void testIvan() {
-        System.out.println(Utility.getProperty("customdriver.browserName"));
+    public void checkTheDate(String month, String date){
+        while (!homePage.isDateIsMatch(month, date)) {
+            homePage.clickButtonNextDate();
+        }
     }
 }

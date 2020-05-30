@@ -25,6 +25,11 @@ public class TestMain {
     }
 
     @Test
+    public void check() {
+        homePage.openPage();
+    }
+
+    @Test
     public void report() {
         ReportHandler.generateDummyReport();
     }

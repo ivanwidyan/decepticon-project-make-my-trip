@@ -13,22 +13,17 @@ import java.util.List;
 public class HotelDetailPage extends UiUtility {
 
 
-
-    public String selectRoomButton = "//div[@class='roomWrap'][%s]//div[%s]//a[@class='primaryBtn appendBottom15 ']";
-
     @FindBy(xpath = "//div[@class='popWrapper']//div[@class='popRight']//ul//li")
     List<WebElementFacade> listRoomDetails;
 
     @FindBy(xpath = "//span[contains(@class,'close')]")
     WebElementFacade closeModalButton;
 
+    public String selectRoomButton = "//div[@class='roomWrap'][%s]//div[%s]//a[@class='primaryBtn appendBottom15 ']";
     public String price = "//div[@class='roomWrap'][%s]//div[@class='roomRight']/div[%s]//span[@class='bxNegotiate appendBottom5']";
     public String listOptions = "//div[@class='roomWrap'][%s]//div[%s]//div[@class='makeFlex  appendBottom15']";
-
-
     public String includeList = "//div[@class='roomWrap'][%s]//div[%s]//ul[@class='includeList']//li";
     public String moreAboutButton = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//a";
-
 
     public String roomSelectionOption = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//h2";
 
@@ -41,7 +36,6 @@ public class HotelDetailPage extends UiUtility {
         openUrl("https://www.makemytrip.com/hotels/hotel-details/?hotelId=4190725563791786&mtkeys=N$$s9rHC9RN7n%2FSITW3aioWYAamjV3A5q0o6JgRVoqfDgFJldy%2FgqAaPmNcr3yihC1JWwPYKWo%2F4DW4qRZ4fzeiI9Ncp0xCuGAVhjM36ZFZJTMqaXMa9eJga6%2FCGYD8210Ssw7N450jmDbKKiNDeifrVHqUXyaOm6sk4mxk2E9Gm4sBMiENUCFQ7h2XOGOT%2BcKiJhqPbk%2Fw1uZI8PWQlyFJoqNJ7oQAo7S8tS%2FnwOUw4xUlviPmn%2FqM%2BEon6N6cEIpO0XLNKKKU8ES0HTs%2BAsDLvK6sg3loXK0hVfACzdfFrdjQqzpbPIGOZWZnVbnZTBsevTkoemfKFsXQo8stegoHcg8gcKDeNORZ&_uCurrency=INR&checkin=06092020&checkout=06122020&city=CTSINGAP&country=SGP&lat=1.306668&lng=103.83281&locusId=CTSINGAP&locusType=city&rank=6&reference=hotel&roomStayQualifier=2e0e&searchText=Singapore&type=city");
 //        waitABit(7000);
     }
-
 
 
     public List<String> ListWebElement(List<WebElementFacade> webElementFacade) {
@@ -99,7 +93,6 @@ public class HotelDetailPage extends UiUtility {
         String webElementFacade = find(By.xpath(String.format(roomSelectionOption, roomnumber))).getText();
         System.out.println("Room name : " + webElementFacade);
     }
-
 
 
 }

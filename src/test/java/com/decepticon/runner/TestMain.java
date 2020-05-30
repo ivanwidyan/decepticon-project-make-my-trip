@@ -1,7 +1,6 @@
 package com.decepticon.runner;
 
 import com.decepticon.module.ui.HomePage;
-import com.decepticon.module.utils.ReportHandler;
 import com.decepticon.module.utils.Utility;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -20,22 +19,41 @@ public class TestMain {
 
     @Test
     public void testCustomDriver() throws Exception {
+        // Home page
         homePage.openPage();
-        Thread.sleep(10000);
+        homePage.clickMenuHotel();
+//        homePage.clickButtonLogin();
+//        homePage.typeTextBoxEmail("test");
+//        homePage.clickButtonSubmit();
+        homePage.clickSectionCity();
+        homePage.typeTextBoxCity("Indonesia");
+        homePage.clickListCity("Bali");
+
+//        Utility.delayInSeconds(3);
+        checkTheDate("June", "17");
+//        Utility.delayInSeconds(3);
+        homePage.clickDate("June", "17");
+//        Utility.delayInSeconds(3);
+
+        checkTheDate("June", "20");
+        homePage.clickDate("June", "20");
+        homePage.clickSectionRoom();
+        int t = 0;
+        while(t < 1) {
+            homePage.clickNumberOfAdults("2");
+            homePage.clickNumberOfChildren("2");
+            homePage.clickButtonAddRooms();
+            t++;
+        }
+        homePage.clickButtonApplyRoom();
+        homePage.clickSectionTravelFor();
+        homePage.clickSelectTravelFor("Work");
+        homePage.clickButtonSearch();
     }
 
-    @Test
-    public void check() {
-        homePage.openPage();
-    }
-
-    @Test
-    public void report() {
-        ReportHandler.generateDummyReport();
-    }
-
-    @Test
-    public void testIvan() {
-        System.out.println(Utility.getProperty("customdriver.browserName"));
+    public void checkTheDate(String month, String date){
+        while (!homePage.isDateIsMatch(month, date)) {
+            homePage.clickButtonNextDate();
+        }
     }
 }

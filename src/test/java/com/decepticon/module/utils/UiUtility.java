@@ -20,4 +20,10 @@ public class UiUtility extends PageObject {
 
         return webElementFacades;
     }
+
+    protected Boolean verifyUrlIsOpened(String url) {
+        System.out.println("currentUrl: " + getDriver().getCurrentUrl());
+        System.out.println("expected: " + url);
+        return getDriver().getCurrentUrl().contains(url);
+    }
 }

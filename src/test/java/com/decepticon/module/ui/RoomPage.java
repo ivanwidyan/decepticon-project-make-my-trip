@@ -28,6 +28,9 @@ public class RoomPage extends UiUtility {
     @FindBy(xpath = "//a[@class='primaryBtn btnPayNow']")
     private WebElementFacade buttonPaynow;
 
+    @FindBy(xpath = "//span[@class='close']")
+    private WebElementFacade buttonClose;
+
     // Section Web Element
     @FindBy(xpath = "//div[@class='_SpecialRequest']")
     private WebElementFacade sectionOptionalRequest;

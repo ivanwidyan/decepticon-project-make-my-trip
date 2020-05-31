@@ -20,12 +20,12 @@ public class HotelDetailRunner {
     public void openpage() {
 //        hotelDetailPage.openPage();
         hotelDetailPage.openPage();
-        hotelDetailPage.getTextRoomName(1);
-        hotelDetailPage.getListRoomDetail(1);
-        hotelDetailPage.getTextPrice(1, 1);
-        hotelDetailPage.getListOption(1, 1);
-        hotelDetailPage.getListIncluded(1, 1);
-        hotelDetailPage.clickButtonSelectRoom(1, 1);
+        hotelDetailPage.getTextRoomName("1");
+        hotelDetailPage.getListRoomDetail("1");
+        hotelDetailPage.getTextPrice("1", "1");
+        hotelDetailPage.getListOption("1", "1");
+        hotelDetailPage.getListIncluded("1", "1");
+        hotelDetailPage.clickButtonSelectRoom("1", "1");
 
     }
 
@@ -33,23 +33,23 @@ public class HotelDetailRunner {
     public void openpageMultiple() {
 //        hotelDetailPage.openPage();
         hotelDetailPage.openPageMultiple();
-        hotelDetailPage.getTextRoomName(1);
-        hotelDetailPage.getListRoomDetail(1);
-        hotelDetailPage.getTextPriceForMultiple(1, 1);
-        hotelDetailPage.getListMultiOption(1, 1);
-        hotelDetailPage.getListIncludedMultiOption(1, 1);
-        hotelDetailPage.clickButtonPeopleCount(1, 2);
-        hotelDetailPage.clickButtonSelectPeopleCountList( 2);
-        hotelDetailPage.clickButtonAddRoom(1, 1);
+        hotelDetailPage.getTextRoomName("1");
+        hotelDetailPage.getListRoomDetail("1");
+        hotelDetailPage.getTextPriceForMultiple("1", "1");
+        hotelDetailPage.getListMultiOption("1", "1");
+        hotelDetailPage.getListIncludedMultiOption("1", "1");
+        hotelDetailPage.clickButtonPeopleCount("1", "2");
+        hotelDetailPage.clickButtonSelectPeopleCountList("2");
+        hotelDetailPage.clickButtonAddRoom("1", "1");
         hotelDetailPage.getTextTotalPriceForMultiple();
-        hotelDetailPage.clickButtonAddRoom(1, 1);
+        hotelDetailPage.clickButtonAddRoom("1", "1");
         hotelDetailPage.getTextTotalPriceForMultiple();
-        hotelDetailPage.clickButtonAddRoom(1, 1);
+        hotelDetailPage.clickButtonAddRoom("1", "1");
         hotelDetailPage.getTextTotalPriceForMultiple();
-        hotelDetailPage.clickButtonAddRoom(1, 1);
+        hotelDetailPage.clickButtonAddRoom("1", "1");
         hotelDetailPage.getTextTotalPriceForMultiple();
         hotelDetailPage.clickButtonReviewDetail();
-//        hotelDetailPage.clickButtonSelectRoom(1, 1);
+//        hotelDetailPage.clickButtonSelectRoom("1", "1");
 
     }
 

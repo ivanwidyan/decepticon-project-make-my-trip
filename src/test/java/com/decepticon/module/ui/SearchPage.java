@@ -21,46 +21,60 @@ public class SearchPage extends PageObject {
     Utility utility = new Utility();
     UiUtility uiUtility = new UiUtility();
     CommonAction commonAction = new CommonAction();
+
     //filter by user rating
     @FindBy(xpath = "//input[@id='search']")
-    WebElementFacade searchBox;
+    private WebElementFacade searchBox;
+
     private String filterByUserRating = "//label[contains(text(),'%s')]";
+
     @FindBy(xpath = "//p[@class=\"whiteText latoBlack font22\"]")
-    WebElementFacade popUpOnSearchResult;
+    private WebElementFacade popUpOnSearchResult;
+
     @FindBy(className = "mmBackdrop wholeBlack")
-    WebElementFacade backDrop;
+    private WebElementFacade backDrop;
+
     @FindBy(id = "hlistpg_fr_star_category")
-    WebElementFacade userRatingFilter;
+    private WebElementFacade userRatingFilter;
+
     @FindBy(xpath = "//ul[@class=\"appliedFilters\"]/li/span[@class=\"latoBold\"]")
-    List<WebElementFacade> appliedFilters;
+    private List<WebElementFacade> appliedFilters;
+
     @FindBy(xpath = "//span[@class=\"minValue\"]")
-    WebElementFacade minPrice;
+    private WebElementFacade minPrice;
+
     @FindBy(xpath = "//span[@class=\"maxValue\"]")
-    WebElementFacade maxPrice;
+    private WebElementFacade maxPrice;
 
     //filter by textPrice
     @FindBy(xpath = "//div[@id=\"hlistpg_fr_price_per_night\"]/div")
-    WebElementFacade priceFilter;
+    private WebElementFacade priceFilter;
+
     private String priceSliderPath = "//div[@id=\"hlistpg_fr_price_per_night\"]/div/div/div/span";
 
     //element locators to select the hotel
     @FindBy(xpath = "//p[@class='appendBottom15']")
-    WebElementFacade moveToBottomOfThePage;
-    private String loadingRequest="//p[@class='appendBottom15']";
-    @FindBy(xpath = "//div[@id=\"hotelListingContainer\"]/p")
-    WebElementFacade endPageMessage;
-    @FindBy(id="hotelListingContainer")
-    WebElementFacade listingContainer;
-    @FindBy(id="back_to_top_button")
-    WebElementFacade backToTopButton;
-    private String hotelList="//p[@id=\"hlistpg_hotel_name\"]";
+    private WebElementFacade moveToBottomOfThePage;
 
+    private String loadingRequest="//p[@class='appendBottom15']";
+
+    @FindBy(xpath = "//div[@id=\"hotelListingContainer\"]/p")
+    private WebElementFacade endPageMessage;
+
+    @FindBy(id="hotelListingContainer")
+    private WebElementFacade listingContainer;
+
+    @FindBy(id="back_to_top_button")
+    private WebElementFacade backToTopButton;
+
+    private String hotelList="//p[@id=\"hlistpg_hotel_name\"]";
 
     public void openPage() {
         openUrl("https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=05312020&checkout=06012020&city=RGCJB&country=IN&locusId=RGCJB&locusType=region&reference=hotel&roomStayQualifier=2e0e2e0e&searchText=Coimbatore%20District%2C%20Tamil%20Nadu%2C%20India&type=region");
     }
 
     public void filterByUserRating(String userRating) {
+        //filter by userRating
         if (popUpOnSearchResult.isVisible()) {
             getDriver().navigate().refresh();
             waitForAngularRequestsToFinish();
@@ -82,6 +96,7 @@ public class SearchPage extends PageObject {
                 actions.clickAndHold(element).moveByOffset(3, 0).release().perform();
                 String minPriceNumber = minPrice.getText().split(Consts.SPACE)[1];
                 min = Integer.valueOf(minPriceNumber);
+//                System.out.println(price + " != " + min + " is " + (min < Integer.valueOf(price)));
             }
         }
     }
@@ -141,11 +156,6 @@ public class SearchPage extends PageObject {
             System.out.println(hotelName);
             commonAction.switchToOpenedTab(getDriver());
             utility.waitTillPageLoads(getDriver());
-            try {
-                Thread.sleep(15000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
         else
         {

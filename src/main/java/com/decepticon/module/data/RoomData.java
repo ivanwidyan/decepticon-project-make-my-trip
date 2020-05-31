@@ -5,6 +5,7 @@ public class RoomData {
     private static String totalAmount;
     private static String guest;
     private static String checkinDate;
+    private static String checkoutDate;
 
     public static String getHotelName() {
         return hotelName;
@@ -45,6 +46,4 @@ public class RoomData {
     public static void setCheckoutDate(String checkoutDate) {
         RoomData.checkoutDate = checkoutDate;
     }
-
-    public static String checkoutDate;
 }

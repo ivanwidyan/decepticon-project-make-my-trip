@@ -17,14 +17,13 @@ public class RoomRunner {
     RoomPage roomPage;
 
     @Test
-    public void testUI() {
+    public void roomPageTest() {
 
         roomPage.openPage();
         roomPage.typeTextBoxFirstName("We are");
         roomPage.typeTextBoxLastName("Deception");
         roomPage.typeTextBoxEmail("Deception@mailinator.com");
-        roomPage.clickButtonMobileCode();
-        roomPage.clickListButtonMobileCode("+62");
+        roomPage.selectMobileCode("+62");
         roomPage.typeTextBoxMobileNumber("81234567890");
         roomPage.typeTextBoxPanString("101");
         roomPage.clickCheckListOptions("Large bed");

@@ -39,7 +39,7 @@ After finishing the config you can either run it using `CucumberSecondRunner` di
 Below is the full example of Maven goal for running the UI automation in Headspin UI.
 
 ```
- mvn clean verify -Drunner.class=CucumberSecondRunner -Dwebdriver.provided.mydriver=com.decepticon.driver.CustomRemoteDriver -Dcustomdriver.browserName=chrome -Dcustomdriver.width=1920 -Dcustomdriver.height=1080 -Dcustomdriver.remoteUrl=https://dev-nz-akl-0.headspin.io:9092/v0/b62f619b47b742d6942a1dff468c41d6/wd/hub
+ mvn clean verify -Drunner.class=CucumberSecondRunner -Dwebdriver.provided.mydriver=com.decepticon.driver.CustomRemoteDriver -Dcustomdriver.browserName=chrome -Dcustomdriver.width=1920 -Dcustomdriver.height=1080 -Dcustomdriver.remoteUrl=https://dev-us-pao-0.headspin.io:9093/v0/bd1c05833b664a01b1a7abe02a2edf55/wd/hub
 ```
 
 ## Generating Report

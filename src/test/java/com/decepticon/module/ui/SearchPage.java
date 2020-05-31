@@ -11,6 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
+import static com.decepticon.module.utils.Utility.waitTillPageLoads;
 import static junit.framework.TestCase.assertTrue;
 
 public class SearchPage extends UiUtility {
@@ -18,6 +19,9 @@ public class SearchPage extends UiUtility {
     // Text Elements
     @FindBy(xpath = "//span[@class=\"minValue\"]")
     private WebElementFacade textMinPrice;
+    //Filter
+    @FindBy(xpath = "//span[@class=\"latoBold font20 blackText appendBottom10\"]")
+    private WebElementFacade textSelectFilters;
 
     @FindBy(xpath = "//ul[@class=\"appliedFilters\"]/li/span[@class=\"latoBold\"]")
     private List<WebElementFacade> listTextAppliedFilters;
@@ -32,10 +36,20 @@ public class SearchPage extends UiUtility {
     // Slider Elements
     @FindBy(xpath = "//div[@id=\"hlistpg_fr_price_per_night\"]/div/div/div/span")
     private WebElementFacade sliderFilterMinPrice;
+    @FindBy(xpath = "//div[@id=\"hlistpg_fr_price_per_night\"]/div[1]")
+    private WebElementFacade textForPriceFilter;
 
     // Popup Elements
     @FindBy(xpath = "//p[@class=\"whiteText latoBlack font22\"]")
     private WebElementFacade popUpOnSearchResult;
+
+    //currecny selection
+    @FindBy(xpath = "//div[@class=\"makeFlex column currencyBox font12\"]")
+    private WebElementFacade currencyDropDown;
+    @FindBy(xpath = "//div[@class=\"currencyWrap\"]/ul/li")
+    private List<WebElementFacade> listOfCurrency;
+    @FindBy(xpath = "//div[@class=\"makeFlex column currencyBox font12\"]/span")
+    private WebElementFacade selectedCurrency;
 
     private String buttonFilterByUserRatings = "//label[contains(text(),'%s')]";
 
@@ -50,11 +64,44 @@ public class SearchPage extends UiUtility {
 
     // Click Actions
     public void clickButtonFilterByUserRatings(String userRating) {
+        waitTillPageLoads(getDriver());
         if (popUpOnSearchResult.isVisible()) {
             getDriver().navigate().refresh();
         }
-        fromXpathtoWebElement(String.format(buttonFilterByUserRatings, userRating)).click();
+        try {
+            fromXpathtoWebElement(String.format(buttonFilterByUserRatings, userRating)).click();
+        } catch (Exception e) {
+            if (popUpOnSearchResult.isVisible()) {
+                getDriver().navigate().refresh();
+            }
+        }
     }
+
+    //select currency
+    public void selectCurrency() {
+        if (popUpOnSearchResult.isVisible()) {
+            getDriver().navigate().refresh();
+        }
+        currencyDropDown.waitUntilClickable();
+        currencyDropDown.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        for (WebElementFacade element : listOfCurrency) {
+            if (element.getText().contains(ValueConsts.CURRENCY_INR)) {
+                element.click();
+                break;
+            }
+        }
+        waitForAngularRequestsToFinish();
+    }
+
+    public void assertCurrency(String currency) {
+        assertTrue(selectedCurrency.getText().toUpperCase().contains(currency));
+    }
+
     public String clickButtonHotelName(Integer hotelNumber) {
         String hotelName = Consts.EMPTY_STRING;
         Integer hotelIndex = hotelNumber - 1;
@@ -81,11 +128,12 @@ public class SearchPage extends UiUtility {
     // Drag Actions
     public void dragSliderFilterMinPrice(String minPrice) {
         Actions actions = new Actions(getDriver());
+        JSExecutorUtility.scrollToElement(getDriver(), textForPriceFilter);
         if (Integer.valueOf(minPrice) > 0) {
             Integer min = 0;
             while (min < Integer.valueOf(minPrice) || min > ValueConsts.DEFAULT_FILTER_MAX_PRICE) {
                 textMinPrice.waitUntilVisible();
-                actions.clickAndHold(sliderFilterMinPrice).moveByOffset(3, 0).release().perform();
+                actions.clickAndHold(sliderFilterMinPrice).moveByOffset(2, 0).release().perform();
                 String minPriceNumber = textMinPrice.getText().split(Consts.SPACE)[Consts.SECOND_INDEX];
                 min = Integer.valueOf(minPriceNumber);
             }

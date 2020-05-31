@@ -3,6 +3,7 @@ package com.decepticon.module.ui;
 import com.decepticon.module.constant.Consts;
 import com.decepticon.module.utils.JSExecutorUtility;
 import com.decepticon.module.utils.UiUtility;
+import com.decepticon.module.utils.Utility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
@@ -74,6 +75,7 @@ public class HotelDetailPage extends UiUtility {
     }
 
     public void getListOption(String room, String option) {
+        Utility.takeScreenshot(getDriver());
         listWebElementsToListString(xpathToWebElement(String.format(listOptions, room, option)));
     }
 

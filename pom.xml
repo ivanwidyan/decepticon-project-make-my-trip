@@ -15,7 +15,7 @@
         <serenity.cucumber.version>1.0.14</serenity.cucumber.version>
         <cucumber.version>4.2.0</cucumber.version>
         <encoding>UTF-8</encoding>
-        <runner.class>TestMain</runner.class>
+        <runner.class>CucumberRunner</runner.class>
         <thread.count>1</thread.count>
         <fork.count>1C</fork.count>
     </properties>

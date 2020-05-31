@@ -1,16 +1,9 @@
-@PurchaseFeature @MakeMyTrip @Integration @UI
+@PurchaseWithoutLoginFeature @MakeMyTrip @Integration @UI
 Feature: Purchase Feature
 
   @Positive
   Scenario: Purchase hotel in Make My Trip web scenario
     Given open home page
-    When  at home page click button login
-    When  at home page login popup fill text box username with 'Satutesting2@gmail.com'
-    When  at home page login popup click button continue username
-    When  at home page login popup fill text box password with 'mytripbolot1!'
-    When  at home page login popup click button continue password
-    When  at home page login popup click button close
-
     When  at home page click button Hotel
     When  at home page click button City
     When  at home page city section fill text box city with 'Indonesia'

@@ -23,6 +23,8 @@ We are using Web Driver Manager to implement the Driver for UI automation. So no
 ## Running on Headspin UI
 The configuration can be seen in `serenity.properties`. First you need to change the `webdriver.provided.mydriver` config to `com.decepticon.driver.CustomRemoteDriver`.
 
+![3](https://user-images.githubusercontent.com/12959761/83355862-3f3e0700-a38c-11ea-9b5e-5e9e7e201a6c.jpg)
+
 After that you need to also change the desired capabilites configuration to match the configuration with Headspin Automation Configuration.
 You change it from these configs:
 
@@ -46,10 +48,15 @@ when the maven goal has `verify` lifecycle.
 
 The report can be found under `\target\site\serenity\index.html`.
 
+![image](https://user-images.githubusercontent.com/12959761/83355713-765fe880-a38b-11ea-9cd7-ca0c57e40db4.png)
+
 ## Capture Screenshot
 From the business scenarios implementation, there are two steps that we need to capture the page.
 First we need capure the hotel name on search page and capture the room details on the room page.
 After running the UI test automation the screenshots can be found under `\target\decepticon\report\data\ss`.
+
+![1590937615694](https://user-images.githubusercontent.com/12959761/83355760-a7401d80-a38b-11ea-91cb-2b5921765602.png)
+![1590937628954](https://user-images.githubusercontent.com/12959761/83355764-a9a27780-a38b-11ea-9839-94217b055958.png)
 
 ## Challenges & Solutions
 

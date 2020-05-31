@@ -171,4 +171,14 @@ public class Utility {
 
         }
     }
+
+    public static String cleanString(String s){
+        Pattern pt = Pattern.compile("[^a-zA-Z0-9]");
+        Matcher match= pt.matcher(s);
+        while(match.find()) {
+            String matchGroup= match.group();
+            s=s.replaceAll(String.format("\\%s", matchGroup), "");
+        }
+        return s;
+    }
 }

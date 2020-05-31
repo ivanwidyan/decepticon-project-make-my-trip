@@ -1,10 +1,12 @@
 package com.decepticon.module.ui;
 
+import com.decepticon.module.constant.Consts;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class BookingSummaryPage extends UiUtility {
@@ -31,6 +33,9 @@ public class BookingSummaryPage extends UiUtility {
   @FindBy(xpath = "//div[@class='checkout pull-right']//span[@class='lato-regular grey']")
   private WebElementFacade textCheckOutDay;
 
+  @FindBy(xpath = "//span[@class='black']")
+  private WebElementFacade textRoomName;
+
   @FindBy(xpath = "//span[@id='top_rail_totalAmount']")
   private WebElementFacade textTotalAmount;
 
@@ -38,40 +43,61 @@ public class BookingSummaryPage extends UiUtility {
   private List<WebElementFacade> listTextGuests;
 
   public void openPage() {
-    openUrl("https://m-securepay.makemytrip.com/common-payment-web-iframe/loadCheckoutPage.pymt?checkoutId=465726554443200");
+    openUrl("https://m-securepay.makemytrip.com/common-payment-web-iframe/loadCheckoutPage.pymt?checkoutId=465732626918207");
   }
 
   // Get Text
   public String getTextHotelName(){
-    return textHotelName.getText();
+    return getTextByWebElementWithNotFoundHandling(textHotelName);
   }
 
   public String getTextAdress(){
-    return textAdress.getText();
-  }
-
-  public String getTextCheckInDay(){
-    return textCheckInDay.getText();
+    return getTextByWebElementWithNotFoundHandling(textAdress);
   }
 
   public String getTextCheckInDate(){
-    return textCheckInDate.getText();
-  }
-
-  public String getTextCheckOutDay(){
-    return textCheckOutDay.getText();
+    String date = getTextByWebElementWithNotFoundHandling(textCheckInDay)
+            + Consts.SPACE + getTextByWebElementWithNotFoundHandling(textCheckInDate)
+            .replaceAll("' ", Consts.EMPTY_STRING);
+    return date;
   }
 
   public String getTextCheckOutDate(){
-    return textCheckOutDate.getText();
+    String date = getTextByWebElementWithNotFoundHandling(textCheckOutDay)
+            + Consts.SPACE + getTextByWebElementWithNotFoundHandling(textCheckOutDate)
+            .replaceAll("' ", Consts.EMPTY_STRING);
+    return date;
+  }
+
+  public String getTextRoomName(){
+    return getTextByWebElementWithNotFoundHandling(textRoomName).split(" \\| ")[0];
   }
 
   public String getTextTotalAmount(){
-    return textTotalAmount.getText();
+    return getTextByWebElementWithNotFoundHandling(textTotalAmount).replace(Consts.PERIOD, Consts.COMMA);
   }
 
-  public List<String> getTextGuests(){
-    return listWebElementsToListString(listTextGuests);
+  public HashMap<String, Integer> getNumberGuestsAmounts(){
+    List<String> listGuests = listWebElementsToListString(listTextGuests);
+    System.out.println(listGuests);
+    Integer adults = 0;
+    Integer children = 0;
+    for (int i = 0; i < listGuests.size(); i++) {
+      String[] splitGuest = listGuests.get(i).split(", ");
+      for (int j = 0; j < splitGuest.length; j++) {
+        String[] guest = splitGuest[j].split(" ");
+        if (guest[1].equalsIgnoreCase("child")) {
+          children += Integer.valueOf(guest[0]);
+        } else {
+          adults += Integer.valueOf(guest[0]);
+        }
+      }
+    }
+
+    HashMap<String, Integer> guestAmount = new HashMap<>();
+    guestAmount.put("child", children);
+    guestAmount.put("adult", adults);
+    return guestAmount;
   }
 
   // Get Number

@@ -66,6 +66,7 @@ public class SearchPageSteps
 
     @When("at search results page user select the currency equals to {string}")
     public void atSearchResultsPageUserSelectTheCurrency(String value) {
+        commonAction.refreshPage();
         searchPage.clickButtonCurrency(value);
     }
 }

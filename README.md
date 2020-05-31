@@ -44,11 +44,12 @@ Below is the full example of Maven goal for running the UI automation in Headspi
 To generate report you must use the Maven goal `mvn clean verify` as the baseline. Because we use Serenity report and it is generated
 when the maven goal has `verify` lifecycle.
 
-The report can be found under ``.
+The report can be found under `\target\site\serenity\index.html`.
 
 ## Capture Screenshot
 From the business scenarios implementation, there are two steps that we need to capture the page.
-After running the UI test automation the screenshots can be found under ``.
+First we need capure the hotel name on search page and capture the room details on the room page.
+After running the UI test automation the screenshots can be found under `\target\decepticon\report\data\ss`.
 
 ## Challenges & Solutions
 
@@ -58,3 +59,5 @@ These are our top challenges that we found when working on this project:
 - **Dynamic filter min price**: Our solution is finding the right offset and increasing the slider until it matches the requested min price.
 - **Dynamic scroll to select the hotel**: Our solution is to go to the end page when the list hotel is not bigger than the requested hotel order number.
 - **Assertions across pages**: Our solution is create data class to gather all needed data and use it for assertion in the booking summary page.
+- **Need to have dynamic test data**: We implement Cucumber 4 so the test data can changed easily.
+- **Same xpath for some elements**: We use String xpath that can be changed to make it dynamic locators.

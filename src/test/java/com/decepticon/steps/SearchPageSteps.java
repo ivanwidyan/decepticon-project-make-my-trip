@@ -4,8 +4,6 @@ import com.decepticon.module.constant.Consts;
 import com.decepticon.module.constant.ValueConsts;
 import com.decepticon.module.ui.SearchPage;
 import com.decepticon.module.utils.CommonAction;
-import com.decepticon.module.utils.Utility;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -66,13 +64,8 @@ public class SearchPageSteps
         commonAction.switchTab(Consts.SECOND_INDEX);
     }
 
-    @When("at search results page user select the currency")
-    public void atSearchResultsPageUserSelectTheCurrency() {
-        searchPage.selectCurrency();
-    }
-
-    @Then("at search results page selected currency is shown at the top of the page")
-    public void atSearchResultsPageSelectedCurrencyIsShownAtTheTopOfThePage() {
-        searchPage.assertCurrency(ValueConsts.CURRENCY_INR);
+    @When("at search results page user select the currency equals to {string}")
+    public void atSearchResultsPageUserSelectTheCurrency(String value) {
+        searchPage.clickButtonCurrency(value);
     }
 }

@@ -43,14 +43,13 @@ public class TestMain {
     public void testCustomDriver() throws Exception {
         // Home page flow
         homePage.openPage();
-        homePage.openPage();
-        homePage.clickButtonLogin();
-        homePage.typeTextBoxEmail("Satutesting2@gmail.com");
-        homePage.clickButtonSubmit();
-        homePage.clickButtonSubmit();
-        homePage.typeTextBoxPassword("mytripbolot1!");
-        homePage.clickButtonSubmit();
-        homePage.clickButtonClose();
+//        homePage.clickButtonLogin();
+//        homePage.typeTextBoxEmail("Satutesting2@gmail.com");
+//        homePage.clickButtonSubmit();
+//        homePage.clickButtonSubmit();
+//        homePage.typeTextBoxPassword("mytripbolot1!");
+//        homePage.clickButtonSubmit();
+//        homePage.clickButtonClose();
 
         homePage.clickButtonHotel();
         homePage.clickButtonCity();
@@ -82,6 +81,8 @@ public class TestMain {
         homePage.clickButtonSearch();
 
         // Search Page Flow
+        commonAction.refreshPage();
+        searchPage.clickButtonCurrency("INR - Indian Rupee");
         searchPage.clickButtonFilterByUserRatings(userRating);
         searchPage.dragSliderFilterMinPrice(price);
 

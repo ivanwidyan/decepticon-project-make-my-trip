@@ -18,7 +18,6 @@ public class RoomRunner {
 
     @Test
     public void roomPageTest() {
-
         roomPage.openPage();
         roomPage.typeTextBoxFirstName("We are");
         roomPage.typeTextBoxLastName("Deception");

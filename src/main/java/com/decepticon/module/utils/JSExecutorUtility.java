@@ -48,4 +48,10 @@ public class JSExecutorUtility {
         jse.executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 
+//    public void waitTillPageLoads(WebDriver driver)
+//    {
+//        driverWait(driver).until(
+//                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+//    }
+
 }

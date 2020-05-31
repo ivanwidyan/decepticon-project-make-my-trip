@@ -127,7 +127,6 @@ public class HotelDetailPage extends UiUtility {
     }
 
     public void clickButtonPeopleCount(String room, String option) {
-        System.out.println(String.format(buttonSelectPeopleCount, room, option));
         JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(buttonSelectPeopleCount, room, option))), getDriver());
     }
 

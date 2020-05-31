@@ -55,10 +55,10 @@ public class TestMain {
         homePage.clickButtonCity();
         homePage.typeTextBoxCity("Indonesia");
         homePage.clickListButtonCity("Bali");
-        checkTheDate("September", "17");
-        homePage.clickButtonDate("September", "17");
-        checkTheDate("September", "20");
-        homePage.clickButtonDate("September", "20");
+        checkTheDate("June", "17");
+        homePage.clickButtonDate("June", "17");
+        checkTheDate("June", "20");
+        homePage.clickButtonDate("June", "20");
         homePage.clickButtonRoom();
         int t = 0;
         while (t < 1) {

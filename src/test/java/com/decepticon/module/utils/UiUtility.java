@@ -44,4 +44,9 @@ public class UiUtility extends PageObject {
         Select select = new Select(webElementFacade);
         select.selectByValue(value);
     }
+
+    protected void clickByWebElement(WebElementFacade webElementFacade){
+        webElementFacade.waitUntilPresent();
+        JSExecutorUtility.clickByWebElement(webElementFacade, getDriver());
+    }
 }

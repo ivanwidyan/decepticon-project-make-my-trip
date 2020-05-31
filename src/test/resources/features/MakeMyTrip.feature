@@ -86,7 +86,7 @@ Feature: Purchase Feature
     When  at home page click button Hotel
     When  at home page click button City
     When  at home page city section fill text box city with 'Indonesia'
-    When  at home page city section click list button City equals to 'Jakarta'
+    When  at home page city section click list button City equals to 'Bali'
     When  at home page click button Check In equals to '17 June'
     When  at home page click button Check Out equals to '20 June'
     When  at home page click button Room & Guest

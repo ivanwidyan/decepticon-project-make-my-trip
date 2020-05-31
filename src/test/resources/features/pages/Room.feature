@@ -1,7 +1,7 @@
-@RoomFeature
-  Feature: Room test
+@RoomPageFeature @MakeMyTrip @Component @UI
+  Feature: Room Page Feature
 
-    Scenario: Room Test
+    Scenario: Verify room page should be success
       Given open room page
       Given at room page store the check in date to the data
       And   at room page store the check out date to the data

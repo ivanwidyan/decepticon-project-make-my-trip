@@ -15,7 +15,6 @@ public class UiUtility extends PageObject {
         List<String> stringList = new ArrayList<>();
         for (WebElementFacade w : listWebElements) {
             stringList.add(w.getText());
-            System.out.println(w.getText());
         }
         return stringList;
 

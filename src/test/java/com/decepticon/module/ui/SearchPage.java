@@ -60,6 +60,7 @@ public class SearchPage extends PageObject {
         openUrl("https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=05312020&checkout=06012020&city=RGCJB&country=IN&locusId=RGCJB&locusType=region&reference=hotel&roomStayQualifier=2e0e2e0e&searchText=Coimbatore%20District%2C%20Tamil%20Nadu%2C%20India&type=region");
     }
 
+    //filter by user rating
     public void filterByUserRating(String userRating) {
         //filter by userRating
         if (popUpOnSearchResult.isVisible()) {
@@ -71,7 +72,7 @@ public class SearchPage extends PageObject {
         uiUtility.fromXpathtoWebElement(String.format(filterByUserRating, userRating)).click();
         waitForAngularRequestsToFinish();
     }
-
+    //filter by price
     public void filterByPrice(String price) {
         Actions actions = new Actions(getDriver());
         WebElement element = getDriver().findElement(By.xpath(priceSliderPath));
@@ -81,20 +82,21 @@ public class SearchPage extends PageObject {
             while (min < Integer.valueOf(price) || min > ValueConsts.MAX_PRICE) {
                 minPrice.waitUntilVisible();
                 actions.clickAndHold(element).moveByOffset(3, 0).release().perform();
-                String minPriceNumber = utility.splitString(minPrice.getText(),Consts.SPACE)[1];
+                String minPriceNumber = utility.splitString(minPrice.getText(),Consts.SPACE)[Consts.SECOND_INDEX];
                 min = Integer.valueOf(minPriceNumber);
             }
         }
     }
 
-    public void assertion(String price, String userRating) {
+    //assertion for the applied filters
+    public void assertFilters(String price, String userRating) {
         utility.waitTillPageLoads(getDriver());
         String appliedFilter = "";
         for (WebElementFacade element : appliedFilters) {
             if (element.getText().startsWith(ValueConsts.INR))
             {
-                String currentValue = utility.splitString(element.getText(),Consts.SPACE)[1];
-                String minSelected = utility.splitString(currentValue,Consts.DASH)[0];
+                String currentValue = utility.splitString(element.getText(),Consts.SPACE)[Consts.SECOND_INDEX];
+                String minSelected = utility.splitString(currentValue,Consts.DASH)[Consts.FIRST_INDEX];
                 if (minSelected.equalsIgnoreCase(price)) {
                     appliedFilter = minSelected;
                 }
@@ -108,6 +110,7 @@ public class SearchPage extends PageObject {
         }
     }
 
+    //select any number the hotel from the list of results
     public String selectHotel(Integer numberOfHotel) {
         String hotelName = "";
         if (numberOfHotel > 0) {
@@ -132,7 +135,6 @@ public class SearchPage extends PageObject {
                     listOfHotels.get(j).click();
                 }
             }
-//            utility.waitTillPageLoads(getDriver());
         } else {
             System.out.println("Requested hotel number is not found under this filter");
         }

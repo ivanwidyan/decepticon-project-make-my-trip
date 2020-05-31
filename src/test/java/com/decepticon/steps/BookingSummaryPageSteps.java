@@ -25,29 +25,24 @@ public class BookingSummaryPageSteps extends ScenarioSteps {
     public void atBookPageHotelNameShouldCorrect() {
         assertThat("text hotel name is wrong",
                 bookingSummaryPage.getTextHotelName(), equalTo(RoomData.getHotelName()));
-
     }
-
 
     @And("at book page room name should correct")
     public void atBookPageRoomNameShouldCorrect() {
         assertThat("text room name is wrong",
                 bookingSummaryPage.getTextRoomName(), equalToIgnoringCase(RoomData.getRoomName()));
-
     }
 
     @And("at book page check in date should correct")
     public void atBookPageCheckInDateShouldCorrect() {
         assertThat("text check in date is wrong",
                 bookingSummaryPage.getTextCheckInDate(), equalToIgnoringCase(HomeData.getDateCheckIn()));
-
     }
 
     @And("at book page check out date should correct")
     public void atBookPageCheckOutDateShouldCorrect() {
         assertThat("text check out date is wrong",
-                bookingSummaryPage.getTextCheckOutDate(), equalToIgnoringCase( HomeData.getDateCheckIn()));
-
+                bookingSummaryPage.getTextCheckOutDate(), equalToIgnoringCase(HomeData.getDateCheckIn()));
     }
 
     @And("at book page total adult guest should correct")

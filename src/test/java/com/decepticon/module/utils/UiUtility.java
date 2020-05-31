@@ -51,7 +51,6 @@ public class UiUtility extends PageObject {
     }
 
     protected String getTextByWebElementWithNotFoundHandling(WebElementFacade webElementFacade) {
-        webElementFacade.waitUntilPresent();
         try {
             return webElementFacade.getText();
         } catch (Exception e) {

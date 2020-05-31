@@ -56,6 +56,9 @@ public class RoomPage extends UiUtility {
     @FindBy(xpath = "//p[contains(@class,'font12 appendTop5')]")
     private WebElementFacade textGuests;
 
+    @FindBy(xpath = "//a[@class='latoBold font18 blueText']")
+    private WebElementFacade textRoomName;
+
 
     private String checkBoxRequest = "//div[@class='_SpecialRequest']//ul//li//label[contains(text(),'%s')]";
 
@@ -124,6 +127,10 @@ public class RoomPage extends UiUtility {
 
     public String getTextGuest(){
         return textGuests.getText();
+    }
+
+    public String getTextRoomName(){
+        return textRoomName.getText();
     }
 
 

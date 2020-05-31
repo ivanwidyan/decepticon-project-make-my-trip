@@ -49,8 +49,6 @@ public class HomePageSteps extends ScenarioSteps {
         while (!homePage.isDateMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
-        homePage.getTextDate(month, date)
-                .replace("(","").replace(")","");
         HomeData.setDateCheckIn(homePage.getTextDate(month, date));
         homePage.clickButtonDate(month, date);
     }
@@ -82,8 +80,8 @@ public class HomePageSteps extends ScenarioSteps {
     @When("at home page room section click button Children equals to {string}")
     public void atHomePageRoomSectionClickButtonChildrenEqualsTo(String value) {
         homePage.clickButtonNumberOfChildren(value);
-        Integer countOfAdults = HomeData.getNumberOfAdults() + Integer.parseInt(value);
-        HomeData.setNumberOfAdults(countOfAdults);
+        Integer countOfAdults = HomeData.getNumberOfChildrens() + Integer.parseInt(value);
+        HomeData.setNumberOfChildrens(countOfAdults);
     }
 
     @When("at home page room section click button Add Another Room")
@@ -124,17 +122,21 @@ public class HomePageSteps extends ScenarioSteps {
         homePage.typeTextBoxEmail(value);
     }
 
-    @When("at home page login popup click button continue")
+    @When("at home page login popup click button continue username")
     public void atHomePageLoginPopupClickButtonContinue() {
-        homePage.clickButtonSubmit();
+        homePage.clickButtonSubmitForUsername();
+    }
+
+    @When("at home page login popup click button continue password")
+    public void atHomePageLoginPopupClickButtonContinuePassword() {
+        homePage.clickButtonSubmitForPassword();
     }
 
     @When("at home page login popup click button close")
     public void atHomePageLoginPopupClickButtonClose() {
-        if(homePage.isButtonClosePresent())
-            homePage.clickButtonClose();
-        else
-            homePage.clickButtonHotel();
+        homePage.clickButtonClose();
+        if (homePage.isButtonBackVisible())
+            homePage.clickButtonBack();
     }
 
     @When("at home page login popup fill text box password with {string}")

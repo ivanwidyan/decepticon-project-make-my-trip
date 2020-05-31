@@ -6,6 +6,8 @@ import com.decepticon.module.utils.JSExecutorUtility;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends UiUtility {
 
@@ -18,6 +20,12 @@ public class HomePage extends UiUtility {
 
     @FindBy(xpath = "//button[@class='capText font16']")
     private WebElementFacade buttonSubmit;
+
+    @FindBy(xpath = "//span[contains(text(),'Continue')]")
+    private WebElementFacade buttonSubmitSecond;
+
+    @FindBy(xpath = "//div[contains(@class,'btnContainer appendBottom25')]")
+    private WebElementFacade buttonSubmitThird;
 
     @FindBy(xpath = "//span[@class='crossIcon popupSprite popupCrossIcon']")
     private WebElementFacade buttonClose;
@@ -43,6 +51,9 @@ public class HomePage extends UiUtility {
     @FindBy(xpath = "//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")
     private WebElementFacade buttonNextDate;
 
+    @FindBy(xpath = "*[.='Back']")
+    private WebElementFacade buttonBack;
+
     // Text Box Elements
     @FindBy(xpath = "//input[@id='username']")
     private WebElementFacade textBoxEmail;
@@ -56,7 +67,6 @@ public class HomePage extends UiUtility {
     // Text Element
     @FindBy(xpath = "//label[@for='guest']//p/span/span[1]")
     private WebElementFacade textNumberOfGuests;
-
 
     private String buttonDate = "//div[contains(text(),'%s')]/ancestor::div[@class='DayPicker-Month']//div[@aria-disabled='false' and .='%s']";
 
@@ -90,8 +100,16 @@ public class HomePage extends UiUtility {
         clickByWebElement(buttonLogin);
     }
 
-    public void clickButtonSubmit() {
-        clickByWebElement(buttonSubmit);
+    public void clickButtonSubmitForUsername() {
+        while (!textBoxPassword.isVisible()) {
+            clickByWebElementWithNotFoundHandling(buttonSubmit);
+            clickByWebElementWithNotFoundHandling(buttonSubmitSecond);
+            clickByWebElementWithNotFoundHandling(buttonSubmitThird);
+        }
+    }
+
+    public void clickButtonSubmitForPassword() {
+        clickByWebElementWithNotFoundHandling(buttonSubmit);
     }
 
     public void clickButtonClose() {
@@ -145,6 +163,10 @@ public class HomePage extends UiUtility {
         clickByWebElement(buttonAddRooms);
     }
 
+    public void clickButtonBack() {
+        clickByWebElement(buttonBack);
+    }
+
     public void clickButtonAgeChildren(String value) {
         clickByWebElement(
                 fromXpathtoWebElement(String.format(buttonAgeChildren, value)));
@@ -166,10 +188,12 @@ public class HomePage extends UiUtility {
     // Type Action
     public void typeTextBoxEmail(String value) {
         textBoxEmail.type(value);
+        textBoxEmail.sendKeys(Keys.RETURN);
     }
 
     public void typeTextBoxPassword(String value) {
         textBoxPassword.type(value);
+//        textBoxEmail.sendKeys(Keys.RETURN);
     }
 
     public void typeTextBoxCity(String value) {
@@ -181,7 +205,7 @@ public class HomePage extends UiUtility {
         return fromXpathtoWebElement(String.format(buttonDate, month, date)).isCurrentlyVisible();
     }
 
-    public boolean isButtonClosePresent() {
-        return buttonClose.isPresent();
+    public boolean isButtonBackVisible() {
+        return buttonBack.isVisible();
     }
 }

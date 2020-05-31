@@ -27,17 +27,14 @@ public class HomeRunner {
         homePage.openPage();
         homePage.clickButtonLogin();
         homePage.typeTextBoxEmail("Satutesting2@gmail.com");
-        homePage.clickButtonSubmit();
-        homePage.clickButtonSubmit();
+        homePage.clickButtonSubmitForUsername();
         homePage.typeTextBoxPassword("mytripbolot1!");
-        homePage.clickButtonSubmit();
+        homePage.clickButtonSubmitForUsername();
         homePage.clickButtonClose();
     }
 
-
     @Test
     public void userDoSearchHotel() {
-
         homePage.openPage();
         homePage.clickButtonHotel();
         homePage.clickButtonCity();

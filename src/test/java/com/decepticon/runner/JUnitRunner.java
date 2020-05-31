@@ -4,7 +4,6 @@ import com.decepticon.module.constant.Consts;
 import com.decepticon.module.data.HomeData;
 import com.decepticon.module.ui.*;
 import com.decepticon.module.utils.CommonAction;
-import com.decepticon.module.utils.Utility;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
@@ -45,10 +44,9 @@ public class JUnitRunner {
         homePage.openPage();
         homePage.clickButtonLogin();
         homePage.typeTextBoxEmail("Satutesting2@gmail.com");
-        homePage.clickButtonSubmit();
-        homePage.clickButtonSubmit();
+        homePage.clickButtonSubmitForUsername();
         homePage.typeTextBoxPassword("mytripbolot1!");
-        homePage.clickButtonSubmit();
+        homePage.clickButtonSubmitForPassword();
         homePage.clickButtonClose();
 
         homePage.clickButtonHotel();
@@ -57,12 +55,12 @@ public class JUnitRunner {
         HomeData.setCountry("Indonesia");
         homePage.clickListButtonCity("Bali");
         HomeData.setCity("Bali");
-        checkTheDate("July", "17");
-        HomeData.setDateCheckIn(homePage.getTextDate("July", "17"));
-        homePage.clickButtonDate("July", "17");
-        checkTheDate("July", "20");
-        HomeData.setDateCheckOut(homePage.getTextDate("July", "20"));
-        homePage.clickButtonDate("July", "20");
+        checkTheDate("June", "17");
+        HomeData.setDateCheckIn(homePage.getTextDate("June", "17"));
+        homePage.clickButtonDate("June", "17");
+        checkTheDate("June", "20");
+        HomeData.setDateCheckOut(homePage.getTextDate("June", "20"));
+        homePage.clickButtonDate("June", "20");
         homePage.clickButtonRoom();
         int t = 0;
         while (t < 1) {
@@ -142,7 +140,7 @@ public class JUnitRunner {
         assertThat("number children is wrong",
                 bookingSummaryPage.getNumberGuestsAmounts().get("child"), equalTo(4));
         assertThat("text total amount is wrong",
-                bookingSummaryPage.getTextTotalAmount(), equalTo("8,404"));
+                bookingSummaryPage.getTextTotalAmount(), equalTo("7,072"));
     }
 
     public void checkTheDate(String month, String date){

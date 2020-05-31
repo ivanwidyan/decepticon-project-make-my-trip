@@ -1,5 +1,6 @@
 package com.decepticon.steps;
 
+import com.decepticon.module.constant.Consts;
 import com.decepticon.module.data.HomeData;
 import com.decepticon.module.data.RoomData;
 import com.decepticon.module.ui.BookingSummaryPage;
@@ -35,14 +36,24 @@ public class BookingSummaryPageSteps extends ScenarioSteps {
 
     @And("at book page check in date should correct")
     public void atBookPageCheckInDateShouldCorrect() {
+        String[] arrDate = HomeData.getDateCheckIn().split(Consts.SPACE);
+        String dateCheckin = arrDate[Consts.FIRST_INDEX] + Consts.SPACE +
+                arrDate[Consts.THRID_INDEX] + Consts.SPACE +
+                arrDate[Consts.SECOND_INDEX] + Consts.SPACE +
+                arrDate[Consts.FOURTH_INDEX];
         assertThat("text check in date is wrong",
-                bookingSummaryPage.getTextCheckInDate(), equalToIgnoringCase(HomeData.getDateCheckIn()));
+                bookingSummaryPage.getTextCheckInDate(), equalToIgnoringCase(dateCheckin));
     }
 
     @And("at book page check out date should correct")
     public void atBookPageCheckOutDateShouldCorrect() {
+        String[] arrDate = HomeData.getDateCheckOut().split(Consts.SPACE);
+        String dateCheckout = arrDate[Consts.FIRST_INDEX] + Consts.SPACE +
+                arrDate[Consts.THRID_INDEX] + Consts.SPACE +
+                arrDate[Consts.SECOND_INDEX] + Consts.SPACE +
+                arrDate[Consts.FOURTH_INDEX];
         assertThat("text check out date is wrong",
-                bookingSummaryPage.getTextCheckOutDate(), equalToIgnoringCase(HomeData.getDateCheckIn()));
+                bookingSummaryPage.getTextCheckOutDate(), equalToIgnoringCase(dateCheckout));
     }
 
     @And("at book page total adult guest should correct")

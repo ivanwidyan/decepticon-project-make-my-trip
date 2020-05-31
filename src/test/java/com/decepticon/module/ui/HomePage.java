@@ -175,8 +175,12 @@ public class HomePage extends UiUtility {
         textBoxCity.type(value);
     }
 
-    // Is Match
+    // Check Action
     public boolean isDateMatch(String month, String date) {
         return fromXpathtoWebElement(String.format(buttonDate, month, date)).isCurrentlyVisible();
+    }
+
+    public boolean isButtonCloseVisible() {
+        return buttonClose.isVisible();
     }
 }

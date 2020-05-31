@@ -130,7 +130,10 @@ public class HomePageSteps extends ScenarioSteps {
 
     @When("at home page login popup click button close")
     public void atHomePageLoginPopupClickButtonClose() {
-        homePage.clickButtonClose();
+        if(homePage.isButtonCloseVisible())
+            homePage.clickButtonClose();
+        else
+            homePage.clickButtonHotel();
     }
 
     @When("at home page login popup fill text box password with {string}")

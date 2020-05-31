@@ -25,7 +25,7 @@ public class RoomPage extends UiUtility {
     @FindBy(xpath = "//input[@id='pan']")
     private WebElementFacade textBoxPan;
 
-    @FindBy(xpath = "//a[@class='primaryBtn btnPayNow']")
+    @FindBy(xpath = "//a[contains(@class,'btnPayNow')]")
     private WebElementFacade buttonPaynow;
 
     @FindBy(xpath = "//span[@class='close']")

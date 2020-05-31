@@ -181,6 +181,7 @@ public class HomePage extends UiUtility {
     }
 
     public boolean isButtonCloseVisible() {
-        return buttonClose.isVisible();
+        buttonClose.waitUntilPresent();
+        return buttonClose.isCurrentlyVisible();
     }
 }

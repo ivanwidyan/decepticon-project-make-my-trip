@@ -7,7 +7,6 @@ import com.decepticon.module.utils.CommonAction;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class HomePageSteps extends ScenarioSteps {
 

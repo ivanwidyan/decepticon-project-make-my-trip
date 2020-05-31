@@ -48,6 +48,7 @@ public class BookingSummaryPage extends UiUtility {
 
   // Get Text
   public String getTextHotelName(){
+    System.out.println((getTextByWebElementWithNotFoundHandling(textHotelName)));
     return getTextByWebElementWithNotFoundHandling(textHotelName);
   }
 

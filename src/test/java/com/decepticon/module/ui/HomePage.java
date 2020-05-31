@@ -2,6 +2,7 @@ package com.decepticon.module.ui;
 
 import com.decepticon.module.constant.Consts;
 import com.decepticon.module.constant.ParamConsts;
+import com.decepticon.module.constant.URLConsts;
 import com.decepticon.module.utils.JSExecutorUtility;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -83,7 +84,7 @@ public class HomePage extends UiUtility {
     private String listButtonAgeChildren = "//select[@id='%s']/option[%s]";
 
     public void openPage() {
-        openUrl("https://www.makemytrip.com/");
+        openUrl(URLConsts.URL_HOME_PAGE);
     }
 
     // Get Text

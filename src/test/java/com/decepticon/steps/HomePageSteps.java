@@ -16,7 +16,7 @@ public class HomePageSteps extends ScenarioSteps {
 
     @Given("open home page")
     public void openHomePage() {
-        commonAction.openPage("https://www.makemytrip.com/");
+        homePage.openPage();
     }
 
     @When("at home page click button Hotel")

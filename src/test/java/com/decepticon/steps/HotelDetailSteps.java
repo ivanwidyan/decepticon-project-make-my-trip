@@ -20,12 +20,12 @@ public class HotelDetailSteps {
 
     @Given("open hotel Detail Page")
     public void openHotelDetailPage() {
-        commonAction.openPage("https://www.makemytrip.com/hotels/hotel-details/?hotelId=4190725563806581&mtkeys=N$$s9rHC9RN7n8Tiq%2BKJh0FX%2FfHJk6RdDmpkJOB2277P8XMPGSAG8X64rvF9KVWXO%2Fr7ISdY8D3x4xLAYFMoMUjG0VKoF7fPJCXHVSV9fsUkF2fmz1uEw%2FQQ%2FCs72G9nzYOariuMD%2FfgcMFtL07wStkdKdprU%2BxJ6BTmtTIfnMU8YL4dfsj2fVK7ZdFymAI0ckCvHklWVcF7xPPP4rQ1EdL4BNUwJBJeaWX9Gbv%2Fjtz2O13UWb9Pj0KbqrkqpmWCQGCSzEUD5IoQ0NNNFc7cluKhsBuN2s%2FSQaQaqKimkSzwvOtFGkanGFbqBml04%2FIv3wlgo82QsHHrJ6ipZhMjSxQ3%2BAyZpa1nElwOqMdYsE9LlA%2FMkv92GDloBG2sxkACWIjdRz1r2szJZHX9oo48eHqDw%3D%3D&_uCurrency=INR&checkin=06092020&checkout=06122020&city=CTSINGAP&country=SGP&lat=1.24669&lng=103.8424&locusId=CTSINGAP&locusType=city&rank=3&reference=hotel&roomStayQualifier=2e0e&searchText=Singapore&type=city");
+        hotelDetailPage.openPage();
     }
 
     @Given("open hotel Detail Page Multiple Room")
     public void openHotelDetailPageMultipleRoom() {
-        commonAction.openPage("https://www.makemytrip.com/hotels/hotel-details/?hotelId=20080802125928557&mtkeys=defaultMtkey&_uCurrency=INR&checkin=05312020&checkout=06012020&city=CTGOI&country=IN&lat=15.494905&lng=73.834175&locusId=CTGOI&locusType=city&rank=2&reference=hotel&roomStayQualifier=2e2e2e2e2e2e3e4e&searchText=Goa&type=city");
+        hotelDetailPage.openPageMultiple();
     }
 
     @When("at hotel detail page get text Price for room number equals to {string} and option number equals to {string}")

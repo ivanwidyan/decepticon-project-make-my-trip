@@ -1,0 +1,9 @@
+package com.decepticon.module.constant;
+
+public class URLConsts {
+    public static final String URL_HOME_PAGE = "https://www.makemytrip.com/";
+    public static final String URL_BOOKING_SUMMARY_PAGE = "https://m-securepay.makemytrip.com/common-payment-web-iframe/loadCheckoutPage.pymt?checkoutId=465732626918207";
+    public static final String URL_HOTEL_DETAIL_PAGE = "https://www.makemytrip.com/hotels/hotel-details/?hotelId=20080802125928557&mtkeys=defaultMtkey&_uCurrency=INR&checkin=05312020&checkout=06012020&city=CTGOI&country=IN&lat=15.494905&lng=73.834175&locusId=CTGOI&locusType=city&rank=2&reference=hotel&roomStayQualifier=2e2e2e2e2e2e3e4e&searchText=Goa&type=city";
+    public static final String URL_ROOM_PAGE = "https://www.makemytrip.com/hotels/hotel-review?_uCurrency=INR&checkin=06112020&checkout=06122020&city=CTBAL9d5bd6c3&country=IDN&hotelId=4190725563788205&lat=-8.766871&lng=115.22274&locusId=CTBAL9d5bd6c3&locusType=city&mobius=false&mtKey=N%24%24s9rHC9RN7n8gUHwweiFaA%252FlK3e4puJWQT%252FKxyESArvI3xl0flo6%252FuRs%252FY5TW%252F7wspxjyqxH5JQJLM94Oumx8wnqhB%252BnDf40tcRA66Ui7K60x64uCpSqAlWjpCxqA547AoKCmT%252Fs7cxdGfj%252FMRtjvYbCc5VbqdVx4iuctP5iCy23BkOjs85h37CSNtrlLuwQghi1Bx%252FG02RgyZe3x7kXop0tZQSj09MBSli2END8Rsko8%252Byb6Y3h63VQtCIC91Cz7d1bt%252B9KlQKi16JZ65wpoDfSwh6Csj7vIR99YzxwytABBVgEVsYaR%252FkNWGDgJ%252Bd6aPJRVVHULwoi%252BlCBJkZyyWtjdkgGbGO%252BDSF7Na4OZoKE%253D&mtkeys=defaultMtkey&payMode=PAS&rank=2&roomCriteria=967698~%7C~990000786920%3AMSE%3A1120%3AMSE%3AINGO~%7C~2e0e&roomStayQualifier=2e0e&searchText=Bali%2C%20Indonesia&searchType=E&suppDetail=INGO&visitorId=cdd039fb-49ed-43a6-97e8-39cdf7eb09a7";
+    public static final String URL_SEARCH_PAGE = "https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=05312020&checkout=06012020&city=RGCJB&country=IN&locusId=RGCJB&locusType=region&reference=hotel&roomStayQualifier=2e0e2e0e&searchText=Coimbatore%20District%2C%20Tamil%20Nadu%2C%20India&type=region";
+}

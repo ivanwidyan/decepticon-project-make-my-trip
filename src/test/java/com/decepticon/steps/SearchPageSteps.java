@@ -19,7 +19,9 @@ import static org.hamcrest.Matchers.equalTo;
 public class SearchPageSteps
 {
     private SearchPage searchPage;
+
     private CommonAction commonAction;
+
     @Given("open search results page")
     public void openSearchResultsPage()
     {

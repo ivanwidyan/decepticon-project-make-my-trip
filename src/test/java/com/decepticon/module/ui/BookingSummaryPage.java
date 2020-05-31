@@ -2,6 +2,7 @@ package com.decepticon.module.ui;
 
 import com.decepticon.module.constant.Consts;
 import com.decepticon.module.constant.ParamConsts;
+import com.decepticon.module.constant.URLConsts;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -44,7 +45,7 @@ public class BookingSummaryPage extends UiUtility {
   private WebElementFacade imageActiveStars;
 
   public void openPage() {
-    openUrl("https://m-securepay.makemytrip.com/common-payment-web-iframe/loadCheckoutPage.pymt?checkoutId=465732626918207");
+    openUrl(URLConsts.URL_BOOKING_SUMMARY_PAGE);
   }
 
   // Get Text

@@ -1,6 +1,7 @@
 package com.decepticon.module.ui;
 
 import com.decepticon.module.constant.Consts;
+import com.decepticon.module.constant.URLConsts;
 import com.decepticon.module.constant.ValueConsts;
 import com.decepticon.module.data.HotelDetailData;
 import com.decepticon.module.data.SearchData;
@@ -52,7 +53,7 @@ public class SearchPage extends UiUtility {
     private String buttonListCurrency = "//ul[@class='latoBold font18']//li[contains(text(),'%s')]";
 
     public void openPage() {
-        openUrl("https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=05312020&checkout=06012020&city=RGCJB&country=IN&locusId=RGCJB&locusType=region&reference=hotel&roomStayQualifier=2e0e2e0e&searchText=Coimbatore%20District%2C%20Tamil%20Nadu%2C%20India&type=region");
+        openUrl(URLConsts.URL_SEARCH_PAGE);
     }
 
     // Get Text

@@ -2,6 +2,7 @@ package com.decepticon.steps;
 
 import com.decepticon.module.constant.Consts;
 import com.decepticon.module.data.HomeData;
+import com.decepticon.module.data.HotelDetailData;
 import com.decepticon.module.data.RoomData;
 import com.decepticon.module.ui.BookingSummaryPage;
 import cucumber.api.java.en.And;
@@ -30,7 +31,10 @@ public class BookingSummaryPageSteps extends ScenarioSteps {
 
     @And("at book page room name should correct")
     public void atBookPageRoomNameShouldCorrect() {
-        assertThat("text room name is wrong",
+        assertThat("text room name is wrong room name page",
+                bookingSummaryPage.getTextRoomName(), equalToIgnoringCase(HotelDetailData.getRoomName()));
+
+        assertThat("text room name is wrong roon name",
                 bookingSummaryPage.getTextRoomName(), equalToIgnoringCase(RoomData.getRoomName()));
     }
 

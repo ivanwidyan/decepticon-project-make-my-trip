@@ -3,9 +3,6 @@ package com.decepticon.module.data;
 public class RoomData {
     private static String hotelName;
     private static String totalAmount;
-    private static String guest;
-    private static String checkinDate;
-    private static String checkoutDate;
 
     public static String getRoomName() {
         return roomName;
@@ -33,27 +30,4 @@ public class RoomData {
         RoomData.totalAmount = totalAmount;
     }
 
-    public static String getGuest() {
-        return guest;
-    }
-
-    public static void setGuest(String guest) {
-        RoomData.guest = guest;
-    }
-
-    public static String getCheckinDate() {
-        return checkinDate;
-    }
-
-    public static void setCheckinDate(String checkinDate) {
-        RoomData.checkinDate = checkinDate;
-    }
-
-    public static String getCheckoutDate() {
-        return checkoutDate;
-    }
-
-    public static void setCheckoutDate(String checkoutDate) {
-        RoomData.checkoutDate = checkoutDate;
-    }
 }

@@ -17,16 +17,6 @@ public class RoomPageSteps extends ScenarioSteps {
         roomPage.openPage();
     }
 
-    @Given("at room page store the check in date to the data")
-    public void atRoomPageStoreTheCheckInDateToTheData() {
-        RoomData.setCheckinDate(roomPage.getTextDate(String.valueOf(Consts.SECOND_INDEX)));
-    }
-
-    @And("at room page store the check out date to the data")
-    public void atRoomPageStoreTheCheckOutDateToTheData() {
-        RoomData.setCheckoutDate(roomPage.getTextDate(String.valueOf(Consts.THRID_INDEX)));
-    }
-
     @And("at room page store the hotel name date to the data")
     public void atRoomPageStoreTheHotelNameDateToTheData() {
         RoomData.setHotelName(roomPage.getTextHotelName());
@@ -36,11 +26,6 @@ public class RoomPageSteps extends ScenarioSteps {
     public void atRoomPageStoreTheTotalAmountDateToTheData() {
         String[] arrTotalAmount = roomPage.getTextTotalAmount().split(Consts.SPACE);
         RoomData.setTotalAmount(arrTotalAmount[Consts.SECOND_INDEX]);
-    }
-
-    @And("at room page store the total guests date to the data")
-    public void atRoomPageStoreTheTotalGuestsDateToTheData() {
-        RoomData.setGuest(roomPage.getTextGuest());
     }
 
     @And("at room page store the room name date to the data")

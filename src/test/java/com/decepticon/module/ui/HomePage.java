@@ -51,6 +51,9 @@ public class HomePage extends UiUtility {
     @FindBy(xpath = "//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")
     private WebElementFacade buttonNextDate;
 
+    @FindBy(xpath = "*[.='Back']")
+    private WebElementFacade buttonBack;
+
     // Text Box Elements
     @FindBy(xpath = "//input[@id='username']")
     private WebElementFacade textBoxEmail;
@@ -160,6 +163,10 @@ public class HomePage extends UiUtility {
         clickByWebElement(buttonAddRooms);
     }
 
+    public void clickButtonBack() {
+        clickByWebElement(buttonBack);
+    }
+
     public void clickButtonAgeChildren(String value) {
         clickByWebElement(
                 fromXpathtoWebElement(String.format(buttonAgeChildren, value)));
@@ -198,7 +205,7 @@ public class HomePage extends UiUtility {
         return fromXpathtoWebElement(String.format(buttonDate, month, date)).isCurrentlyVisible();
     }
 
-    public boolean isButtonClosePresent() {
-        return buttonClose.isPresent();
+    public boolean isButtonBackVisible() {
+        return buttonBack.isVisible();
     }
 }

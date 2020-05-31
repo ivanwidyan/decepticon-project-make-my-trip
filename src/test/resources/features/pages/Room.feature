@@ -6,7 +6,6 @@
       Given at room page store the check in date to the data
       And   at room page store the check out date to the data
       And   at room page store the hotel name date to the data
-      And   at room page store the total amount date to the data
       And   at room page store the total guests date to the data
       And   at room page store the room name date to the data
       When  at room page fill text box first name with 'We are'
@@ -19,4 +18,5 @@
       When  at room page click checkbox special request equals 'Smoking room' if visible
       When  at room page click checkbox special request equals 'Large bed' if visible
       When  at room page click checkbox donation
+      Then  at room page store the total amount date to the data
       When  at room page click button paynow

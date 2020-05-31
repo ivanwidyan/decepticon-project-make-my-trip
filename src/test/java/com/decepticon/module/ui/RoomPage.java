@@ -4,6 +4,8 @@ import com.decepticon.module.utils.JSExecutorUtility;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 
 public class RoomPage extends UiUtility {
 
@@ -23,15 +25,16 @@ public class RoomPage extends UiUtility {
     @FindBy(xpath = "//input[@id='pan']")
     private WebElementFacade textBoxPan;
 
-    @FindBy(xpath = "//select[@id='mCode']")
-    private WebElementFacade buttonMobileCode;
-
     @FindBy(xpath = "//a[@class='primaryBtn btnPayNow']")
     private WebElementFacade buttonPaynow;
 
     // Section Web Element
     @FindBy(xpath = "//div[@class='_SpecialRequest']")
     private WebElementFacade sectionOptionalRequest;
+
+    // Select Option Web Element
+    @FindBy(xpath = "//select[@id='mCode']")
+    private WebElementFacade selectOptionsMobileCode;
 
     // Checkbox Web Element
     @FindBy(xpath = "//label[@for='donation']")
@@ -49,8 +52,6 @@ public class RoomPage extends UiUtility {
 
 
     private String checkBoxRequest = "//div[@class='_SpecialRequest']//ul//li//label[contains(text(),'%s')]";
-
-    private String listButtonMobileCode = "//select[@id='mCode']//option[@value='%s']";
 
     private String textDate = "//div[@class='makeFlex font12 appendTop20']//div[%s]//p[2]";
 
@@ -84,21 +85,17 @@ public class RoomPage extends UiUtility {
         JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(checkBoxRequest, value)), getDriver());
     }
 
-    public void clickButtonMobileCode() {
-        JSExecutorUtility.clickByWebElement(buttonMobileCode, getDriver());
-    }
-
-    public void clickListButtonMobileCode(String value) {
-        JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(listButtonMobileCode, value)), getDriver());
-    }
-
-
     public void clickCheckBoxDonation() {
         JSExecutorUtility.clickByWebElement(checkBoxDonation, getDriver());
     }
 
     public void clickButtonPayNow() {
         JSExecutorUtility.clickByWebElement(buttonPaynow, getDriver());
+    }
+
+    // Select Option Action
+    public void selectMobileCode(String value) {
+        selectOptionByWebElement(selectOptionsMobileCode, value);
     }
 
     // Get Text
@@ -118,4 +115,6 @@ public class RoomPage extends UiUtility {
     public String getTextGuest(){
         return textGuests.getText();
     }
+
+
 }

@@ -3,6 +3,7 @@ package com.decepticon.module.utils;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class UiUtility extends PageObject {
         List<String> stringList = new ArrayList<>();
         for (WebElementFacade w : listWebElements) {
             stringList.add(w.getText());
+            System.out.println(w.getText());
         }
         return stringList;
 
@@ -36,5 +38,10 @@ public class UiUtility extends PageObject {
         System.out.println("currentUrl: " + getDriver().getCurrentUrl());
         System.out.println("expected: " + url);
         return getDriver().getCurrentUrl().contains(url);
+    }
+
+    protected void selectOptionByWebElement(WebElementFacade webElementFacade, String value){
+        Select select = new Select(webElementFacade);
+        select.selectByValue(value);
     }
 }

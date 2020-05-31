@@ -70,6 +70,7 @@ public class RoomPage extends UiUtility {
 
     // Type Action
     public void typeTextBoxFirstName(String value) {
+
         textBoxFirstName.type(value);
     }
 
@@ -114,23 +115,24 @@ public class RoomPage extends UiUtility {
     // Get Text
 
     public String getTextDate(String value) {
-        return fromXpathtoWebElement(String.format(textDate, value)).getText();
+        return getTextByWebElementWithNotFoundHandling(fromXpathtoWebElement(String.format(textDate, value)));
     }
 
     public String getTextTotalAmount() {
-        return textTotalAmount.getText();
+        return
+                getTextByWebElementWithNotFoundHandling(textTotalAmount);
     }
 
     public String getTextHotelName() {
-        return textHotelName.getText();
+        return getTextByWebElementWithNotFoundHandling(textHotelName);
     }
 
     public String getTextGuest(){
-        return textGuests.getText();
+        return getTextByWebElementWithNotFoundHandling(textGuests);
     }
 
     public String getTextRoomName(){
-        return textRoomName.getText();
+        return getTextByWebElementWithNotFoundHandling(textRoomName);
     }
 
 

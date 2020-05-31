@@ -5,10 +5,10 @@ Feature: Purchase Feature
   Scenario: Login to Make My Trip scenario
     Given open home page
     When  at home page click button login
-    When  at home page login popup fill text box username with 'Satutesting2@gmail.com'
+    When  at home page login popup fill text box username with 'gocoolmmt@mailinator.com'
     When  at home page login popup click button continue
     When  at home page login popup click button continue
-    When  at home page login popup fill text box password with 'mytripbolot1!'
+    When  at home page login popup fill text box password with 'testing@9091'
     When  at home page login popup click button continue
     When  at home page login popup click button close
 
@@ -78,10 +78,10 @@ Feature: Purchase Feature
   Scenario: Make My Trip purchase scenario SearchPage and Hotel Detail
     Given open home page
     When  at home page click button login
-    When  at home page login popup fill text box username with 'Satutesting2@gmail.com'
+    When  at home page login popup fill text box username with 'gocoolmmt@mailinator.com'
     When  at home page login popup click button continue
     When  at home page login popup click button continue
-    When  at home page login popup fill text box password with 'mytripbolot1!'
+    When  at home page login popup fill text box password with 'testing@9091'
     When  at home page login popup click button continue
     When  at home page login popup click button close
 

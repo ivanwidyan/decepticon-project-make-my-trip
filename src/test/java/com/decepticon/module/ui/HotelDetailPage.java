@@ -104,30 +104,30 @@ public class HotelDetailPage extends UiUtility {
 
             System.out.println("jumlah " + listRoomDetails.size());
             if (listRoomDetails.size() != Consts.FIRST_INDEX) {
-                JSExecutorUtility.clickByWebElement(buttonCloseModal, getDriver());
+                clickByWebElement(buttonCloseModal);
             }
         }
 
     }
 
     public void clickButtonSelectRoom(String room, String option) {
-        JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(buttonSelectRoom, room, option))), getDriver());
+        clickByWebElement(find(By.xpath(String.format(buttonSelectRoom, room, option))));
     }
 
     public void clickButtonSelectPeopleCountList(String option) {
-        JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(listPeopleCount, option))), getDriver());
+        clickByWebElement(find(By.xpath(String.format(listPeopleCount, option))));
     }
 
     public void clickButtonReviewDetail() {
-        JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(butonReviewDetail))), getDriver());
+        clickByWebElement(find(By.xpath(String.format(butonReviewDetail))));
     }
 
     public void clickButtonAddRoom(String room, String option) {
-        JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(butonAddRoom, room, option))), getDriver());
+        clickByWebElement(find(By.xpath(String.format(butonAddRoom, room, option))));
     }
 
     public void clickButtonPeopleCount(String room, String option) {
-        JSExecutorUtility.clickByWebElement(find(By.xpath(String.format(buttonSelectPeopleCount, room, option))), getDriver());
+        clickByWebElement(find(By.xpath(String.format(buttonSelectPeopleCount, room, option))));
     }
 
 }

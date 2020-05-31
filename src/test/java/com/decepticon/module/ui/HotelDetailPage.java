@@ -1,5 +1,6 @@
 package com.decepticon.module.ui;
 
+import com.decepticon.module.constant.Consts;
 import com.decepticon.module.utils.JSExecutorUtility;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -103,7 +104,7 @@ public class HotelDetailPage extends UiUtility {
             listWebElementsToListString(listRoomDetails);
 
             System.out.println("jumlah " + listRoomDetails.size());
-            if (listRoomDetails.size() != 0) {
+            if (listRoomDetails.size() != Consts.FIRST_INDEX) {
                 JSExecutorUtility.clickByWebElement(buttonCloseModal, getDriver());
             }
         }

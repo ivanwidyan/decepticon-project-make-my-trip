@@ -22,6 +22,4 @@ public class Consts {
     public static final String COMMA = ",";
     public static final String DOUBLE_QUOTE = "\"";
     public static final String DASH="-";
-
-    public static final String ARIA_LABEL = "aria-label";
 }

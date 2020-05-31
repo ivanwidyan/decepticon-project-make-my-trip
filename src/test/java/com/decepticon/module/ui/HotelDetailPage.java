@@ -62,8 +62,10 @@ public class HotelDetailPage extends UiUtility {
     }
 
     public String getTextRoomName(String roomnumber) {
-        String webElementFacade = find(By.xpath(String.format(textRoomName, roomnumber))).getText();
-        return webElementFacade;
+        WebElementFacade webElementFacade = find(By.xpath(String.format(textRoomName, roomnumber)));
+        webElementFacade.waitUntilVisible();
+        String hotelName = webElementFacade.getText();
+        return hotelName;
     }
 
     public String getTexthotelName() {

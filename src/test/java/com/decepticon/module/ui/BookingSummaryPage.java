@@ -1,6 +1,7 @@
 package com.decepticon.module.ui;
 
 import com.decepticon.module.constant.Consts;
+import com.decepticon.module.constant.ParamConsts;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -48,6 +49,7 @@ public class BookingSummaryPage extends UiUtility {
 
   // Get Text
   public String getTextHotelName(){
+    System.out.println((getTextByWebElementWithNotFoundHandling(textHotelName)));
     return getTextByWebElementWithNotFoundHandling(textHotelName);
   }
 
@@ -58,19 +60,19 @@ public class BookingSummaryPage extends UiUtility {
   public String getTextCheckInDate(){
     String date = getTextByWebElementWithNotFoundHandling(textCheckInDay)
             + Consts.SPACE + getTextByWebElementWithNotFoundHandling(textCheckInDate)
-            .replaceAll("' ", Consts.EMPTY_STRING);
+            .replaceAll(Consts.SINGLE_QUOTE + Consts.SPACE, Consts.EMPTY_STRING);
     return date;
   }
 
   public String getTextCheckOutDate(){
     String date = getTextByWebElementWithNotFoundHandling(textCheckOutDay)
             + Consts.SPACE + getTextByWebElementWithNotFoundHandling(textCheckOutDate)
-            .replaceAll("' ", Consts.EMPTY_STRING);
+            .replaceAll(Consts.SINGLE_QUOTE + Consts.SPACE, Consts.EMPTY_STRING);
     return date;
   }
 
   public String getTextRoomName(){
-    return getTextByWebElementWithNotFoundHandling(textRoomName).split(" \\| ")[0];
+    return getTextByWebElementWithNotFoundHandling(textRoomName).split(Consts.SPACE + "\\|" + Consts.SPACE)[Consts.FIRST_INDEX];
   }
 
   public String getTextTotalAmount(){
@@ -83,10 +85,10 @@ public class BookingSummaryPage extends UiUtility {
     Integer adults = 0;
     Integer children = 0;
     for (int i = 0; i < listGuests.size(); i++) {
-      String[] splitGuest = listGuests.get(i).split(", ");
+      String[] splitGuest = listGuests.get(i).split(Consts.COMMA + Consts.SPACE);
       for (int j = 0; j < splitGuest.length; j++) {
-        String[] guest = splitGuest[j].split(" ");
-        if (guest[1].equalsIgnoreCase("child")) {
+        String[] guest = splitGuest[j].split(Consts.SPACE);
+        if (guest[1].equalsIgnoreCase(ParamConsts.CHILD)) {
           children += Integer.valueOf(guest[0]);
         } else {
           adults += Integer.valueOf(guest[0]);
@@ -95,13 +97,13 @@ public class BookingSummaryPage extends UiUtility {
     }
 
     HashMap<String, Integer> guestAmount = new HashMap<>();
-    guestAmount.put("child", children);
-    guestAmount.put("adult", adults);
+    guestAmount.put(ParamConsts.CHILD, children);
+    guestAmount.put(ParamConsts.ADULT, adults);
     return guestAmount;
   }
 
   // Get Number
   public String getNumberActiveStars(){
-    return imageActiveStars.getAttribute("class");
+    return imageActiveStars.getAttribute(ParamConsts.CLASS);
   }
 }

@@ -7,7 +7,6 @@ import com.decepticon.module.utils.CommonAction;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class HomePageSteps extends ScenarioSteps {
 
@@ -130,7 +129,10 @@ public class HomePageSteps extends ScenarioSteps {
 
     @When("at home page login popup click button close")
     public void atHomePageLoginPopupClickButtonClose() {
-        homePage.clickButtonClose();
+        if(homePage.isButtonCloseVisible())
+            homePage.clickButtonClose();
+        else
+            homePage.clickButtonHotel();
     }
 
     @When("at home page login popup fill text box password with {string}")

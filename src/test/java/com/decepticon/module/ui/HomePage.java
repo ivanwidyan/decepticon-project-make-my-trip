@@ -1,6 +1,7 @@
 package com.decepticon.module.ui;
 
 import com.decepticon.module.constant.Consts;
+import com.decepticon.module.constant.ParamConsts;
 import com.decepticon.module.utils.JSExecutorUtility;
 import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -77,7 +78,7 @@ public class HomePage extends UiUtility {
 
     // Get Text
     public String getTextDate(String month, String date){
-        return fromXpathtoWebElement(String.format(buttonDate, month, date)).getAttribute(Consts.ARIA_LABEL);
+        return fromXpathtoWebElement(String.format(buttonDate, month, date)).getAttribute(ParamConsts.ARIA_LABEL);
     }
 
     public String getTextNumberOfGuest(){
@@ -175,8 +176,13 @@ public class HomePage extends UiUtility {
         textBoxCity.type(value);
     }
 
-    // Is Match
+    // Check Action
     public boolean isDateMatch(String month, String date) {
         return fromXpathtoWebElement(String.format(buttonDate, month, date)).isCurrentlyVisible();
+    }
+
+    public boolean isButtonCloseVisible() {
+        buttonClose.waitUntilPresent();
+        return buttonClose.isCurrentlyVisible();
     }
 }

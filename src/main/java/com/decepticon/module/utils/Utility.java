@@ -101,7 +101,6 @@ public class Utility {
         String data = "";
         for (String key : hashMap.keySet()) {
             data += key + "=" + hashMap.get(key) + "\n";
-//            System.out.println("test:" + key + "=" + hashMap.get(key));
         }
 
         File file = new File(path);

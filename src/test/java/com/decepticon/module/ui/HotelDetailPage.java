@@ -49,62 +49,52 @@ public class HotelDetailPage extends UiUtility {
 
     public void getTextPrice(String room, String option) {
         String result = fromXpathtoWebElementString(String.format(textPrice, room, option)).getText();
-        System.out.println(" textPrice : " + result);
 
     }
 
     public void getTextPriceForMultiple(String room, String option) {
         String result = fromXpathtoWebElementString(String.format(textMultiPrice, room, option)).getText();
-        System.out.println(" textPrice : " + result);
 
     }
 
     public void getTextTotalPriceForMultiple() {
         String result = fromXpathtoWebElementString(String.format(textTotalPrice)).getText();
-        System.out.println(" textPrice : " + result);
-
     }
 
-    public void getTextRoomName(String roomnumber) {
+    public String getTextRoomName(String roomnumber) {
         WebElementFacade webElementFacade = find(By.xpath(String.format(textRoomName, roomnumber)));
         webElementFacade.waitUntilVisible();
-        String hotelName=webElementFacade.getText();
-        System.out.println("Room name : " + hotelName);
+        String hotelName = webElementFacade.getText();
+        return hotelName;
     }
 
-    public void getTexthotelName() {
+    public String getTexthotelName() {
         String webElementFacade = find(By.xpath(String.format(textHotelName))).getText();
-        System.out.println("Hotel name : " + webElementFacade);
+        return webElementFacade;
     }
 
     public void getListOption(String room, String option) {
-        System.out.println("list option : ");
         listWebElementsToListString(xpathToWebElement(String.format(listOptions, room, option)));
     }
 
 
     public void getListMultiOption(String room, String option) {
-        System.out.println("list option : ");
         listWebElementsToListString(xpathToWebElement(String.format(listmultioptions, room, option)));
     }
 
     public void getListIncludedMultiOption(String room, String option) {
-        System.out.println(" include list :");
         listWebElementsToListString(xpathToWebElement(String.format(listIncludedMultiOption, room, option)));
     }
 
     public void getListIncluded(String room, String option) {
-        System.out.println(" include list :");
         listWebElementsToListString(xpathToWebElement(String.format(listIncluded, room, option)));
     }
 
     public void getListRoomDetail(String roomnumber) {
         if (find(By.xpath(String.format(butonMoreAbout, roomnumber))).isPresent()) {
             find(By.xpath(String.format(butonMoreAbout, roomnumber))).click();
-            System.out.println(" list room detail :");
             listWebElementsToListString(listRoomDetails);
 
-            System.out.println("jumlah " + listRoomDetails.size());
             if (listRoomDetails.size() != Consts.FIRST_INDEX) {
                 clickByWebElement(buttonCloseModal);
             }

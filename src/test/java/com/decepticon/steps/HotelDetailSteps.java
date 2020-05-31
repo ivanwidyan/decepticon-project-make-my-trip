@@ -1,9 +1,16 @@
 package com.decepticon.steps;
 
+import com.decepticon.module.data.HotelDetailData;
+import com.decepticon.module.data.RoomData;
+import com.decepticon.module.data.SearchData;
 import com.decepticon.module.ui.HotelDetailPage;
 import com.decepticon.module.utils.CommonAction;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 public class HotelDetailSteps {
     private CommonAction commonAction;
@@ -40,6 +47,7 @@ public class HotelDetailSteps {
     @When("at hotel detail page get text Room Name for room number equals to {string}")
     public void atHotelDetailPageGetTextRoomNameForRoomNumberEqualsTo(String room) {
         hotelDetailPage.getTextRoomName(room);
+        HotelDetailData.setRoomName(hotelDetailPage.getTextRoomName(room));
     }
 
     @When("at hotel detail page get list Option for room number equals to {string} and option number equals to {string}")
@@ -94,6 +102,12 @@ public class HotelDetailSteps {
 
     @When("at hotel detail page get text Hotel name")
     public void atHotelDetailPageGetTextHotelName() {
-    hotelDetailPage.getTexthotelName();
+        hotelDetailPage.getTexthotelName();
+    }
+
+    @And("at hotel detail page Hotel name should be correct")
+    public void atHotelDetailPageHotelNameShoulBeCorrect() {
+        assertThat("text hotel name is wrong",
+                hotelDetailPage.getTexthotelName(), equalTo(SearchData.getHotelName()));
     }
 }

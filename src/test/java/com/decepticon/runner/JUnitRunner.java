@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 @RunWith(SerenityRunner.class)
-public class TestMain {
+public class JUnitRunner {
 
     // chrome, firefox, appium, remote
     @Managed
@@ -43,13 +43,13 @@ public class TestMain {
     public void testCustomDriver() throws Exception {
         // Home page flow
         homePage.openPage();
-//        homePage.clickButtonLogin();
-//        homePage.typeTextBoxEmail("Satutesting2@gmail.com");
-//        homePage.clickButtonSubmit();
-//        homePage.clickButtonSubmit();
-//        homePage.typeTextBoxPassword("mytripbolot1!");
-//        homePage.clickButtonSubmit();
-//        homePage.clickButtonClose();
+        homePage.clickButtonLogin();
+        homePage.typeTextBoxEmail("Satutesting2@gmail.com");
+        homePage.clickButtonSubmit();
+        homePage.clickButtonSubmit();
+        homePage.typeTextBoxPassword("mytripbolot1!");
+        homePage.clickButtonSubmit();
+        homePage.clickButtonClose();
 
         homePage.clickButtonHotel();
         homePage.clickButtonCity();
@@ -57,12 +57,12 @@ public class TestMain {
         HomeData.setCountry("Indonesia");
         homePage.clickListButtonCity("Bali");
         HomeData.setCity("Bali");
-        checkTheDate("September", "17");
-        HomeData.setDateCheckIn(homePage.getTextDate("September", "17"));
-        homePage.clickButtonDate("September", "17");
-        checkTheDate("September", "20");
-        HomeData.setDateCheckOut(homePage.getTextDate("September", "20"));
-        homePage.clickButtonDate("September", "20");
+        checkTheDate("July", "17");
+        HomeData.setDateCheckIn(homePage.getTextDate("July", "17"));
+        homePage.clickButtonDate("July", "17");
+        checkTheDate("July", "20");
+        HomeData.setDateCheckOut(homePage.getTextDate("July", "20"));
+        homePage.clickButtonDate("July", "20");
         homePage.clickButtonRoom();
         int t = 0;
         while (t < 1) {
@@ -143,8 +143,6 @@ public class TestMain {
                 bookingSummaryPage.getNumberGuestsAmounts().get("child"), equalTo(4));
         assertThat("text total amount is wrong",
                 bookingSummaryPage.getTextTotalAmount(), equalTo("8,404"));
-
-        Utility.delayInSeconds(10);
     }
 
     public void checkTheDate(String month, String date){

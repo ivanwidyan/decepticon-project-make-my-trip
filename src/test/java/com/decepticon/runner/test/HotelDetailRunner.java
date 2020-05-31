@@ -18,7 +18,7 @@ public class HotelDetailRunner {
 
     @Test
     public void openpage() {
-//        hotelDetailPage.openPage();
+        hotelDetailPage.openPage();
         hotelDetailPage.openPage();
         hotelDetailPage.getTextRoomName("1");
         hotelDetailPage.getListRoomDetail("1");
@@ -26,12 +26,11 @@ public class HotelDetailRunner {
         hotelDetailPage.getListOption("1", "1");
         hotelDetailPage.getListIncluded("1", "1");
         hotelDetailPage.clickButtonSelectRoom("1", "1");
-
     }
 
     @Test
     public void openpageMultiple() {
-//        hotelDetailPage.openPage();
+        hotelDetailPage.openPage();
         hotelDetailPage.openPageMultiple();
         hotelDetailPage.getTextRoomName("1");
         hotelDetailPage.getListRoomDetail("1");

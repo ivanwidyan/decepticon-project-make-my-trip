@@ -15,9 +15,9 @@ Feature: Purchase Feature
     When  at home page click button Hotel
     When  at home page click button City
     When  at home page city section fill text box city with 'Indonesia'
-    When  at home page city section click list button City equals to 'Jakarta'
-    When  at home page click button Check In equals to '17 June'
-    When  at home page click button Check Out equals to '20 June'
+    When  at home page city section click list button City equals to 'Bali'
+    When  at home page click button Check In equals to '17 July'
+    When  at home page click button Check Out equals to '20 July'
     When  at home page click button Room & Guest
     When  at home page room section click button Adults equals to '2'
     When  at home page room section click button Children equals to '2'
@@ -29,14 +29,16 @@ Feature: Purchase Feature
     When  at home page travel section click list button Travelling For equals to 'Work'
     When  at home page click button Search
 
+    When  at search results page user select the currency equals to "INR - Indian Rupee"
     When  at search results page filter by user rating as "4 & above (Very Good)"
     Then  at search results page applied filters for user rating should be "4 & above (Very Good)"
     When  at search results page filter by price from "1000"
     Then  at search results page applied filters for price should be "1000"
-    When  at search results page click the 10th hotel from the search results
+    When  at search results page click the 5th hotel from the search results
     Then  at search results page tab is switched to the hotel detail page
 
     When  at hotel detail page get text Hotel name
+    And   at hotel detail page Hotel name should be correct
     When  at hotel detail page get text Room Name for room number equals to '1'
     When  at hotel detail page get list Room Detail for room number equals to '1'
     When  at hotel detail page get text Price for room number equals to '1' and option number equals to '1'

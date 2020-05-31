@@ -27,13 +27,6 @@ public class BookingSummaryRunner {
 
     @Test
     public void BookingSummaryPageTest() {
-        /** Home page
-         * Wed Jun 17 2020
-         * Sat Jun 20 2020
-         * Guest
-         * Rooms
-         */
-
         bookingSummaryPage.openPage();
         System.out.println(bookingSummaryPage.getTextHotelName());
         System.out.println(bookingSummaryPage.getTextAdress());

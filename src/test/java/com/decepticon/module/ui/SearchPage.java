@@ -2,6 +2,8 @@ package com.decepticon.module.ui;
 
 import com.decepticon.module.constant.Consts;
 import com.decepticon.module.constant.ValueConsts;
+import com.decepticon.module.data.HotelDetailData;
+import com.decepticon.module.data.SearchData;
 import com.decepticon.module.utils.JSExecutorUtility;
 import com.decepticon.module.utils.UiUtility;
 import com.decepticon.module.utils.Utility;
@@ -87,6 +89,7 @@ public class SearchPage extends UiUtility {
 
         JSExecutorUtility.scrollToElement(getDriver(), listButtonHotelName.get(hotelNumber - 2));
         System.out.println("found the hotel! = " + listButtonHotelName.get(hotelIndex).getText());
+        SearchData.setHotelName(listButtonHotelName.get(hotelIndex).getText());
         Utility.takeScreenshot(getDriver());
 
         listButtonHotelName.get(hotelIndex).click();

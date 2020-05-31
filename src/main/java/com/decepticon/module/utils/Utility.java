@@ -73,6 +73,10 @@ public class Utility {
             }
         }
     }
+    public String[] splitString(String value,String regex)
+    {
+        return value.split(regex);
+    }
 
     public static void saveImage(URL imageURL, String fileName) {
         saveImage(imageURL, "", fileName);

@@ -25,49 +25,36 @@ public class SearchPage extends PageObject {
     //filter by user rating
     @FindBy(xpath = "//input[@id='search']")
     private WebElementFacade searchBox;
-
-    private String filterByUserRating = "//label[contains(text(),'%s')]";
-
     @FindBy(xpath = "//p[@class=\"whiteText latoBlack font22\"]")
     private WebElementFacade popUpOnSearchResult;
-
     @FindBy(className = "mmBackdrop wholeBlack")
     private WebElementFacade backDrop;
-
     @FindBy(id = "hlistpg_fr_star_category")
     private WebElementFacade userRatingFilter;
-
     @FindBy(xpath = "//ul[@class=\"appliedFilters\"]/li/span[@class=\"latoBold\"]")
     private List<WebElementFacade> appliedFilters;
-
     @FindBy(xpath = "//span[@class=\"minValue\"]")
     private WebElementFacade minPrice;
-
     @FindBy(xpath = "//span[@class=\"maxValue\"]")
     private WebElementFacade maxPrice;
-
     //filter by textPrice
     @FindBy(xpath = "//div[@id=\"hlistpg_fr_price_per_night\"]/div")
     private WebElementFacade priceFilter;
-
-    private String priceSliderPath = "//div[@id=\"hlistpg_fr_price_per_night\"]/div/div/div/span";
-
     //element locators to select the hotel
     @FindBy(xpath = "//p[@class='appendBottom15']")
     private WebElementFacade moveToBottomOfThePage;
-
-    private String loadingRequest="//p[@class='appendBottom15']";
-
     @FindBy(xpath = "//div[@id=\"hotelListingContainer\"]/p")
     private WebElementFacade endPageMessage;
-
-    @FindBy(id="hotelListingContainer")
+    @FindBy(id = "hotelListingContainer")
     private WebElementFacade listingContainer;
-
-    @FindBy(id="back_to_top_button")
+    @FindBy(id = "back_to_top_button")
     private WebElementFacade backToTopButton;
 
-    private String hotelList="//p[@id=\"hlistpg_hotel_name\"]";
+    private String priceSliderPath = "//div[@id=\"hlistpg_fr_price_per_night\"]/div/div/div/span";
+
+    private String filterByUserRating = "//label[contains(text(),'%s')]";
+
+    private String hotelList = "//p[@id=\"hlistpg_hotel_name\"]";
 
     public void openPage() {
         openUrl("https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=05312020&checkout=06012020&city=RGCJB&country=IN&locusId=RGCJB&locusType=region&reference=hotel&roomStayQualifier=2e0e2e0e&searchText=Coimbatore%20District%2C%20Tamil%20Nadu%2C%20India&type=region");
@@ -91,76 +78,65 @@ public class SearchPage extends PageObject {
         utility.scrollToElement(getDriver(), priceFilter);
         if (Integer.valueOf(price) > 0) {
             Integer min = 0;
-            while (min < Integer.valueOf(price) || min > 30000) {
+            while (min < Integer.valueOf(price) || min > ValueConsts.MAX_PRICE) {
                 minPrice.waitUntilVisible();
                 actions.clickAndHold(element).moveByOffset(3, 0).release().perform();
-                String minPriceNumber = minPrice.getText().split(Consts.SPACE)[1];
+                String minPriceNumber = utility.splitString(minPrice.getText(),Consts.SPACE)[1];
                 min = Integer.valueOf(minPriceNumber);
-//                System.out.println(price + " != " + min + " is " + (min < Integer.valueOf(price)));
             }
         }
     }
-    public void assertion(String price,String userRating)
-    {
+
+    public void assertion(String price, String userRating) {
         utility.waitTillPageLoads(getDriver());
         String appliedFilter = "";
-        for (WebElementFacade element : appliedFilters)
-        {
+        for (WebElementFacade element : appliedFilters) {
             if (element.getText().startsWith(ValueConsts.INR))
             {
-                String currentValue = element.getText().split(" ")[1];
-                String minSelected = currentValue.split("-")[0];
-                String maxSelected = currentValue.split("-")[1];
+                String currentValue = utility.splitString(element.getText(),Consts.SPACE)[1];
+                String minSelected = utility.splitString(currentValue,Consts.DASH)[0];
                 if (minSelected.equalsIgnoreCase(price)) {
                     appliedFilter = minSelected;
                 }
                 assertEquals(price, appliedFilter);
             }
-            if(element.getText().contains(userRating))
-            {
-                appliedFilter=element.getText();
-                assertEquals(userRating,appliedFilter);
+            if (element.getText().contains(userRating)) {
+                appliedFilter = element.getText();
+                assertEquals(userRating, appliedFilter);
             }
-            appliedFilter="";
+            appliedFilter = "";
         }
     }
-    public void selectHotel(Integer numberOfHotel)
-    {
-        if(numberOfHotel>0) {
-            String hotelName = "";
+
+    public String selectHotel(Integer numberOfHotel) {
+        String hotelName = "";
+        if (numberOfHotel > 0) {
             utility.scrollToTheEndOfThePage(getDriver());
-            while (!endPageMessage.isVisible() && numberOfHotel>3)//3 is the hardcoded value can be made to the default values based on number of data loaded
-            {
+            while (!endPageMessage.isVisible() && numberOfHotel > ValueConsts.DEFUALT_LOADER_VALUE) {
                 utility.scrollToTheEndOfThePage(getDriver());
             }
             List<WebElement> listOfHotels = getDriver().findElements(By.xpath(hotelList));
             if (listOfHotels.size() < numberOfHotel) {
-                System.out.println("Requested hotel number is not found under this filter");
+                System.out.println("Requested hotel number is not found under this filter");//add exception here
             }
-            for (int j = 0; j < listOfHotels.size(); j++)
-            {
-                if(j==0 && j == numberOfHotel - 1)
-                {
+            for (int j = 0; j < listOfHotels.size(); j++) {
+                if (j == 0 && j == numberOfHotel - 1) {
                     backToTopButton.click();
                     hotelName = listOfHotels.get(j).getText();
                     utility.takeScreenshot(getDriver());
                     listOfHotels.get(j).click();
-                }
-                else if (j == numberOfHotel - 1 && j !=0) {
+                } else if (j == numberOfHotel - 1 && j != 0) {
                     utility.scrollToElement(getDriver(), listOfHotels.get(j - 1));
                     hotelName = listOfHotels.get(j).getText();
                     utility.takeScreenshot(getDriver());
                     listOfHotels.get(j).click();
                 }
             }
-            System.out.println(hotelName);
-            commonAction.switchToOpenedTab(getDriver());
-            utility.waitTillPageLoads(getDriver());
-        }
-        else
-        {
+//            utility.waitTillPageLoads(getDriver());
+        } else {
             System.out.println("Requested hotel number is not found under this filter");
         }
+        return hotelName;
     }
 
 }

@@ -19,4 +19,5 @@ public class Consts {
     public static final String SINGLE_QUOTE = "'";
     public static final String PERIOD = ".";
     public static final String DOUBLE_QUOTE = "\"";
+    public static final String DASH="-";
 }

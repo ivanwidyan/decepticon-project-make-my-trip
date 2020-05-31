@@ -34,12 +34,12 @@ You change it from these configs:
 - `customdriver.height=1080` this config to create the height you want in the Headspin.
 - `customdriver.remoteUrl` this needs to be filled with the Headspin hub URL that you want to connect.
 
-After finishing the config you can either run it using `CucumberRunner` or `JUnitRunner` directly or using `mvn clean verify`.
+After finishing the config you can either run it using `CucumberSecondRunner` directly or using Maven goal.
 
 Below is the full example of Maven goal for running the UI automation in Headspin UI.
 
 ```
- mvn clean verify -Drunner.class=JUnitRunner -Dwebdriver.provided.mydriver=com.decepticon.driver.CustomRemoteDriver -Dcustomdriver.browserName=chrome -Dcustomdriver.width=1920 -Dcustomdriver.height=1080 -Dcustomdriver.remoteUrl=https://dev-nz-akl-0.headspin.io:9092/v0/b62f619b47b742d6942a1dff468c41d6/wd/hub
+ mvn clean verify -Drunner.class=CucumberSecondRunner -Dwebdriver.provided.mydriver=com.decepticon.driver.CustomRemoteDriver -Dcustomdriver.browserName=chrome -Dcustomdriver.width=1920 -Dcustomdriver.height=1080 -Dcustomdriver.remoteUrl=https://dev-nz-akl-0.headspin.io:9092/v0/b62f619b47b742d6942a1dff468c41d6/wd/hub
 ```
 
 ## Generating Report

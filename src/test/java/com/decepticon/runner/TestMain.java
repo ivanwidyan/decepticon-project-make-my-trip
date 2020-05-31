@@ -56,10 +56,10 @@ public class TestMain {
 //        searchPage.openPage();
         searchPage.filterByUserRating("4 & above (Very Good)");
         searchPage.filterByPrice("1000");
-        searchPage.assertion("1000","4 & above (Very Good)");
-//        searchPage.selectHotel(5);
+//        searchPage.assertion("1000","4 & above (Very Good)");
+        searchPage.newSelectHotel(5);
 
-        hotelDetailPage.openPage();
+//        hotelDetailPage.openPage();
         hotelDetailPage.getTextRoomName("1");
         hotelDetailPage.getListRoomDetail("1");
         hotelDetailPage.getTextPrice("1", "1");

@@ -28,9 +28,15 @@ public class RoomPage extends UiUtility {
     @FindBy(xpath = "//a[@class='primaryBtn btnPayNow']")
     private WebElementFacade buttonPaynow;
 
+    @FindBy(xpath = "//span[@class='close']")
+    private WebElementFacade buttonClose;
+
     // Section Web Element
     @FindBy(xpath = "//div[@class='_SpecialRequest']")
     private WebElementFacade sectionOptionalRequest;
+
+    @FindBy(xpath = "//div[@class='_Modal modalCont']")
+    private WebElementFacade sectionPopupLeavingPage;
 
     // Select Option Web Element
     @FindBy(xpath = "//select[@id='mCode']")
@@ -93,6 +99,10 @@ public class RoomPage extends UiUtility {
         clickByWebElement(buttonPaynow);
     }
 
+    public void clickButtonClose() {
+        clickByWebElement(buttonClose);
+    }
+
     // Select Option Action
     public void selectMobileCode(String value) {
         selectOptionByWebElement(selectOptionsMobileCode, value);
@@ -117,4 +127,12 @@ public class RoomPage extends UiUtility {
     }
 
 
+    // Check Action
+    public Boolean isPopupLeavingPageVisible(){
+        return sectionPopupLeavingPage.isCurrentlyVisible();
+    }
+
+    public Boolean isTextBoxPanVisible(){
+        return textBoxPan.isCurrentlyVisible();
+    }
 }

@@ -32,9 +32,8 @@ public class HomePageSteps extends ScenarioSteps {
 
     @When("at home page city section fill text box city with {string}")
     public void atHomePageCitySectionFillTextBoxCityWithIndonesia(String value) {
-        System.out.println(value);
-        HomeData.setCountry(value);
         homePage.typeTextBoxCity(value);
+        HomeData.setCountry(value);
     }
 
     @When("at home page city section click list button City equals to {string}")
@@ -51,8 +50,8 @@ public class HomePageSteps extends ScenarioSteps {
         while (!homePage.isDateMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
-        homePage.clickButtonDate(month, date);
         HomeData.setDateCheckIn(homePage.getTextDate(month, date));
+        homePage.clickButtonDate(month, date);
     }
 
     @When("at home page click button Check Out equals to {string}")
@@ -63,8 +62,8 @@ public class HomePageSteps extends ScenarioSteps {
         while (!homePage.isDateMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
-        homePage.clickButtonDate(month, date);
         HomeData.setDateCheckIn(homePage.getTextDate(month, date));
+        homePage.clickButtonDate(month, date);
     }
 
     @When("at home page click button Room & Guest")

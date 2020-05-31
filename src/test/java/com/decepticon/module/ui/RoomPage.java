@@ -71,27 +71,23 @@ public class RoomPage extends UiUtility {
     // Type Action
     public void typeTextBoxFirstName(String value) {
 
-        getTextByWebElementWithNotFoundHandling(textBoxFirstName.type(value));
+        textBoxFirstName.type(value);
     }
 
     public void typeTextBoxLastName(String value) {
-
-        getTextByWebElementWithNotFoundHandling(textBoxLastName.type(value));
+        textBoxLastName.type(value);
     }
 
     public void typeTextBoxEmail(String value) {
-
-        getTextByWebElementWithNotFoundHandling(textBoxEmail.type(value));
+        textBoxEmail.type(value);
     }
 
     public void typeTextBoxMobileNumber(String value) {
-
-        getTextByWebElementWithNotFoundHandling(textBoxMobileNumber.type(value));
+        textBoxMobileNumber.type(value);
     }
 
     public void typeTextBoxPanString(String value) {
-
-        getTextByWebElementWithNotFoundHandling(textBoxPan.type(value));
+        textBoxPan.type(value);
     }
 
     // Click Action
@@ -119,23 +115,24 @@ public class RoomPage extends UiUtility {
     // Get Text
 
     public String getTextDate(String value) {
-        return fromXpathtoWebElement(String.format(textDate, value)).getText();
+        return getTextByWebElementWithNotFoundHandling(fromXpathtoWebElement(String.format(textDate, value)));
     }
 
     public String getTextTotalAmount() {
-        return textTotalAmount.getText();
+        return
+                getTextByWebElementWithNotFoundHandling(textTotalAmount);
     }
 
     public String getTextHotelName() {
-        return textHotelName.getText();
+        return getTextByWebElementWithNotFoundHandling(textHotelName);
     }
 
     public String getTextGuest(){
-        return textGuests.getText();
+        return getTextByWebElementWithNotFoundHandling(textGuests);
     }
 
     public String getTextRoomName(){
-        return textRoomName.getText();
+        return getTextByWebElementWithNotFoundHandling(textRoomName);
     }
 
 

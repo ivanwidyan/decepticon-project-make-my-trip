@@ -16,8 +16,8 @@ Feature: Purchase Feature
     When  at home page click button City
     When  at home page city section fill text box city with 'Indonesia'
     When  at home page city section click list button City equals to 'Bali'
-    When  at home page click button Check In equals to '17 July'
-    When  at home page click button Check Out equals to '20 July'
+    When  at home page click button Check In equals to '17 June'
+    When  at home page click button Check Out equals to '20 June'
     When  at home page click button Room & Guest
     When  at home page room section click button Adults equals to '2'
     When  at home page room section click button Children equals to '2'

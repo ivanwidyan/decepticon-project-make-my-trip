@@ -76,67 +76,66 @@ public class HomePage extends UiUtility {
 
     // Click Actions
     public void clickButtonLogin() {
-        JSExecutorUtility.clickByWebElement(buttonLogin, getDriver());
+        clickByWebElement(buttonLogin);
     }
 
     public void clickButtonSubmit() {
-        JSExecutorUtility.clickByWebElement(buttonSubmit, getDriver());
+        clickByWebElement(buttonSubmit);
     }
 
     public void clickButtonClose() {
-        JSExecutorUtility.clickByWebElement(buttonClose, getDriver());
+        clickByWebElement(buttonClose);
     }
 
     public void clickButtonHotel() {
-        JSExecutorUtility.clickByWebElement(buttonHotel, getDriver());
+        clickByWebElement(buttonHotel);
     }
 
     public void clickButtonCity() {
-        JSExecutorUtility.clickByWebElement(buttonCity, getDriver());
+        clickByWebElement(buttonCity);
     }
 
     public void clickButtonDate(String month, String date) {
-        JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(buttonDate, month, date)), getDriver());
+        clickByWebElement(fromXpathtoWebElement(String.format(buttonDate, month, date)));
     }
 
     public void clickButtonRoom() {
-        JSExecutorUtility.clickByWebElement(buttonRoom, getDriver());
+        clickByWebElement(buttonRoom);
     }
 
     public void clickButtonNumberOfAdults(String value) {
-        JSExecutorUtility.clickByWebElement(
-                fromXpathtoWebElement(String.format(buttonNumberOfAdults, value)), getDriver());
+        clickByWebElement(
+                fromXpathtoWebElement(String.format(buttonNumberOfAdults, value)));
     }
 
     public void clickButtonNumberOfChildren(String value) {
-        JSExecutorUtility.clickByWebElement(
-                fromXpathtoWebElement(String.format(buttonNumberOfChildren, value)), getDriver());
+        clickByWebElement(
+                fromXpathtoWebElement(String.format(buttonNumberOfChildren, value)));
     }
 
     public void clickButtonApplyRoom() {
-        JSExecutorUtility.clickByWebElement(buttonApplyRoom, getDriver());
+        clickByWebElement(buttonApplyRoom);
     }
 
     public void clickButtonTravelFor() {
-        JSExecutorUtility.clickByWebElement(buttonTravelFor, getDriver());
+        clickByWebElement(buttonTravelFor);
     }
 
     public void clickButtonSearch() {
-        JSExecutorUtility.clickByWebElement(buttonSearch, getDriver());
+        clickByWebElement(buttonSearch);
     }
 
     public void clickButtonNextDate() {
-        JSExecutorUtility.clickByWebElement(buttonNextDate, getDriver());
+        clickByWebElement(buttonNextDate);
     }
 
     public void clickButtonAddRooms() {
-        JSExecutorUtility.clickByWebElement(buttonAddRooms, getDriver());
+        clickByWebElement(buttonAddRooms);
     }
 
     public void clickButtonAgeChildren(String value) {
-        System.out.println(String.format(buttonAgeChildren, value));
-        JSExecutorUtility.clickByWebElement(
-                fromXpathtoWebElement(String.format(buttonAgeChildren, value)), getDriver());
+        clickByWebElement(
+                fromXpathtoWebElement(String.format(buttonAgeChildren, value)));
     }
 
     public void clickListButtonCity(String value) {
@@ -144,13 +143,12 @@ public class HomePage extends UiUtility {
     }
 
     public void clickListButtonTravelFor(String value) {
-        JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(listButtonTravelFor, value)), getDriver());
+        clickByWebElement(fromXpathtoWebElement(String.format(listButtonTravelFor, value)));
     }
 
     public void clickListButtonAgeChildren(String children, String age) {
-        System.out.println(String.format(listButtonAgeChildren, children, age));
-        JSExecutorUtility.clickByWebElement(
-                fromXpathtoWebElement(String.format(listButtonAgeChildren, children, age)), getDriver());
+        clickByWebElement(
+                fromXpathtoWebElement(String.format(listButtonAgeChildren, children, age)));
     }
 
     // Type Action

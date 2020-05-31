@@ -32,7 +32,7 @@ public class HotelDetailPage extends UiUtility {
 
 
     private String textPrice = "//div[@class='roomWrap'][%s]//div[@class='roomRight']/div[%s]//span[@class='bxNegotiate appendBottom5']";
-    private String textMultiPrice = "//div[@class='roomLeftContRow'][%s]//div//div[%s]//div//div[contains(text(),'INR')]";
+    private String textMultiPrice = "//div[@class='roomLeftContRow'][1]//div//div[2]//div[@class='col4']//div[contains(@class, 'pricebreakupCont')]";
     private String textTotalPrice = "//span[@id='detpg_cart_total_price_per_night']";
     private String textRoomName = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//h2";
     private String textHotelName = "//h1[@id='detpg_hotel_name']";
@@ -72,7 +72,7 @@ public class HotelDetailPage extends UiUtility {
 
     public void getTexthotelName() {
         String webElementFacade = find(By.xpath(String.format(textHotelName))).getText();
-        System.out.println("Room name : " + webElementFacade);
+        System.out.println("Hotel name : " + webElementFacade);
     }
 
     public void getListOption(String room, String option) {

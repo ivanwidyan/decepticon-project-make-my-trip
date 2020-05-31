@@ -7,6 +7,7 @@ import com.decepticon.module.utils.CommonAction;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class HomePageSteps extends ScenarioSteps {
 
@@ -34,8 +35,8 @@ public class HomePageSteps extends ScenarioSteps {
     @When("at home page city section fill text box city with {string}")
     public void atHomePageCitySectionFillTextBoxCityWithIndonesia(String value) {
         System.out.println(value);
-        homePage.typeTextBoxCity(value);
         homeData.setCountry(value);
+        homePage.typeTextBoxCity(value);
     }
 
     @When("at home page city section click list button City equals to {string}")

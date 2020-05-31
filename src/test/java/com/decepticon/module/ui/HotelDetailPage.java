@@ -77,30 +77,30 @@ public class HotelDetailPage extends UiUtility {
 
     public void getListOption(String room, String option) {
         System.out.println("list option : ");
-        ListWebElement(xpathToWebElement(String.format(listOptions, room, option)));
+        listWebElementsToListString(xpathToWebElement(String.format(listOptions, room, option)));
     }
 
 
     public void getListMultiOption(String room, String option) {
         System.out.println("list option : ");
-        ListWebElement(xpathToWebElement(String.format(listmultioptions, room, option)));
+        listWebElementsToListString(xpathToWebElement(String.format(listmultioptions, room, option)));
     }
 
     public void getListIncludedMultiOption(String room, String option) {
         System.out.println(" include list :");
-        ListWebElement(xpathToWebElement(String.format(listIncludedMultiOption, room, option)));
+        listWebElementsToListString(xpathToWebElement(String.format(listIncludedMultiOption, room, option)));
     }
 
     public void getListIncluded(String room, String option) {
         System.out.println(" include list :");
-        ListWebElement(xpathToWebElement(String.format(listIncluded, room, option)));
+        listWebElementsToListString(xpathToWebElement(String.format(listIncluded, room, option)));
     }
 
     public void getListRoomDetail(String roomnumber) {
         if (find(By.xpath(String.format(butonMoreAbout, roomnumber))).isPresent()) {
             find(By.xpath(String.format(butonMoreAbout, roomnumber))).click();
             System.out.println(" list room detail :");
-            ListWebElement(listRoomDetails);
+            listWebElementsToListString(listRoomDetails);
 
             System.out.println("jumlah " + listRoomDetails.size());
             if (listRoomDetails.size() != 0) {

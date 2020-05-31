@@ -10,7 +10,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SerenityRunner.class)
 public class SearchRunner {
@@ -25,22 +28,24 @@ public class SearchRunner {
 
     CommonAction commonAction;
 
+    private final String userRating = "4 & above (Very Good)";
+    private final String price = "1000";
+
     @Test
     public void testUI() {
         searchPage.openPage();
-        searchPage.filterByUserRating("4 & above (Very Good)");
-        searchPage.filterByPrice("1000");
-        searchPage.assertFilters("1000","4 & above (Very Good)");
-        searchPage.newSelectHotel(5);
-        commonAction.switchTab(Consts.SECOND_INDEX);
+        searchPage.clickButtonFilterByUserRatings(userRating);
+        searchPage.dragSliderFilterMinPrice(price);
 
-        System.out.println(getDriver().getCurrentUrl());
-//        hotelDetailPage.openPage();
-        hotelDetailPage.getTextRoomName("1");
-        hotelDetailPage.getListRoomDetail("1");
-        hotelDetailPage.getTextPrice("1", "1");
-        hotelDetailPage.getListOption("1", "1");
-        hotelDetailPage.getListIncluded("1", "1");
-        hotelDetailPage.clickButtonSelectRoom("1", "1");
+        List<String> appliedFilters = searchPage.getListTextFilter();
+        System.out.println(appliedFilters);
+        assertThat("min price filter is wrong",
+                appliedFilters.contains("INR " + price + "-30000"), equalTo(true));
+
+        assertThat("user rating filter is wrong",
+                appliedFilters.contains(userRating), equalTo(true));
+
+        searchPage.clickButtonHotelName(5);
+        commonAction.switchTab(Consts.SECOND_INDEX);
     }
 }

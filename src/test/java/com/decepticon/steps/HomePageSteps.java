@@ -4,7 +4,6 @@ import com.decepticon.module.constant.Consts;
 import com.decepticon.module.data.HomeData;
 import com.decepticon.module.ui.HomePage;
 import com.decepticon.module.utils.CommonAction;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -24,12 +23,12 @@ public class HomePageSteps extends ScenarioSteps {
 
     @When("at home page click button Hotel")
     public void atHomePageClickButtonHotel() {
-        homePage.clickMenuHotel();
+        homePage.clickButtonHotel();
     }
 
     @When("at home page click button City")
     public void atHomePageClickButtonCity() {
-        homePage.clickSectionCity();
+        homePage.clickButtonCity();
     }
 
     @When("at home page city section fill text box city with {string}")
@@ -41,7 +40,7 @@ public class HomePageSteps extends ScenarioSteps {
 
     @When("at home page city section click list button City equals to {string}")
     public void atHomePageCitySectionClickListButtonCityEqualsToBali(String value) {
-        homePage.clickListCity(value);
+        homePage.clickListButtonCity(value);
         homeData.setCity(value);
     }
 
@@ -50,10 +49,10 @@ public class HomePageSteps extends ScenarioSteps {
         String[] dateSplit = value.split(Consts.SPACE);
         String date = dateSplit[Consts.FIRST_INDEX];
         String month = dateSplit[Consts.SECOND_INDEX];
-        while (!homePage.isDateIsMatch(month, date)) {
+        while (!homePage.isDateMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
-        homePage.clickDate(month, date);
+        homePage.clickButtonDate(month, date);
         homeData.setDateCheckIn(homePage.getTextDate(month, date));
     }
 
@@ -62,26 +61,26 @@ public class HomePageSteps extends ScenarioSteps {
         String[] dateSplit = value.split(Consts.SPACE);
         String date = dateSplit[Consts.FIRST_INDEX];
         String month = dateSplit[Consts.SECOND_INDEX];
-        while (!homePage.isDateIsMatch(month, date)) {
+        while (!homePage.isDateMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
-        homePage.clickDate(month, date);
+        homePage.clickButtonDate(month, date);
         homeData.setDateCheckIn(homePage.getTextDate(month, date));
     }
 
     @When("at home page click button Room & Guest")
     public void atHomePageClickButtonRoomGuest() {
-        homePage.clickSectionRoom();
+        homePage.clickButtonRoom();
     }
 
     @When("at home page room section click button Adults equals to {string}")
     public void atHomePageRoomSectionClickButtonAdultsEqualsTo(String value) {
-        homePage.clickNumberOfAdults(value);
+        homePage.clickButtonNumberOfAdults(value);
     }
 
     @When("at home page room section click button Children equals to {string}")
     public void atHomePageRoomSectionClickButtonChildrenEqualsTo(String value) {
-        homePage.clickNumberOfChildren(value);
+        homePage.clickButtonNumberOfChildren(value);
     }
 
     @When("at home page room section click button Add Another Room")
@@ -96,12 +95,12 @@ public class HomePageSteps extends ScenarioSteps {
 
     @When("at home page click button Travelling For")
     public void atHomePageClickButtonTravellingFor() {
-        homePage.clickSectionTravelFor();
+        homePage.clickButtonTravelFor();
     }
 
     @When("at home page travel section click list button Travelling For equals to {string}")
     public void atHomePageTravelSectionClickListButtonTravellingForEqualsToWork(String value) {
-        homePage.clickSelectTravelFor(value);
+        homePage.clickListButtonTravelFor(value);
         homeData.setTravellingFor(value);
     }
 

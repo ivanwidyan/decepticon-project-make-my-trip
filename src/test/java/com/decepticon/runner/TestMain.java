@@ -27,37 +27,37 @@ public class TestMain {
     public void testCustomDriver() throws Exception {
         // Home page
         homePage.openPage();
-        homePage.clickMenuHotel();
+        homePage.clickButtonHotel();
 //        homePage.clickButtonLogin();
 //        homePage.typeTextBoxEmail("test");
 //        homePage.clickButtonSubmit();
-        homePage.clickSectionCity();
+        homePage.clickButtonCity();
         homePage.typeTextBoxCity("Indonesia");
-        homePage.clickListCity("Bali");
+        homePage.clickListButtonCity("Bali");
 
         checkTheDate("June", "17");
-        homePage.clickDate("June", "17");
+        homePage.clickButtonDate("June", "17");
 
         checkTheDate("June", "20");
-        homePage.clickDate("June", "20");
-        homePage.clickSectionRoom();
+        homePage.clickButtonDate("June", "20");
+        homePage.clickButtonRoom();
         int t = 0;
         while(t < 1) {
-            homePage.clickNumberOfAdults("2");
-            homePage.clickNumberOfChildren("2");
+            homePage.clickButtonNumberOfAdults("2");
+            homePage.clickButtonNumberOfChildren("2");
             homePage.clickButtonAddRooms();
             t++;
         }
         homePage.clickButtonApplyRoom();
-        homePage.clickSectionTravelFor();
-        homePage.clickSelectTravelFor("Work");
+        homePage.clickButtonTravelFor();
+        homePage.clickListButtonTravelFor("Work");
         homePage.clickButtonSearch();
 
 //        searchPage.openPage();
-        searchPage.filterByUserRating("4 & above (Very Good)");
-        searchPage.filterByPrice("1000");
+        searchPage.clickButtonFilterByUserRatings("4 & above (Very Good)");
+        searchPage.dragSliderFilterMinPrice("1000");
 //        searchPage.assertion("1000","4 & above (Very Good)");
-        searchPage.newSelectHotel(5);
+        searchPage.clickButtonHotelName(5);
 
 //        hotelDetailPage.openPage();
         hotelDetailPage.getTextRoomName("1");
@@ -71,7 +71,7 @@ public class TestMain {
     }
 
     public void checkTheDate(String month, String date){
-        while (!homePage.isDateIsMatch(month, date)) {
+        while (!homePage.isDateMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
     }

@@ -1,4 +1,4 @@
-package com.decepticon.runner;
+package com.decepticon;
 
 import com.decepticon.module.constant.Consts;
 import com.decepticon.module.data.HomeData;

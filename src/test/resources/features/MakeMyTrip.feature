@@ -70,6 +70,16 @@ Feature: Purchase Feature
     Then  at search results page applied filters for price should be "1000"
     When  at search results page click the "10"th hotel from the search results
     Then  at search results page tab is switched to the hotel detail page
+
+  @Positive @SearchandHdetail
+  Scenario: Make My Trip purchase scenario SearchPage and Hotel Detail
+    Given open search results page
+    When  at search results page filter by user rating as "4 & above (Very Good)"
+    Then  at search results page applied filters for user rating should be "4 & above (Very Good)"
+    When  at search results page filter by price from "1000"
+    Then  at search results page applied filters for price should be "1000"
+    When  at search results page click the "10"th hotel from the search results
+    Then  at search results page tab is switched to the hotel detail page
     When  at hotel detail page get text Hotel name
     When  at hotel detail page get text Room Name for room number equals to '1'
     When  at hotel detail page get list Room Detail for room number equals to '1'

@@ -11,7 +11,6 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
-import static com.decepticon.module.utils.Utility.waitTillPageLoads;
 import static junit.framework.TestCase.assertTrue;
 
 public class SearchPage extends UiUtility {
@@ -64,7 +63,6 @@ public class SearchPage extends UiUtility {
 
     // Click Actions
     public void clickButtonFilterByUserRatings(String userRating) {
-        waitTillPageLoads(getDriver());
         if (popUpOnSearchResult.isVisible()) {
             getDriver().navigate().refresh();
         }

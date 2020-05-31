@@ -55,24 +55,14 @@ public class SearchPageSteps
                 appliedFilters.contains("INR " + price + "-30000"), equalTo(true));
     }
 
-    @When("at search results page click the {string}th hotel from the search results")
-    public void atSearchResultsPageClickTheThHotelFromTheSearchResults(String numberOfHotel) {
-        searchPage.clickButtonHotelName(Integer.valueOf(numberOfHotel));
+    @When("at search results page click the {int}th hotel from the search results")
+    public void atSearchResultsPageClickTheThHotelFromTheSearchResults(int numberOfHotel) {
+        searchPage.clickButtonHotelName(numberOfHotel);
     }
 
     @Then("at search results page tab is switched to the hotel detail page")
     public void atSearchResultsPageTabIsSwitchedToTheHotelDetailPage()
     {
         commonAction.switchTab(Consts.SECOND_INDEX);
-    }
-
-    @When("at search results page user select the currency")
-    public void atSearchResultsPageUserSelectTheCurrency() {
-        searchPage.selectCurrency();
-    }
-
-    @Then("at search results page selected currency is shown at the top of the page")
-    public void atSearchResultsPageSelectedCurrencyIsShownAtTheTopOfThePage() {
-        searchPage.assertCurrency(ValueConsts.CURRENCY);
     }
 }

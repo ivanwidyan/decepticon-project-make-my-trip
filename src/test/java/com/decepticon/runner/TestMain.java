@@ -106,7 +106,10 @@ public class TestMain {
         roomPage.typeTextBoxEmail("Deception@mailinator.com");
         roomPage.selectMobileCode("+62");
         roomPage.typeTextBoxMobileNumber("81234567890");
-        roomPage.typeTextBoxPanString("101");
+        if(roomPage.isPopupLeavingPageVisible())
+            roomPage.clickButtonClose();
+        if(roomPage.isTextBoxPanVisible())
+            roomPage.typeTextBoxPanString("101");
         roomPage.clickCheckListOptions("Large bed");
         roomPage.clickCheckListOptions("Smoking room");
         roomPage.clickCheckBoxDonation();

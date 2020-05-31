@@ -124,7 +124,7 @@ public class HomePageSteps extends ScenarioSteps {
 
     @When("at home page login popup click button continue")
     public void atHomePageLoginPopupClickButtonContinue() {
-        homePage.clickButtonSubmit();
+        homePage.clickButtonSubmitForUsername();
     }
 
     @When("at home page login popup click button close")

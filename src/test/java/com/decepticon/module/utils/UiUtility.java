@@ -51,6 +51,16 @@ public class UiUtility extends PageObject {
         JSExecutorUtility.clickByWebElement(webElementFacade, getDriver());
     }
 
+    protected void clickByWebElementWithNotFoundHandling(WebElementFacade webElementFacade){
+        try {
+//            webElementFacade.waitUntilPresent();
+            JSExecutorUtility.clickByWebElement(webElementFacade, getDriver());
+            webElementFacade.click();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     protected String getTextByWebElementWithNotFoundHandling(WebElementFacade webElementFacade) {
         webElementFacade.waitUntilPresent();
         try {

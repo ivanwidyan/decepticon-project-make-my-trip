@@ -109,7 +109,6 @@ Feature: Purchase Feature
     When  at search results page click the 10th hotel from the search results
     Then  at search results page tab is switched to the hotel detail page
 
-
     When  at hotel detail page get text Hotel name
     When  at hotel detail page get text Room Name for room number equals to '1'
     When  at hotel detail page get list Room Detail for room number equals to '1'

@@ -92,4 +92,10 @@ public class RoomPageSteps extends ScenarioSteps {
     public void atRoomPageClickButtonPaynow() {
         roomPage.clickButtonPayNow();
     }
+
+    @When("at room page click popup leaving page if show up")
+    public void atRoomPageClickPopupLeavingPageIfShowUp() {
+        if(roomPage.isPopupLeavingPageVisible())
+            roomPage.clickButtonClose();
+    }
 }

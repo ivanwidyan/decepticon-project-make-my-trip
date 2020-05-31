@@ -1,0 +1,50 @@
+[
+  {
+    "name": "dark magician",
+    "driver": "chrome",
+    "data": {
+      "fandom": {
+        "name": "Dark Magician",
+        "attribute": "Dark",
+        "types": "Monster",
+        "atk": "1000",
+        "def": "2000",
+        "img": "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg",
+        "ss": "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg"
+      },
+      "api": {
+        "name": "Dark Magician",
+        "attribute": "Dark",
+        "types": "Monster",
+        "atk": "1000",
+        "def": "2000",
+        "img": "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg",
+        "ss": "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg"
+      }
+    }
+  },
+  {
+    "name": "fire hole",
+    "driver": "chrome",
+    "data": {
+      "fandom": {
+        "name": "Fire Hole",
+        "attribute": "Spell",
+        "types": "Spell",
+        "atk": "-",
+        "def": "-",
+        "img": "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg",
+        "ss": "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg"
+      },
+      "api": {
+        "name": "Fire Hole",
+        "attribute": "Spell",
+        "types": "Spell",
+        "atk": "-",
+        "def": "-",
+        "img": "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg",
+        "ss": "https://assets-global.website-files.com/5b0ee246bd5a96cce5ca393b/5cba23a2d8a14794538026eb_skyscanner%2015.jpg"
+      }
+    }
+  }
+]

@@ -82,15 +82,15 @@ public class RoomPage extends UiUtility {
 
     // Click Action
     public void clickCheckListOptions(String value) {
-        JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(checkBoxRequest, value)), getDriver());
+        clickByWebElement(fromXpathtoWebElement(String.format(checkBoxRequest, value)));
     }
 
     public void clickCheckBoxDonation() {
-        JSExecutorUtility.clickByWebElement(checkBoxDonation, getDriver());
+        clickByWebElement(checkBoxDonation);
     }
 
     public void clickButtonPayNow() {
-        JSExecutorUtility.clickByWebElement(buttonPaynow, getDriver());
+        clickByWebElement(buttonPaynow);
     }
 
     // Select Option Action

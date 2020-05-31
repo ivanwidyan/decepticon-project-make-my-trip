@@ -15,8 +15,6 @@ public class HomePageSteps extends ScenarioSteps {
 
     private HomePage homePage;
 
-    private HomeData homeData;
-
     @Given("open home page")
     public void openHomePage() {
         commonAction.openPage("https://www.makemytrip.com/");
@@ -35,14 +33,14 @@ public class HomePageSteps extends ScenarioSteps {
     @When("at home page city section fill text box city with {string}")
     public void atHomePageCitySectionFillTextBoxCityWithIndonesia(String value) {
         System.out.println(value);
-        homeData.setCountry(value);
+        HomeData.setCountry(value);
         homePage.typeTextBoxCity(value);
     }
 
     @When("at home page city section click list button City equals to {string}")
     public void atHomePageCitySectionClickListButtonCityEqualsToBali(String value) {
         homePage.clickListButtonCity(value);
-        homeData.setCity(value);
+        HomeData.setCity(value);
     }
 
     @When("at home page click button Check In equals to {string}")
@@ -54,7 +52,7 @@ public class HomePageSteps extends ScenarioSteps {
             homePage.clickButtonNextDate();
         }
         homePage.clickButtonDate(month, date);
-        homeData.setDateCheckIn(homePage.getTextDate(month, date));
+        HomeData.setDateCheckIn(homePage.getTextDate(month, date));
     }
 
     @When("at home page click button Check Out equals to {string}")
@@ -66,7 +64,7 @@ public class HomePageSteps extends ScenarioSteps {
             homePage.clickButtonNextDate();
         }
         homePage.clickButtonDate(month, date);
-        homeData.setDateCheckIn(homePage.getTextDate(month, date));
+        HomeData.setDateCheckIn(homePage.getTextDate(month, date));
     }
 
     @When("at home page click button Room & Guest")
@@ -102,7 +100,7 @@ public class HomePageSteps extends ScenarioSteps {
     @When("at home page travel section click list button Travelling For equals to {string}")
     public void atHomePageTravelSectionClickListButtonTravellingForEqualsToWork(String value) {
         homePage.clickListButtonTravelFor(value);
-        homeData.setTravellingFor(value);
+        HomeData.setTravellingFor(value);
     }
 
     @When("at home page click button Search")

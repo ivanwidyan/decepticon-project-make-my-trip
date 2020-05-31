@@ -65,4 +65,14 @@ public class SearchPageSteps
     {
         commonAction.switchTab(Consts.SECOND_INDEX);
     }
+
+    @When("at search results page user select the currency")
+    public void atSearchResultsPageUserSelectTheCurrency() {
+        searchPage.selectCurrency();
+    }
+
+    @Then("at search results page selected currency is shown at the top of the page")
+    public void atSearchResultsPageSelectedCurrencyIsShownAtTheTopOfThePage() {
+        searchPage.assertCurrency(ValueConsts.CURRENCY_INR);
+    }
 }

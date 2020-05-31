@@ -46,7 +46,7 @@ public class SearchPage extends PageObject {
     //element locators to select the hotel
     @FindBy(xpath = "//p[@class='appendBottom15']")
     WebElementFacade moveToBottomOfThePage;
-    String loadingRequest="//p[@class='appendBottom15']";
+    private String loadingRequest="//p[@class='appendBottom15']";
     @FindBy(xpath = "//div[@id=\"hotelListingContainer\"]/p")
     WebElementFacade endPageMessage;
     @FindBy(id="hotelListingContainer")
@@ -61,7 +61,6 @@ public class SearchPage extends PageObject {
     }
 
     public void filterByUserRating(String userRating) {
-        //filter by userRating
         if (popUpOnSearchResult.isVisible()) {
             getDriver().navigate().refresh();
             waitForAngularRequestsToFinish();
@@ -83,7 +82,6 @@ public class SearchPage extends PageObject {
                 actions.clickAndHold(element).moveByOffset(3, 0).release().perform();
                 String minPriceNumber = minPrice.getText().split(Consts.SPACE)[1];
                 min = Integer.valueOf(minPriceNumber);
-//                System.out.println(price + " != " + min + " is " + (min < Integer.valueOf(price)));
             }
         }
     }
@@ -126,14 +124,14 @@ public class SearchPage extends PageObject {
             }
             for (int j = 0; j < listOfHotels.size(); j++)
             {
-                if(j==0)
+                if(j==0 && j == numberOfHotel - 1)
                 {
                     backToTopButton.click();
                     hotelName = listOfHotels.get(j).getText();
                     utility.takeScreenshot(getDriver());
                     listOfHotels.get(j).click();
                 }
-                if (j == numberOfHotel - 1 && j !=0) {
+                else if (j == numberOfHotel - 1 && j !=0) {
                     utility.scrollToElement(getDriver(), listOfHotels.get(j - 1));
                     hotelName = listOfHotels.get(j).getText();
                     utility.takeScreenshot(getDriver());
@@ -143,6 +141,11 @@ public class SearchPage extends PageObject {
             System.out.println(hotelName);
             commonAction.switchToOpenedTab(getDriver());
             utility.waitTillPageLoads(getDriver());
+            try {
+                Thread.sleep(15000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         else
         {

@@ -14,8 +14,9 @@
       When  at room page fill text box email with 'deception@mailinator.com'
       When  at room page select option code phone number with '+62'
       When  at room page fill text box phone number with '81234567890'
+      When  at room page click popup leaving page if show up
       When  at room page fill text box pan with '101'
-#      When  at room page click checkbox special request equals 'Smoking room'
-#      When  at room page click checkbox special request equals 'Large bed'
+      When  at room page click checkbox special request equals 'Smoking room'
+      When  at room page click checkbox special request equals 'Large bed'
       When  at room page click checkbox donation
       When  at room page click button paynow

@@ -61,7 +61,7 @@ Feature: Purchase Feature
     When  at hotel detail page get text Total Price For Multiple People
     When  at hotel detail page click button Review Detail
 
-  @Positive
+  @Positive @Search
   Scenario: Make My Trip purchase scenario SearchPage
     Given open search results page
     When  at search results page filter by user rating as "4 & above (Very Good)"

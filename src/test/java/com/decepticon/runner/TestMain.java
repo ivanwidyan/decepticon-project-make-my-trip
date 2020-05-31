@@ -1,6 +1,7 @@
 package com.decepticon.runner;
 
 import com.decepticon.module.constant.Consts;
+import com.decepticon.module.data.HomeData;
 import com.decepticon.module.ui.*;
 import com.decepticon.module.utils.CommonAction;
 import com.decepticon.module.utils.Utility;
@@ -54,11 +55,15 @@ public class TestMain {
         homePage.clickButtonHotel();
         homePage.clickButtonCity();
         homePage.typeTextBoxCity("Indonesia");
+        HomeData.setCountry("Indonesia");
         homePage.clickListButtonCity("Bali");
-        checkTheDate("June", "17");
-        homePage.clickButtonDate("June", "17");
-        checkTheDate("June", "20");
-        homePage.clickButtonDate("June", "20");
+        HomeData.setCity("Bali");
+        checkTheDate("September", "17");
+        HomeData.setDateCheckIn(homePage.getTextDate("September", "17"));
+        homePage.clickButtonDate("September", "17");
+        checkTheDate("September", "20");
+        HomeData.setDateCheckOut(homePage.getTextDate("September", "20"));
+        homePage.clickButtonDate("September", "20");
         homePage.clickButtonRoom();
         int t = 0;
         while (t < 1) {

@@ -1,75 +1,107 @@
 package com.decepticon.module.ui;
 
+import com.decepticon.module.constant.Consts;
+import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
 
+import java.util.HashMap;
 import java.util.List;
 
-public class BookingSummaryPage extends PageObject {
+public class BookingSummaryPage extends UiUtility {
 
   // Text Elements
-  @FindBy(xpath = "//p[@class='cityName']")
-  private WebElementFacade textCityName;
+  @FindBy(xpath = "//p[@class='hotel_name pymt-htlInfo-name lato-semibold append_bottom6']")
+  private WebElementFacade textHotelName;
 
-  @FindBy(xpath = "//p[@class='ellipsis light_gray hidden-xs']")
+  @FindBy(xpath = "//p[@class='hotel_location pymt-htlInfo-loc lato-regular']")
   private WebElementFacade textAdress;
 
-  @FindBy(xpath = "//div[@class='col-sm-2 col-xs-2 hidden-xs grt_arrow_aligment']//p[@class='inOut_date append_bottom5']")
-  private WebElementFacade textCheckInMonthDay;
+  @FindBy(xpath = "//span[@class='pull-right blank_icon']//span")
+  private WebElementFacade imageActiveStars;
 
-  @FindBy(xpath = "//div[@class='col-sm-2 col-xs-2 hidden-xs grt_arrow_aligment']//p[@class='inOut_date append_bottom5']//span")
+  @FindBy(xpath = "//div[@class='checkin pull-left']//span[@class='lato-semibold']")
   private WebElementFacade textCheckInDate;
 
-  @FindBy(xpath = "//div[@class='col-sm-2 col-xs-2 hidden-xs']//p[@class='inOut_date append_bottom5']")
-  private WebElementFacade textCheckOutMonthDay;
+  @FindBy(xpath = "//div[@class='checkin pull-left']//span[@class='lato-regular grey']")
+  private WebElementFacade textCheckInDay;
 
-  @FindBy(xpath = "//div[@class='col-sm-2 col-xs-2 hidden-xs']//p[@class='inOut_date append_bottom5']//span")
+  @FindBy(xpath = "//div[@class='checkout pull-right']//span[@class='lato-semibold']")
   private WebElementFacade textCheckOutDate;
 
-  @FindBy(xpath = "//p[@class='travel_price append_bottom5']//span[@class='formattedCurrency grandTotal']")
+  @FindBy(xpath = "//div[@class='checkout pull-right']//span[@class='lato-regular grey']")
+  private WebElementFacade textCheckOutDay;
+
+  @FindBy(xpath = "//span[@class='black']")
+  private WebElementFacade textRoomName;
+
+  @FindBy(xpath = "//span[@id='top_rail_totalAmount']")
   private WebElementFacade textTotalAmount;
 
-  // Image Elements
-  @FindBy(xpath = "//p[@class='star_category append_bottom5']//span[@class='glyphicon glyphicon-star active-star']")
-  private List<WebElementFacade> listImageActiveStars;
+  @FindBy(xpath = "//span[@class='make_block lato-regular adult_info']")
+  private List<WebElementFacade> listTextGuests;
 
   public void openPage() {
-    openUrl("https://m-securepay.makemytrip.com/common-payment-web-iframe/loadCheckoutPage.pymt?checkoutId=465696416581428");
+    openUrl("https://m-securepay.makemytrip.com/common-payment-web-iframe/loadCheckoutPage.pymt?checkoutId=465732626918207");
   }
 
   // Get Text
-  public String getTextCityName(){
-    return textCityName.getText();
+  public String getTextHotelName(){
+    return getTextByWebElementWithNotFoundHandling(textHotelName);
   }
 
   public String getTextAdress(){
-    return textAdress.getText();
-  }
-
-  public String getTextCheckInMonthDay(){
-    return textCheckInMonthDay.getText();
+    return getTextByWebElementWithNotFoundHandling(textAdress);
   }
 
   public String getTextCheckInDate(){
-    return textCheckInDate.getText();
-  }
-
-  public String getTextCheckOutMonthDay(){
-    return textCheckOutMonthDay.getText();
+    String date = getTextByWebElementWithNotFoundHandling(textCheckInDay)
+            + Consts.SPACE + getTextByWebElementWithNotFoundHandling(textCheckInDate)
+            .replaceAll("' ", Consts.EMPTY_STRING);
+    return date;
   }
 
   public String getTextCheckOutDate(){
-    return textCheckOutDate.getText();
+    String date = getTextByWebElementWithNotFoundHandling(textCheckOutDay)
+            + Consts.SPACE + getTextByWebElementWithNotFoundHandling(textCheckOutDate)
+            .replaceAll("' ", Consts.EMPTY_STRING);
+    return date;
+  }
+
+  public String getTextRoomName(){
+    return getTextByWebElementWithNotFoundHandling(textRoomName).split(" \\| ")[0];
   }
 
   public String getTextTotalAmount(){
-    return textTotalAmount.getText();
+    return getTextByWebElementWithNotFoundHandling(textTotalAmount).replace(Consts.PERIOD, Consts.COMMA);
+  }
+
+  public HashMap<String, Integer> getNumberGuestsAmounts(){
+    List<String> listGuests = listWebElementsToListString(listTextGuests);
+    System.out.println(listGuests);
+    Integer adults = 0;
+    Integer children = 0;
+    for (int i = 0; i < listGuests.size(); i++) {
+      String[] splitGuest = listGuests.get(i).split(", ");
+      for (int j = 0; j < splitGuest.length; j++) {
+        String[] guest = splitGuest[j].split(" ");
+        if (guest[1].equalsIgnoreCase("child")) {
+          children += Integer.valueOf(guest[0]);
+        } else {
+          adults += Integer.valueOf(guest[0]);
+        }
+      }
+    }
+
+    HashMap<String, Integer> guestAmount = new HashMap<>();
+    guestAmount.put("child", children);
+    guestAmount.put("adult", adults);
+    return guestAmount;
   }
 
   // Get Number
-  public Integer getNumberActiveStars(){
-    return listImageActiveStars.size();
+  public String getNumberActiveStars(){
+    return imageActiveStars.getAttribute("class");
   }
 }

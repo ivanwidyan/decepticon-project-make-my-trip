@@ -62,7 +62,7 @@ public class HomePageSteps extends ScenarioSteps {
         while (!homePage.isDateMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
-        HomeData.setDateCheckIn(homePage.getTextDate(month, date));
+        HomeData.setDateCheckOut(homePage.getTextDate(month, date));
         homePage.clickButtonDate(month, date);
     }
 
@@ -74,11 +74,15 @@ public class HomePageSteps extends ScenarioSteps {
     @When("at home page room section click button Adults equals to {string}")
     public void atHomePageRoomSectionClickButtonAdultsEqualsTo(String value) {
         homePage.clickButtonNumberOfAdults(value);
+        Integer countOfAdults = HomeData.getNumberOfAdults() + Integer.parseInt(value);
+        HomeData.setNumberOfAdults(countOfAdults);
     }
 
     @When("at home page room section click button Children equals to {string}")
     public void atHomePageRoomSectionClickButtonChildrenEqualsTo(String value) {
         homePage.clickButtonNumberOfChildren(value);
+        Integer countOfAdults = HomeData.getNumberOfAdults() + Integer.parseInt(value);
+        HomeData.setNumberOfAdults(countOfAdults);
     }
 
     @When("at home page room section click button Add Another Room")
@@ -89,6 +93,8 @@ public class HomePageSteps extends ScenarioSteps {
     @When("at home page room section click button Apply")
     public void atHomePageRoomSectionClickButtonApply() {
         homePage.clickButtonApplyRoom();
+        HomeData.setNumberOfRooms(homePage.getTextNumberOfGuest());
+        System.out.println(HomeData.getNumberOfRooms());
     }
 
     @When("at home page click button Travelling For")

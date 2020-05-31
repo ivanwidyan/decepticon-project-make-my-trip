@@ -20,32 +20,32 @@ public class RoomPageSteps extends ScenarioSteps {
     @Given("at room page store the check in date to the data")
     public void atRoomPageStoreTheCheckInDateToTheData() {
         RoomData.setCheckinDate(roomPage.getTextDate(String.valueOf(Consts.SECOND_INDEX)));
-        System.out.println(RoomData.getCheckinDate());
     }
 
     @And("at room page store the check out date to the data")
     public void atRoomPageStoreTheCheckOutDateToTheData() {
         RoomData.setCheckoutDate(roomPage.getTextDate(String.valueOf(Consts.THRID_INDEX)));
-        System.out.println(RoomData.getCheckoutDate());
     }
 
     @And("at room page store the hotel name date to the data")
     public void atRoomPageStoreTheHotelNameDateToTheData() {
         RoomData.setHotelName(roomPage.getTextHotelName());
-        System.out.println(RoomData.getHotelName());
     }
 
     @And("at room page store the total amount date to the data")
     public void atRoomPageStoreTheTotalAmountDateToTheData() {
         String[] arrTotalAmount = roomPage.getTextTotalAmount().split(Consts.SPACE);
         RoomData.setTotalAmount(arrTotalAmount[Consts.SECOND_INDEX]);
-        System.out.println(RoomData.getTotalAmount());
     }
 
     @And("at room page store the total guests date to the data")
     public void atRoomPageStoreTheTotalGuestsDateToTheData() {
         RoomData.setGuest(roomPage.getTextGuest());
-        System.out.println(RoomData.getGuest());
+    }
+
+    @And("at room page store the room name date to the data")
+    public void atRoomPageStoreTheRoomNameDateToTheData() {
+        RoomData.setRoomName(roomPage.getTextRoomName());
     }
 
     @When("at room page fill text box first name with {string}")

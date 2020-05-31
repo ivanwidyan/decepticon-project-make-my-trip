@@ -1,6 +1,7 @@
 package com.decepticon.runner;
 
 import com.decepticon.module.constant.Consts;
+import com.decepticon.module.data.HomeData;
 import com.decepticon.module.ui.*;
 import com.decepticon.module.utils.CommonAction;
 import com.decepticon.module.utils.Utility;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 @RunWith(SerenityRunner.class)
 public class TestMain {
@@ -54,11 +56,15 @@ public class TestMain {
         homePage.clickButtonHotel();
         homePage.clickButtonCity();
         homePage.typeTextBoxCity("Indonesia");
+        HomeData.setCountry("Indonesia");
         homePage.clickListButtonCity("Bali");
-        checkTheDate("June", "17");
-        homePage.clickButtonDate("June", "17");
-        checkTheDate("June", "20");
-        homePage.clickButtonDate("June", "20");
+        HomeData.setCity("Bali");
+        checkTheDate("September", "17");
+        HomeData.setDateCheckIn(homePage.getTextDate("September", "17"));
+        homePage.clickButtonDate("September", "17");
+        checkTheDate("September", "20");
+        HomeData.setDateCheckOut(homePage.getTextDate("September", "20"));
+        homePage.clickButtonDate("September", "20");
         homePage.clickButtonRoom();
         int t = 0;
         while (t < 1) {
@@ -77,7 +83,7 @@ public class TestMain {
         homePage.clickButtonSearch();
 
         // Search Page Flow
-        searchPage.openPage();
+//        searchPage.openPage();
         searchPage.clickButtonFilterByUserRatings(userRating);
         searchPage.dragSliderFilterMinPrice(price);
 
@@ -115,15 +121,31 @@ public class TestMain {
         roomPage.clickCheckBoxDonation();
         roomPage.clickButtonPayNow();
 
+        Utility.delayInSeconds(10);
+
         // Booking Summary Flow
-        System.out.println(bookingSummaryPage.getNumberActiveStars());
+        System.out.println(bookingSummaryPage.getTextHotelName());
         System.out.println(bookingSummaryPage.getTextAdress());
         System.out.println(bookingSummaryPage.getTextCheckInDate());
-        System.out.println(bookingSummaryPage.getTextCheckInMonthDay());
         System.out.println(bookingSummaryPage.getTextCheckOutDate());
-        System.out.println(bookingSummaryPage.getTextCheckOutMonthDay());
-        System.out.println(bookingSummaryPage.getTextCityName());
+        System.out.println(bookingSummaryPage.getTextRoomName());
+        System.out.println(bookingSummaryPage.getNumberGuestsAmounts());
         System.out.println(bookingSummaryPage.getTextTotalAmount());
+
+        assertThat("text hotel name is wrong",
+                bookingSummaryPage.getTextHotelName(), equalTo("Grand Zuri Kuta Bali"));
+        assertThat("text check in date is wrong",
+                bookingSummaryPage.getTextCheckInDate(), equalToIgnoringCase("Wed 17 Jun 2020"));
+        assertThat("text check out date is wrong",
+                bookingSummaryPage.getTextCheckOutDate(), equalToIgnoringCase("Sat 20 Jun 2020"));
+        assertThat("text room name is wrong",
+                bookingSummaryPage.getTextRoomName(), equalToIgnoringCase("Superior Room"));
+        assertThat("number adult is wrong",
+                bookingSummaryPage.getNumberGuestsAmounts().get("adult"), equalTo(4));
+        assertThat("number children is wrong",
+                bookingSummaryPage.getNumberGuestsAmounts().get("child"), equalTo(4));
+        assertThat("text total amount is wrong",
+                bookingSummaryPage.getTextTotalAmount(), equalTo("8,404"));
 
         Utility.delayInSeconds(10);
     }

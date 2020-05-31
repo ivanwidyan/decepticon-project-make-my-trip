@@ -3,6 +3,7 @@ package com.decepticon.module.utils;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
@@ -48,5 +49,14 @@ public class UiUtility extends PageObject {
     protected void clickByWebElement(WebElementFacade webElementFacade){
         webElementFacade.waitUntilPresent();
         JSExecutorUtility.clickByWebElement(webElementFacade, getDriver());
+    }
+
+    protected String getTextByWebElementWithNotFoundHandling(WebElementFacade webElementFacade) {
+        webElementFacade.waitUntilPresent();
+        try {
+            return webElementFacade.getText();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

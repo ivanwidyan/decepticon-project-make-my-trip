@@ -7,6 +7,34 @@ public class HomeData {
     private static String password;
     private static String dateCheckIn;
     private static String dateCheckOut;
+    private static String numberOfRooms;
+    public static String travellingFor;
+    private static int numberOfAdults;
+    private static int numberOfChildrens;
+
+    public static Integer getNumberOfAdults() {
+        return numberOfAdults;
+    }
+
+    public static void setNumberOfAdults(Integer numberOfAdults) {
+        HomeData.numberOfAdults = numberOfAdults;
+    }
+
+    public static Integer getNumberOfChildrens() {
+        return numberOfChildrens;
+    }
+
+    public static void setNumberOfChildrens(Integer numberOfChildrens) {
+        HomeData.numberOfChildrens = numberOfChildrens;
+    }
+
+    public static String getNumberOfRooms() {
+        return numberOfRooms;
+    }
+
+    public static void setNumberOfRooms(String numberOfRooms) {
+        HomeData.numberOfRooms = numberOfRooms;
+    }
 
     public static String getCountry() {
         return country;
@@ -63,6 +91,4 @@ public class HomeData {
     public static void setTravellingFor(String travellingFor) {
         HomeData.travellingFor = travellingFor;
     }
-
-    public static String travellingFor;
 }

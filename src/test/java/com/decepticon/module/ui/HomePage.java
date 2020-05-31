@@ -52,6 +52,11 @@ public class HomePage extends UiUtility {
     @FindBy(xpath = "//input[contains(@placeholder,'Enter city/ Hotel/ Area/ Building')]")
     private WebElementFacade textBoxCity;
 
+    // Text Element
+    @FindBy(xpath = "//label[@for='guest']//p/span/span[1]")
+    private WebElementFacade textNumberOfGuests;
+
+
     private String buttonDate = "//div[contains(text(),'%s')]/ancestor::div[@class='DayPicker-Month']//div[@aria-disabled='false' and .='%s']";
 
     private String buttonNumberOfAdults = "//div[contains(@class,'hsw_inner')]//ul[1]//li[%s]";
@@ -73,6 +78,10 @@ public class HomePage extends UiUtility {
     // Get Text
     public String getTextDate(String month, String date){
         return fromXpathtoWebElement(String.format(buttonDate, month, date)).getAttribute(Consts.ARIA_LABEL);
+    }
+
+    public String getTextNumberOfGuest(){
+        return textNumberOfGuests.getText();
     }
 
     // Click Actions

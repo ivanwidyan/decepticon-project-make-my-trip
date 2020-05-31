@@ -5,11 +5,10 @@ Feature: Purchase Feature
   Scenario: Purchase hotel in Make My Trip web scenario
     Given open home page
     When  at home page click button login
-    When  at home page login popup fill text box username with 'gocoolmmt@mailinator.com'
-    When  at home page login popup click button continue
-    When  at home page login popup click button continue
-    When  at home page login popup fill text box password with 'testing@9091'
-    When  at home page login popup click button continue
+    When  at home page login popup fill text box username with 'decepticonmmtteam@gmail.com'
+    When  at home page login popup click button continue username
+    When  at home page login popup fill text box password with 'decepticon123!'
+    When  at home page login popup click button continue password
     When  at home page login popup click button close
 
     When  at home page click button Hotel
@@ -46,11 +45,7 @@ Feature: Purchase Feature
     When  at hotel detail page get list Included in Fee for room number equals to '1' and option number equals to '1'
     When  at hotel detail page click button Select Room for room number equals to '1' and option number equals to '1'
 
-    Given at room page store the check in date to the data
-    And   at room page store the check out date to the data
-    And   at room page store the hotel name date to the data
-    And   at room page store the total amount date to the data
-    And   at room page store the total guests date to the data
+    Given at room page store the hotel name date to the data
     And   at room page store the room name date to the data
     When  at room page fill text box first name with 'We are'
     When  at room page fill text box last name with 'Deception'
@@ -62,6 +57,7 @@ Feature: Purchase Feature
     When  at room page click checkbox special request equals 'Smoking room' if visible
     When  at room page click checkbox special request equals 'Large bed' if visible
     When  at room page click checkbox donation
+    Then  at room page store the total amount date to the data
     When  at room page click button paynow
 
     Then at book page hotel name should correct

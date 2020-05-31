@@ -5,9 +5,9 @@ Feature: Purchase Feature
   Scenario: Purchase hotel in Make My Trip web scenario
     Given open home page
     When  at home page click button login
-    When  at home page login popup fill text box username with 'gocoolmmt@mailinator.com'
+    When  at home page login popup fill text box username with 'decepticonmmtteam@gmail.com'
     When  at home page login popup click button continue username
-    When  at home page login popup fill text box password with 'testing@9091'
+    When  at home page login popup fill text box password with 'decepticon123!'
     When  at home page login popup click button continue password
     When  at home page login popup click button close
 

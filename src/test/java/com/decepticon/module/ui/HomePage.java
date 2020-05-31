@@ -164,7 +164,7 @@ public class HomePage extends UiUtility {
     }
 
     public void clickButtonBack() {
-        clickByWebElement(buttonBack);
+        clickByWebElementWithNotFoundHandling(buttonBack);
     }
 
     public void clickButtonAgeChildren(String value) {

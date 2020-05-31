@@ -11,6 +11,8 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
+import static junit.framework.TestCase.assertTrue;
+
 public class SearchPage extends UiUtility {
 
     // Text Elements
@@ -35,6 +37,14 @@ public class SearchPage extends UiUtility {
     @FindBy(xpath = "//p[@class=\"whiteText latoBlack font22\"]")
     private WebElementFacade popUpOnSearchResult;
 
+    //currecny selection
+    @FindBy(xpath = "//div[@class=\"makeFlex column currencyBox font12\"]")
+    private WebElementFacade currencyDropDown;
+    @FindBy(xpath ="//div[@class=\"currencyWrap\"]/ul/li")
+    private List<WebElementFacade> listOfCurrency;
+    @FindBy(xpath = "//div[@class=\"makeFlex column currencyBox font12\"]/span")
+    private WebElementFacade selectedCurrency;
+
     private String buttonFilterByUserRatings = "//label[contains(text(),'%s')]";
 
     public void openPage() {
@@ -52,6 +62,30 @@ public class SearchPage extends UiUtility {
             getDriver().navigate().refresh();
         }
         fromXpathtoWebElement(String.format(buttonFilterByUserRatings, userRating)).click();
+    }
+    //select currency
+    public void selectCurrency()
+    {
+        currencyDropDown.waitUntilClickable();
+        currencyDropDown.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        for (WebElementFacade element:listOfCurrency)
+        {
+            if(element.getText().contains(ValueConsts.CURRENCY))
+            {
+                element.click();
+                break;
+            }
+        }
+        waitForAngularRequestsToFinish();
+    }
+    public void assertCurrency(String currency)
+    {
+        assertTrue(selectedCurrency.getText().toUpperCase().contains(currency));
     }
 
     public String clickButtonHotelName(Integer hotelNumber) {

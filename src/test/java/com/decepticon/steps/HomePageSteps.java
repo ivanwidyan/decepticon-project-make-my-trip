@@ -62,7 +62,7 @@ public class HomePageSteps extends ScenarioSteps {
         while (!homePage.isDateMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
-        HomeData.setDateCheckIn(homePage.getTextDate(month, date));
+        HomeData.setDateCheckOut(homePage.getTextDate(month, date));
         homePage.clickButtonDate(month, date);
     }
 
@@ -105,6 +105,11 @@ public class HomePageSteps extends ScenarioSteps {
     @When("at home page click button Search")
     public void atHomePageClickButtonSearch() {
         homePage.clickButtonSearch();
+        System.out.println(HomeData.getCity());
+        System.out.println(HomeData.getCountry());
+        System.out.println(HomeData.getDateCheckIn());
+        System.out.println(HomeData.getDateCheckOut());
+        System.out.println(HomeData.getTravellingFor());
     }
 
     @When("at home page click button login")

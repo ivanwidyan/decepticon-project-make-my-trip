@@ -1,63 +1,65 @@
 package com.decepticon.module.ui;
 
+import com.decepticon.module.utils.UiUtility;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
 
 import java.util.List;
 
-public class BookingSummaryPage extends PageObject {
+public class BookingSummaryPage extends UiUtility {
 
   // Text Elements
-  @FindBy(xpath = "//p[@class='cityName']")
-  private WebElementFacade textCityName;
+  @FindBy(xpath = "//p[@class='hotel_name pymt-htlInfo-name lato-semibold append_bottom6']")
+  private WebElementFacade textHotelName;
 
-  @FindBy(xpath = "//p[@class='ellipsis light_gray hidden-xs']")
+  @FindBy(xpath = "//p[@class='hotel_location pymt-htlInfo-loc lato-regular']")
   private WebElementFacade textAdress;
 
-  @FindBy(xpath = "//div[@class='col-sm-2 col-xs-2 hidden-xs grt_arrow_aligment']//p[@class='inOut_date append_bottom5']")
-  private WebElementFacade textCheckInMonthDay;
+  @FindBy(xpath = "//span[@class='pull-right blank_icon']//span")
+  private WebElementFacade imageActiveStars;
 
-  @FindBy(xpath = "//div[@class='col-sm-2 col-xs-2 hidden-xs grt_arrow_aligment']//p[@class='inOut_date append_bottom5']//span")
+  @FindBy(xpath = "//div[@class='checkin pull-left']//span[@class='lato-semibold']")
   private WebElementFacade textCheckInDate;
 
-  @FindBy(xpath = "//div[@class='col-sm-2 col-xs-2 hidden-xs']//p[@class='inOut_date append_bottom5']")
-  private WebElementFacade textCheckOutMonthDay;
+  @FindBy(xpath = "//div[@class='checkin pull-left']//span[@class='lato-regular grey']")
+  private WebElementFacade textCheckInDay;
 
-  @FindBy(xpath = "//div[@class='col-sm-2 col-xs-2 hidden-xs']//p[@class='inOut_date append_bottom5']//span")
+  @FindBy(xpath = "//div[@class='checkout pull-right']//span[@class='lato-semibold']")
   private WebElementFacade textCheckOutDate;
 
-  @FindBy(xpath = "//p[@class='travel_price append_bottom5']//span[@class='formattedCurrency grandTotal']")
+  @FindBy(xpath = "//div[@class='checkout pull-right']//span[@class='lato-regular grey']")
+  private WebElementFacade textCheckOutDay;
+
+  @FindBy(xpath = "//span[@id='top_rail_totalAmount']")
   private WebElementFacade textTotalAmount;
 
-  // Image Elements
-  @FindBy(xpath = "//p[@class='star_category append_bottom5']//span[@class='glyphicon glyphicon-star active-star']")
-  private List<WebElementFacade> listImageActiveStars;
+  @FindBy(xpath = "//span[@class='make_block lato-regular adult_info']")
+  private List<WebElementFacade> listTextGuests;
 
   public void openPage() {
-    openUrl("https://m-securepay.makemytrip.com/common-payment-web-iframe/loadCheckoutPage.pymt?checkoutId=465696416581428");
+    openUrl("https://m-securepay.makemytrip.com/common-payment-web-iframe/loadCheckoutPage.pymt?checkoutId=465726554443200");
   }
 
   // Get Text
-  public String getTextCityName(){
-    return textCityName.getText();
+  public String getTextHotelName(){
+    return textHotelName.getText();
   }
 
   public String getTextAdress(){
     return textAdress.getText();
   }
 
-  public String getTextCheckInMonthDay(){
-    return textCheckInMonthDay.getText();
+  public String getTextCheckInDay(){
+    return textCheckInDay.getText();
   }
 
   public String getTextCheckInDate(){
     return textCheckInDate.getText();
   }
 
-  public String getTextCheckOutMonthDay(){
-    return textCheckOutMonthDay.getText();
+  public String getTextCheckOutDay(){
+    return textCheckOutDay.getText();
   }
 
   public String getTextCheckOutDate(){
@@ -68,8 +70,12 @@ public class BookingSummaryPage extends PageObject {
     return textTotalAmount.getText();
   }
 
+  public List<String> getTextGuests(){
+    return listWebElementsToListString(listTextGuests);
+  }
+
   // Get Number
-  public Integer getNumberActiveStars(){
-    return listImageActiveStars.size();
+  public String getNumberActiveStars(){
+    return imageActiveStars.getAttribute("class");
   }
 }

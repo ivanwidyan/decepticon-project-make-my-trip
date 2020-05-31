@@ -77,7 +77,7 @@ public class TestMain {
         homePage.clickButtonSearch();
 
         // Search Page Flow
-        searchPage.openPage();
+//        searchPage.openPage();
         searchPage.clickButtonFilterByUserRatings(userRating);
         searchPage.dragSliderFilterMinPrice(price);
 
@@ -108,21 +108,22 @@ public class TestMain {
         roomPage.typeTextBoxMobileNumber("81234567890");
         if(roomPage.isPopupLeavingPageVisible())
             roomPage.clickButtonClose();
-        if(roomPage.isTextBoxPanVisible())
-            roomPage.typeTextBoxPanString("101");
+//        if(roomPage.isTextBoxPanVisible())
+//            roomPage.typeTextBoxPanString("101");
         roomPage.clickCheckListOptions("Large bed");
         roomPage.clickCheckListOptions("Smoking room");
         roomPage.clickCheckBoxDonation();
         roomPage.clickButtonPayNow();
 
+        Utility.delayInSeconds(10);
+
         // Booking Summary Flow
         System.out.println(bookingSummaryPage.getNumberActiveStars());
-        System.out.println(bookingSummaryPage.getTextAdress());
+        System.out.println(bookingSummaryPage.getTextGuests());
         System.out.println(bookingSummaryPage.getTextCheckInDate());
-        System.out.println(bookingSummaryPage.getTextCheckInMonthDay());
+        System.out.println(bookingSummaryPage.getTextCheckInDay());
         System.out.println(bookingSummaryPage.getTextCheckOutDate());
-        System.out.println(bookingSummaryPage.getTextCheckOutMonthDay());
-        System.out.println(bookingSummaryPage.getTextCityName());
+        System.out.println(bookingSummaryPage.getTextCheckOutDay());
         System.out.println(bookingSummaryPage.getTextTotalAmount());
 
         Utility.delayInSeconds(10);

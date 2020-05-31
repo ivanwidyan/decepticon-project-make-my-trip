@@ -38,8 +38,8 @@ public class HotelDetailPage extends UiUtility {
 
 
     public void openPage() {
-        openUrl("https://www.makemytrip.com/hotels/hotel-details/?hotelId=4190725563806581&mtkeys=N$$s9rHC9RN7n8Tiq%2BKJh0FX%2FfHJk6RdDmpkJOB2277P8XMPGSAG8X64rvF9KVWXO%2Fr7ISdY8D3x4xLAYFMoMUjG0VKoF7fPJCXHVSV9fsUkF2fmz1uEw%2FQQ%2FCs72G9nzYOariuMD%2FfgcMFtL07wStkdKdprU%2BxJ6BTmtTIfnMU8YL4dfsj2fVK7ZdFymAI0ckCvHklWVcF7xPPP4rQ1EdL4BNUwJBJeaWX9Gbv%2Fjtz2O13UWb9Pj0KbqrkqpmWCQGCSzEUD5IoQ0NNNFc7cluKhsBuN2s%2FSQaQaqKimkSzwvOtFGkanGFbqBml04%2FIv3wlgo82QsHHrJ6ipZhMjSxQ3%2BAyZpa1nElwOqMdYsE9LlA%2FMkv92GDloBG2sxkACWIjdRz1r2szJZHX9oo48eHqDw%3D%3D&_uCurrency=INR&checkin=06092020&checkout=06122020&city=CTSINGAP&country=SGP&lat=1.24669&lng=103.8424&locusId=CTSINGAP&locusType=city&rank=3&reference=hotel&roomStayQualifier=2e0e&searchText=Singapore&type=city" +
-                "");
+//        openUrl("https://www.makemytrip.com/hotels/hotel-details/?hotelId=4190725563806581&mtkeys=N$$s9rHC9RN7n8Tiq%2BKJh0FX%2FfHJk6RdDmpkJOB2277P8XMPGSAG8X64rvF9KVWXO%2Fr7ISdY8D3x4xLAYFMoMUjG0VKoF7fPJCXHVSV9fsUkF2fmz1uEw%2FQQ%2FCs72G9nzYOariuMD%2FfgcMFtL07wStkdKdprU%2BxJ6BTmtTIfnMU8YL4dfsj2fVK7ZdFymAI0ckCvHklWVcF7xPPP4rQ1EdL4BNUwJBJeaWX9Gbv%2Fjtz2O13UWb9Pj0KbqrkqpmWCQGCSzEUD5IoQ0NNNFc7cluKhsBuN2s%2FSQaQaqKimkSzwvOtFGkanGFbqBml04%2FIv3wlgo82QsHHrJ6ipZhMjSxQ3%2BAyZpa1nElwOqMdYsE9LlA%2FMkv92GDloBG2sxkACWIjdRz1r2szJZHX9oo48eHqDw%3D%3D&_uCurrency=INR&checkin=06092020&checkout=06122020&city=CTSINGAP&country=SGP&lat=1.24669&lng=103.8424&locusId=CTSINGAP&locusType=city&rank=3&reference=hotel&roomStayQualifier=2e0e&searchText=Singapore&type=city");
+        openUrl("https://www.makemytrip.com/hotels/hotel-details/?hotelId=201106011040491072&mtkeys=N$$s9rHC9RN7n%2FNCnK1MZUInmtEnDex85wWFO1LOYeiqOm9Yy9qa4gJJQHvtubmjB9KeQnt2ebiPXagZqgxPcmUSkv9LMFhP129drlkCVJajQP%2BkqsfY9G6kIxYlQri39cVQncj3w%2BK6WHp5mz8WYDM1bxzIGqRRAHYouasPjnWDdyazmJB5BcMDyKiEt5VS9EOiuKUf1Jd3d%2FrHBm5ZNsz6iSHBsoPx%2FJl4gH2bxxO5XU7mJUNOiOI1xHIeWVtXz5DA7vookzSJuPNCp2y6TjAjx86WzvtHLV4pO9DFO%2FID2eLcFjXWY%2BEkiqn3uO4Fb4ZRPa1SOFjNt7WUhvsMh9G67x2IWSCWXIgxGRIhD%2BF8HRMa6B4XFYZ8TAgzakYRib0PKzIfr3VlmN4rYni5Zn%2FarS2JnapNDZs&_uCurrency=INR&checkin=05312020&checkout=06012020&city=CTCJB&country=IN&filterData=HOTEL_PRICE%7C1000-30000%5EUSER_RATING%7C4&lat=11.057982&lng=77.07205&locusId=RGCJB&locusType=region&rank=5&reference=hotel&roomStayQualifier=2e0e2e0e&searchText=Coimbatore%20District%2C%20Tamil%20Nadu%2C%20India&type=region");
     }
 
     public void openPageMultiple() {
@@ -77,30 +77,30 @@ public class HotelDetailPage extends UiUtility {
 
     public void getListOption(String room, String option) {
         System.out.println("list option : ");
-        ListWebElement(xpathToWebElement(String.format(listOptions, room, option)));
+        listWebElementsToListString(xpathToWebElement(String.format(listOptions, room, option)));
     }
 
 
     public void getListMultiOption(String room, String option) {
         System.out.println("list option : ");
-        ListWebElement(xpathToWebElement(String.format(listmultioptions, room, option)));
+        listWebElementsToListString(xpathToWebElement(String.format(listmultioptions, room, option)));
     }
 
     public void getListIncludedMultiOption(String room, String option) {
         System.out.println(" include list :");
-        ListWebElement(xpathToWebElement(String.format(listIncludedMultiOption, room, option)));
+        listWebElementsToListString(xpathToWebElement(String.format(listIncludedMultiOption, room, option)));
     }
 
     public void getListIncluded(String room, String option) {
         System.out.println(" include list :");
-        ListWebElement(xpathToWebElement(String.format(listIncluded, room, option)));
+        listWebElementsToListString(xpathToWebElement(String.format(listIncluded, room, option)));
     }
 
     public void getListRoomDetail(String roomnumber) {
         if (find(By.xpath(String.format(butonMoreAbout, roomnumber))).isPresent()) {
             find(By.xpath(String.format(butonMoreAbout, roomnumber))).click();
             System.out.println(" list room detail :");
-            ListWebElement(listRoomDetails);
+            listWebElementsToListString(listRoomDetails);
 
             System.out.println("jumlah " + listRoomDetails.size());
             if (listRoomDetails.size() != 0) {

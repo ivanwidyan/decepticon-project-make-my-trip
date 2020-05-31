@@ -9,28 +9,24 @@ import java.util.List;
 
 public class UiUtility extends PageObject {
 
-    public static List<String> ListWebElement(List<WebElementFacade> webElementFacade) {
-        int a = 0;
-
-        List<String> List = new ArrayList<>();
-        for (WebElementFacade wf : webElementFacade) {
-
-            List.add(wf.getText());
-            System.out.println(a + 1 + ". " + List.get(a));
-            a++;
+    protected List<String> listWebElementsToListString(List<WebElementFacade> listWebElements) {
+        List<String> stringList = new ArrayList<>();
+        for (WebElementFacade w : listWebElements) {
+            stringList.add(w.getText());
         }
-        return List;
+        return stringList;
 
     }
 
-    public WebElementFacade fromXpathtoWebElement(String xpath){
+    protected WebElementFacade fromXpathtoWebElement(String xpath){
         return find(By.xpath(xpath));
     }
-    public WebElementFacade fromXpathtoWebElementString(String xpath){
+
+    protected WebElementFacade fromXpathtoWebElementString(String xpath){
         return find(By.xpath(String.format(xpath)));
     }
 
-    public List<WebElementFacade> xpathToWebElement(String xpath) {
+    protected List<WebElementFacade> xpathToWebElement(String xpath) {
         List<WebElementFacade> webElementFacades = findAll(new By.ByXPath(xpath));
 
         return webElementFacades;

@@ -33,25 +33,6 @@ public class Utility {
     public static String getConfig(String key) {
         return EnvironmentSpecificConfiguration.from(variables).getProperty(key);
     }
-    public void scrollToElement(WebDriver driver, WebElement element)
-    {
-        JavascriptExecutor je = (JavascriptExecutor) driver;
-        je.executeScript("arguments[0].scrollIntoView(true);",element);
-    }
-    public void waitForElementVisiblity(WebDriver driver, WebElement element){
-        WebDriverWait driverWait = new WebDriverWait(driver, 20);
-        driverWait.until(ExpectedConditions
-                .visibilityOf(element));
-    }
-    public void waitTillPageLoads(WebDriver driver) {
-        driverWait(driver).until(
-                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
-    }
-    public void scrollToTheEndOfThePage(WebDriver driver)
-    {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-    }
 
     public static String getProperty(String key) {
         return variables.getProperty(key);
@@ -73,11 +54,6 @@ public class Utility {
             }
         }
     }
-    public String[] splitString(String value,String regex)
-    {
-        return value.split(regex);
-    }
-
     public static void saveImage(URL imageURL, String fileName) {
         saveImage(imageURL, "", fileName);
     }
@@ -192,6 +168,5 @@ public class Utility {
         } catch (Exception e) {
 
         }
-
     }
 }

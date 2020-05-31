@@ -69,6 +69,11 @@ public class HomePage extends UiUtility {
         openUrl("https://www.makemytrip.com/");
     }
 
+    // Get Text
+    public String getTextDate(String month, String date){
+        return fromXpathtoWebElement(String.format(buttonDate, month, date)).getAttribute("aria-label");
+    }
+
     // Click Actions
     public void clickButtonLogin() {
         JSExecutorUtility.clickByWebElement(buttonLogin, getDriver());
@@ -82,32 +87,28 @@ public class HomePage extends UiUtility {
         JSExecutorUtility.clickByWebElement(buttonClose, getDriver());
     }
 
-    public void clickMenuHotel() {
+    public void clickButtonHotel() {
         JSExecutorUtility.clickByWebElement(buttonHotel, getDriver());
     }
 
-    public void clickSectionCity() {
+    public void clickButtonCity() {
         JSExecutorUtility.clickByWebElement(buttonCity, getDriver());
     }
 
-    public void clickListCity(String value) {
-        fromXpathtoWebElement(String.format(listButtonCity, value)).click();
-    }
-
-    public void clickDate(String month, String date) {
+    public void clickButtonDate(String month, String date) {
         JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(buttonDate, month, date)), getDriver());
     }
 
-    public void clickSectionRoom() {
+    public void clickButtonRoom() {
         JSExecutorUtility.clickByWebElement(buttonRoom, getDriver());
     }
 
-    public void clickNumberOfAdults(String value) {
+    public void clickButtonNumberOfAdults(String value) {
         JSExecutorUtility.clickByWebElement(
                 fromXpathtoWebElement(String.format(buttonNumberOfAdults, value)), getDriver());
     }
 
-    public void clickNumberOfChildren(String value) {
+    public void clickButtonNumberOfChildren(String value) {
         JSExecutorUtility.clickByWebElement(
                 fromXpathtoWebElement(String.format(buttonNumberOfChildren, value)), getDriver());
     }
@@ -116,12 +117,8 @@ public class HomePage extends UiUtility {
         JSExecutorUtility.clickByWebElement(buttonApplyRoom, getDriver());
     }
 
-    public void clickSectionTravelFor() {
+    public void clickButtonTravelFor() {
         JSExecutorUtility.clickByWebElement(buttonTravelFor, getDriver());
-    }
-
-    public void clickSelectTravelFor(String value) {
-        JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(listButtonTravelFor, value)), getDriver());
     }
 
     public void clickButtonSearch() {
@@ -136,10 +133,18 @@ public class HomePage extends UiUtility {
         JSExecutorUtility.clickByWebElement(buttonAddRooms, getDriver());
     }
 
-    public void clickbuttonAgeChildren(String value) {
+    public void clickButtonAgeChildren(String value) {
         System.out.println(String.format(buttonAgeChildren, value));
         JSExecutorUtility.clickByWebElement(
                 fromXpathtoWebElement(String.format(buttonAgeChildren, value)), getDriver());
+    }
+
+    public void clickListButtonCity(String value) {
+        fromXpathtoWebElement(String.format(listButtonCity, value)).click();
+    }
+
+    public void clickListButtonTravelFor(String value) {
+        JSExecutorUtility.clickByWebElement(fromXpathtoWebElement(String.format(listButtonTravelFor, value)), getDriver());
     }
 
     public void clickListButtonAgeChildren(String children, String age) {
@@ -161,13 +166,8 @@ public class HomePage extends UiUtility {
         textBoxCity.type(value);
     }
 
-    // Is match
-    public boolean isDateIsMatch(String month, String date) {
+    // Is Match
+    public boolean isDateMatch(String month, String date) {
         return fromXpathtoWebElement(String.format(buttonDate, month, date)).isCurrentlyVisible();
-    }
-
-    // Get Attribute
-    public String getTextDate(String month, String date){
-        return fromXpathtoWebElement(String.format(buttonDate, month, date)).getAttribute("aria-label");
     }
 }

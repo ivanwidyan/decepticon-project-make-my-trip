@@ -3,6 +3,8 @@ package com.decepticon.module.utils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class JSExecutorUtility {
 
@@ -36,9 +38,14 @@ public class JSExecutorUtility {
         js.executeScript(String.format("document.getElementById('%s').checked=%s;", id, checked));
     }
 
-    public static void jumpIntoElement(WebElement element, WebDriver webDriver){
-        JavascriptExecutor js = (JavascriptExecutor) webDriver;
-        js.executeScript("arguments[0].scrollIntoView();", element);
+    public static void scrollToElement(WebDriver driver, WebElement element) {
+        JavascriptExecutor je = (JavascriptExecutor) driver;
+        je.executeScript("arguments[0].scrollIntoView(true);",element);
+    }
+
+    public static void scrollToTheEndOfThePage(WebDriver driver) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 
 }

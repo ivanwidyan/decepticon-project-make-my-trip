@@ -52,7 +52,6 @@ public class TestMain {
         homePage.clickButtonSubmit();
         homePage.clickButtonClose();
 
-
         homePage.clickButtonHotel();
         homePage.clickButtonCity();
         homePage.typeTextBoxCity("Indonesia");
@@ -83,7 +82,6 @@ public class TestMain {
         homePage.clickButtonSearch();
 
         // Search Page Flow
-//        searchPage.openPage();
         searchPage.clickButtonFilterByUserRatings(userRating);
         searchPage.dragSliderFilterMinPrice(price);
 
@@ -120,8 +118,6 @@ public class TestMain {
         roomPage.clickCheckListOptions("Smoking room");
         roomPage.clickCheckBoxDonation();
         roomPage.clickButtonPayNow();
-
-        Utility.delayInSeconds(10);
 
         // Booking Summary Flow
         System.out.println(bookingSummaryPage.getTextHotelName());

@@ -18,7 +18,7 @@ public class BookingSummaryRunner {
     BookingSummaryPage bookingSummaryPage;
 
     @Test
-    public void testUI() {
+    public void BookingSummaryPageTest() {
         bookingSummaryPage.openPage();
         System.out.println(bookingSummaryPage.getNumberActiveStars());
         System.out.println(bookingSummaryPage.getTextAdress());

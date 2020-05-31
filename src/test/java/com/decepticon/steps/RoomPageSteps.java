@@ -11,7 +11,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class RoomPageSteps extends ScenarioSteps {
 
     private RoomPage roomPage;
-    private RoomData roomData;
 
     @Given("open room page")
     public void openRoomPage() {
@@ -20,28 +19,33 @@ public class RoomPageSteps extends ScenarioSteps {
 
     @Given("at room page store the check in date to the data")
     public void atRoomPageStoreTheCheckInDateToTheData() {
-        roomData.setCheckinDate(roomPage.getTextDate(String.valueOf(Consts.FIRST_INDEX)));
+        RoomData.setCheckinDate(roomPage.getTextDate(String.valueOf(Consts.SECOND_INDEX)));
+        System.out.println(RoomData.getCheckinDate());
     }
 
     @And("at room page store the check out date to the data")
     public void atRoomPageStoreTheCheckOutDateToTheData() {
-        roomData.setCheckoutDate(roomPage.getTextDate(String.valueOf(Consts.SECOND_INDEX)));
+        RoomData.setCheckoutDate(roomPage.getTextDate(String.valueOf(Consts.THRID_INDEX)));
+        System.out.println(RoomData.getCheckoutDate());
     }
 
     @And("at room page store the hotel name date to the data")
     public void atRoomPageStoreTheHotelNameDateToTheData() {
-        roomData.setHotelName(roomPage.getTextHotelName());
+        RoomData.setHotelName(roomPage.getTextHotelName());
+        System.out.println(RoomData.getHotelName());
     }
 
     @And("at room page store the total amount date to the data")
     public void atRoomPageStoreTheTotalAmountDateToTheData() {
         String[] arrTotalAmount = roomPage.getTextTotalAmount().split(Consts.SPACE);
-        roomData.setTotalAmount(arrTotalAmount[Consts.SECOND_INDEX]);
+        RoomData.setTotalAmount(arrTotalAmount[Consts.SECOND_INDEX]);
+        System.out.println(RoomData.getTotalAmount());
     }
 
     @And("at room page store the total guests date to the data")
     public void atRoomPageStoreTheTotalGuestsDateToTheData() {
-        roomData.setGuest(roomPage.getTextGuest());
+        RoomData.setGuest(roomPage.getTextGuest());
+        System.out.println(RoomData.getGuest());
     }
 
     @When("at room page fill text box first name with {string}")
@@ -59,14 +63,9 @@ public class RoomPageSteps extends ScenarioSteps {
         roomPage.typeTextBoxEmail(value);
     }
 
-    @When("at room page click button code phone number")
-    public void atRoomPageClickButtonCodePhoneNumber() {
-        roomPage.clickButtonMobileCode();
-    }
-
-    @When("at room page click list button code phone number with {string}")
+    @When("at room page select option code phone number with {string}")
     public void atRoomPageClickListButtonCodePhoneNumberWith(String value) {
-        roomPage.clickListButtonMobileCode(value);
+        roomPage.selectMobileCode(value);
     }
 
     @When("at room page fill text box phone number with {string}")

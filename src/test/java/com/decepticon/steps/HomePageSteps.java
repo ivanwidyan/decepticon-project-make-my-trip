@@ -80,8 +80,8 @@ public class HomePageSteps extends ScenarioSteps {
     @When("at home page room section click button Children equals to {string}")
     public void atHomePageRoomSectionClickButtonChildrenEqualsTo(String value) {
         homePage.clickButtonNumberOfChildren(value);
-        Integer countOfAdults = HomeData.getNumberOfChildrens() + Integer.parseInt(value);
-        HomeData.setNumberOfChildrens(countOfAdults);
+        Integer countOfAdults = HomeData.getNumberOfChildren() + Integer.parseInt(value);
+        HomeData.setNumberOfChildren(countOfAdults);
     }
 
     @When("at home page room section click button Add Another Room")

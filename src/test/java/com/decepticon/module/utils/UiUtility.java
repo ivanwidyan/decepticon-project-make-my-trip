@@ -52,11 +52,10 @@ public class UiUtility extends PageObject {
 
     protected void clickByWebElementWithNotFoundHandling(WebElementFacade webElementFacade){
         try {
-//            webElementFacade.waitUntilPresent();
             JSExecutorUtility.clickByWebElement(webElementFacade, getDriver());
             webElementFacade.click();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
@@ -64,6 +63,7 @@ public class UiUtility extends PageObject {
         try {
             return webElementFacade.getText();
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

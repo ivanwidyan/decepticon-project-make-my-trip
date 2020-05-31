@@ -49,7 +49,6 @@ public class HotelDetailRunner {
         hotelDetailPage.getTextTotalPriceForMultiple();
         hotelDetailPage.clickButtonReviewDetail();
 //        hotelDetailPage.clickButtonSelectRoom("1", "1");
-
     }
 
 

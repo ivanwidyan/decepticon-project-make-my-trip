@@ -8,9 +8,9 @@ public class HomeData {
     private static String dateCheckIn;
     private static String dateCheckOut;
     private static String numberOfRooms;
-    public static String travellingFor;
+    private static String travellingFor;
     private static int numberOfAdults;
-    private static int numberOfChildrens;
+    private static int numberOfChildren;
 
     public static Integer getNumberOfAdults() {
         return numberOfAdults;
@@ -20,12 +20,12 @@ public class HomeData {
         HomeData.numberOfAdults = numberOfAdults;
     }
 
-    public static Integer getNumberOfChildrens() {
-        return numberOfChildrens;
+    public static Integer getNumberOfChildren() {
+        return numberOfChildren;
     }
 
-    public static void setNumberOfChildrens(Integer numberOfChildrens) {
-        HomeData.numberOfChildrens = numberOfChildrens;
+    public static void setNumberOfChildren(Integer numberOfChildren) {
+        HomeData.numberOfChildren = numberOfChildren;
     }
 
     public static String getNumberOfRooms() {

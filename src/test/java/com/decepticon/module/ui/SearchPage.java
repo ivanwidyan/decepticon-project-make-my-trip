@@ -18,6 +18,7 @@ public class SearchPage extends UiUtility {
     // Text Elements
     @FindBy(xpath = "//span[@class=\"minValue\"]")
     private WebElementFacade textMinPrice;
+
     //Filter
     @FindBy(xpath = "//span[@class=\"latoBold font20 blackText appendBottom10\"]")
     private WebElementFacade textSelectFilters;

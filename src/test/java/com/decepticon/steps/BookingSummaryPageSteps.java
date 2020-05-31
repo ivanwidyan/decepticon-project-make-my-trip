@@ -42,7 +42,7 @@ public class BookingSummaryPageSteps extends ScenarioSteps {
     public void atBookPageCheckInDateShouldCorrect() {
         String[] arrDate = HomeData.getDateCheckIn().split(Consts.SPACE);
         String dateCheckin = arrDate[Consts.FIRST_INDEX] + Consts.SPACE +
-                arrDate[Consts.THRID_INDEX] + Consts.SPACE +
+                arrDate[Consts.THIRD_INDEX] + Consts.SPACE +
                 arrDate[Consts.SECOND_INDEX] + Consts.SPACE +
                 arrDate[Consts.FOURTH_INDEX];
         assertThat("text check in date is wrong",
@@ -53,7 +53,7 @@ public class BookingSummaryPageSteps extends ScenarioSteps {
     public void atBookPageCheckOutDateShouldCorrect() {
         String[] arrDate = HomeData.getDateCheckOut().split(Consts.SPACE);
         String dateCheckout = arrDate[Consts.FIRST_INDEX] + Consts.SPACE +
-                arrDate[Consts.THRID_INDEX] + Consts.SPACE +
+                arrDate[Consts.THIRD_INDEX] + Consts.SPACE +
                 arrDate[Consts.SECOND_INDEX] + Consts.SPACE +
                 arrDate[Consts.FOURTH_INDEX];
         assertThat("text check out date is wrong",
@@ -70,7 +70,7 @@ public class BookingSummaryPageSteps extends ScenarioSteps {
     @And("at book page total children guest should correct")
     public void atBookPageTotalChildredGuestShouldCorrect() {
         assertThat("number children is wrong",
-                bookingSummaryPage.getNumberGuestsAmounts().get("child"), equalTo(HomeData.getNumberOfChildrens()));
+                bookingSummaryPage.getNumberGuestsAmounts().get("child"), equalTo(HomeData.getNumberOfChildren()));
     }
 
     @And("at book page total amount should correct")

@@ -19,9 +19,6 @@ public class BookingSummaryPage extends UiUtility {
   @FindBy(xpath = "//p[@class='hotel_location pymt-htlInfo-loc lato-regular']")
   private WebElementFacade textAdress;
 
-  @FindBy(xpath = "//span[@class='pull-right blank_icon']//span")
-  private WebElementFacade imageActiveStars;
-
   @FindBy(xpath = "//div[@class='checkin pull-left']//span[@class='lato-semibold']")
   private WebElementFacade textCheckInDate;
 
@@ -42,6 +39,9 @@ public class BookingSummaryPage extends UiUtility {
 
   @FindBy(xpath = "//span[@class='make_block lato-regular adult_info']")
   private List<WebElementFacade> listTextGuests;
+
+  @FindBy(xpath = "//span[@class='pull-right blank_icon']//span")
+  private WebElementFacade imageActiveStars;
 
   public void openPage() {
     openUrl("https://m-securepay.makemytrip.com/common-payment-web-iframe/loadCheckoutPage.pymt?checkoutId=465732626918207");
@@ -72,11 +72,16 @@ public class BookingSummaryPage extends UiUtility {
   }
 
   public String getTextRoomName(){
-    return getTextByWebElementWithNotFoundHandling(textRoomName).split(Consts.SPACE + "\\|" + Consts.SPACE)[Consts.FIRST_INDEX];
+    return getTextByWebElementWithNotFoundHandling(textRoomName).split(Consts.SPACE + Consts.PIPE + Consts.SPACE)[Consts.FIRST_INDEX];
   }
 
   public String getTextTotalAmount(){
     return getTextByWebElementWithNotFoundHandling(textTotalAmount).replace(Consts.PERIOD, Consts.COMMA);
+  }
+
+  // Get Number
+  public String getNumberActiveStars(){
+    return imageActiveStars.getAttribute(ParamConsts.CLASS);
   }
 
   public HashMap<String, Integer> getNumberGuestsAmounts(){
@@ -88,10 +93,10 @@ public class BookingSummaryPage extends UiUtility {
       String[] splitGuest = listGuests.get(i).split(Consts.COMMA + Consts.SPACE);
       for (int j = 0; j < splitGuest.length; j++) {
         String[] guest = splitGuest[j].split(Consts.SPACE);
-        if (guest[1].equalsIgnoreCase(ParamConsts.CHILD)) {
-          children += Integer.valueOf(guest[0]);
+        if (guest[Consts.SECOND_INDEX].equalsIgnoreCase(ParamConsts.CHILD)) {
+          children += Integer.valueOf(guest[Consts.FIRST_INDEX]);
         } else {
-          adults += Integer.valueOf(guest[0]);
+          adults += Integer.valueOf(guest[Consts.FIRST_INDEX]);
         }
       }
     }
@@ -102,8 +107,4 @@ public class BookingSummaryPage extends UiUtility {
     return guestAmount;
   }
 
-  // Get Number
-  public String getNumberActiveStars(){
-    return imageActiveStars.getAttribute(ParamConsts.CLASS);
-  }
 }

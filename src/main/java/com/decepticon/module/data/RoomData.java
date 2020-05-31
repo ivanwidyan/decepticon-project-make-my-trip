@@ -3,6 +3,7 @@ package com.decepticon.module.data;
 public class RoomData {
     private static String hotelName;
     private static String totalAmount;
+    private static String roomName;
 
     public static String getRoomName() {
         return roomName;
@@ -11,8 +12,6 @@ public class RoomData {
     public static void setRoomName(String roomName) {
         RoomData.roomName = roomName;
     }
-
-    private static String roomName;
 
     public static String getHotelName() {
         return hotelName;

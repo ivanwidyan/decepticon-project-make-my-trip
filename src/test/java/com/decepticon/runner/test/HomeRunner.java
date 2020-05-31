@@ -19,9 +19,6 @@ public class HomeRunner {
 
     HomePage homePage;
 
-    HomeData homeData;
-
-
     @Test
     public void userDoLogin() {
         homePage.openPage();

@@ -68,6 +68,8 @@ Feature: Purchase Feature
     When  at search results page filter by user rating as "4 & above (Very Good)"
     Then  at search results page applied filters for user rating should be "4 & above (Very Good)"
     When  at search results page filter by price from "1000"
+    And   at search results page user select the currency
+    And   at search results page selected currency is shown at the top of the page
     Then  at search results page applied filters for price should be "1000"
     When  at search results page click the "10"th hotel from the search results
     Then  at search results page tab is switched to the hotel detail page

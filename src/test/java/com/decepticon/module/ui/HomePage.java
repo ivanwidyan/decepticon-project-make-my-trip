@@ -51,7 +51,7 @@ public class HomePage extends UiUtility {
     @FindBy(xpath = "//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")
     private WebElementFacade buttonNextDate;
 
-    @FindBy(xpath = "*[.='Back']")
+    @FindBy(xpath = "//*[.='Back']")
     private WebElementFacade buttonBack;
 
     // Text Box Elements

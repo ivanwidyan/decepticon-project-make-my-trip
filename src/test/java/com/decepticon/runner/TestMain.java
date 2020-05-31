@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 @RunWith(SerenityRunner.class)
 public class TestMain {
@@ -113,8 +114,8 @@ public class TestMain {
         roomPage.typeTextBoxMobileNumber("81234567890");
         if(roomPage.isPopupLeavingPageVisible())
             roomPage.clickButtonClose();
-//        if(roomPage.isTextBoxPanVisible())
-//            roomPage.typeTextBoxPanString("101");
+        if(roomPage.isTextBoxPanVisible())
+            roomPage.typeTextBoxPanString("101");
         roomPage.clickCheckListOptions("Large bed");
         roomPage.clickCheckListOptions("Smoking room");
         roomPage.clickCheckBoxDonation();
@@ -123,13 +124,28 @@ public class TestMain {
         Utility.delayInSeconds(10);
 
         // Booking Summary Flow
-        System.out.println(bookingSummaryPage.getNumberActiveStars());
-        System.out.println(bookingSummaryPage.getTextGuests());
+        System.out.println(bookingSummaryPage.getTextHotelName());
+        System.out.println(bookingSummaryPage.getTextAdress());
         System.out.println(bookingSummaryPage.getTextCheckInDate());
-        System.out.println(bookingSummaryPage.getTextCheckInDay());
         System.out.println(bookingSummaryPage.getTextCheckOutDate());
-        System.out.println(bookingSummaryPage.getTextCheckOutDay());
+        System.out.println(bookingSummaryPage.getTextRoomName());
+        System.out.println(bookingSummaryPage.getNumberGuestsAmounts());
         System.out.println(bookingSummaryPage.getTextTotalAmount());
+
+        assertThat("text hotel name is wrong",
+                bookingSummaryPage.getTextHotelName(), equalTo("Grand Zuri Kuta Bali"));
+        assertThat("text check in date is wrong",
+                bookingSummaryPage.getTextCheckInDate(), equalToIgnoringCase("Wed 17 Jun 2020"));
+        assertThat("text check out date is wrong",
+                bookingSummaryPage.getTextCheckOutDate(), equalToIgnoringCase("Sat 20 Jun 2020"));
+        assertThat("text room name is wrong",
+                bookingSummaryPage.getTextRoomName(), equalToIgnoringCase("Superior Room"));
+        assertThat("number adult is wrong",
+                bookingSummaryPage.getNumberGuestsAmounts().get("adult"), equalTo(4));
+        assertThat("number children is wrong",
+                bookingSummaryPage.getNumberGuestsAmounts().get("child"), equalTo(4));
+        assertThat("text total amount is wrong",
+                bookingSummaryPage.getTextTotalAmount(), equalTo("8,404"));
 
         Utility.delayInSeconds(10);
     }

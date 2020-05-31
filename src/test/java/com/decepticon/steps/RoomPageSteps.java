@@ -78,9 +78,10 @@ public class RoomPageSteps extends ScenarioSteps {
         roomPage.typeTextBoxPanString(value);
     }
 
-    @When("at room page click checkbox special request equals {string}")
+    @When("at room page click checkbox special request equals {string} if visible")
     public void atRoomPageFillClickCheckboxSpecialRequestEqualsSmokingRoom(String value) {
-        roomPage.clickCheckListOptions(value);
+        if(roomPage.isSectionSpecialRequestIsVisible())
+            roomPage.clickCheckListOptions(value);
     }
 
     @When("at room page click checkbox donation")

@@ -142,4 +142,8 @@ public class RoomPage extends UiUtility {
     public Boolean isTextBoxPanVisible(){
         return textBoxPan.isCurrentlyVisible();
     }
+
+    public Boolean isSectionSpecialRequestIsVisible(){
+        return sectionOptionalRequest.isCurrentlyVisible();
+    }
 }

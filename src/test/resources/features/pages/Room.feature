@@ -16,7 +16,7 @@
       When  at room page fill text box phone number with '81234567890'
       When  at room page click popup leaving page if show up
       When  at room page fill text box pan with '101'
-      When  at room page click checkbox special request equals 'Smoking room'
-      When  at room page click checkbox special request equals 'Large bed'
+      When  at room page click checkbox special request equals 'Smoking room' if visible
+      When  at room page click checkbox special request equals 'Large bed' if visible
       When  at room page click checkbox donation
       When  at room page click button paynow

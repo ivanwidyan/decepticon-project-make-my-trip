@@ -19,9 +19,6 @@ public class CustomRemoteDriver implements DriverSource {
     public WebDriver newDriver() {
         RemoteWebDriver driver;
 
-        // firefox, MicrosoftEdge
-        // chrome: 76.0.3809.100, 78.0.3904.108, 79.0.3945.88
-
         System.out.println(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_BROWSER_NAME));
         System.out.println(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_BROWSER_VERSION));
         System.out.println(Utility.getProperty(PropertiesConsts.CUSTOM_DRIVER_WIDTH));

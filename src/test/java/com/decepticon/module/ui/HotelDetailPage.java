@@ -11,7 +11,6 @@ import java.util.List;
 
 public class HotelDetailPage extends UiUtility {
 
-
     @FindBy(xpath = "//div[@class='popWrapper']//div[@class='popRight']//ul//li")
     List<WebElementFacade> listRoomDetails;
 
@@ -29,7 +28,6 @@ public class HotelDetailPage extends UiUtility {
     private String butonMoreAbout = "//div[@class='roomWrap'][%s]//div[@class='roomLeft']//a";
     private String butonAddRoom = "//div[@class='roomLeftContRow'][%s]//div//div[%s]//div//a[@class='primaryBtn btnAddRoom']";
     private String butonReviewDetail = "//a[@id='detpg_confirm_booking_btn']";
-
 
     private String textPrice = "//div[@class='roomWrap'][%s]//div[@class='roomRight']/div[%s]//span[@class='bxNegotiate appendBottom5']";
     private String textMultiPrice = "//div[@class='roomLeftContRow'][1]//div//div[2]//div[@class='col4']//div[contains(@class, 'pricebreakupCont')]";

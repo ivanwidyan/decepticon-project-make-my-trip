@@ -180,8 +180,7 @@ public class HomePage extends UiUtility {
         return fromXpathtoWebElement(String.format(buttonDate, month, date)).isCurrentlyVisible();
     }
 
-    public boolean isButtonCloseVisible() {
-        buttonClose.waitUntilPresent();
-        return buttonClose.isCurrentlyVisible();
+    public boolean isButtonClosePresent() {
+        return buttonClose.isPresent();
     }
 }

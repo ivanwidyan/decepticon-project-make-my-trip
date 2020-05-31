@@ -49,6 +49,8 @@ public class HomePageSteps extends ScenarioSteps {
         while (!homePage.isDateMatch(month, date)) {
             homePage.clickButtonNextDate();
         }
+        homePage.getTextDate(month, date)
+                .replace("(","").replace(")","");
         HomeData.setDateCheckIn(homePage.getTextDate(month, date));
         homePage.clickButtonDate(month, date);
     }
@@ -129,7 +131,7 @@ public class HomePageSteps extends ScenarioSteps {
 
     @When("at home page login popup click button close")
     public void atHomePageLoginPopupClickButtonClose() {
-        if(homePage.isButtonCloseVisible())
+        if(homePage.isButtonClosePresent())
             homePage.clickButtonClose();
         else
             homePage.clickButtonHotel();

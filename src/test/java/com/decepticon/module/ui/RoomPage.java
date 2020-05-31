@@ -70,23 +70,28 @@ public class RoomPage extends UiUtility {
 
     // Type Action
     public void typeTextBoxFirstName(String value) {
-        textBoxFirstName.type(value);
+
+        getTextByWebElementWithNotFoundHandling(textBoxFirstName.type(value));
     }
 
     public void typeTextBoxLastName(String value) {
-        textBoxLastName.type(value);
+
+        getTextByWebElementWithNotFoundHandling(textBoxLastName.type(value));
     }
 
     public void typeTextBoxEmail(String value) {
-        textBoxEmail.type(value);
+
+        getTextByWebElementWithNotFoundHandling(textBoxEmail.type(value));
     }
 
     public void typeTextBoxMobileNumber(String value) {
-        textBoxMobileNumber.type(value);
+
+        getTextByWebElementWithNotFoundHandling(textBoxMobileNumber.type(value));
     }
 
     public void typeTextBoxPanString(String value) {
-        textBoxPan.type(value);
+
+        getTextByWebElementWithNotFoundHandling(textBoxPan.type(value));
     }
 
     // Click Action

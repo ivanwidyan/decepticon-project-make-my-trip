@@ -96,7 +96,8 @@ public class HomePage extends UiUtility {
     }
 
     public void clickButtonDate(String month, String date) {
-        clickByWebElement(fromXpathtoWebElement(String.format(buttonDate, month, date)));
+        JSExecutorUtility.clickByWebElement(
+                fromXpathtoWebElement(String.format(buttonDate, month, date)), getDriver());
     }
 
     public void clickButtonRoom() {
